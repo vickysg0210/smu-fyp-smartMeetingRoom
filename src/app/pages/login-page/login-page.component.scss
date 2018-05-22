@@ -1,0 +1,45 @@
+:host{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.login-page{
+    /* Full height */
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PDaTSuJ/videoblocks-particles-business-white-bright-glitter-bokeh-dust-abstract-background-loop_hsuwse_g_thumbnail-full01.png');
+    background-image: url("../../../assets/meeting.jpg");
+    .card{
+        margin: auto;
+        width: 23em;
+        top: 27%;
+        .login{
+            font-size: 1.5em;
+        }
+        .forgot-pwd{
+            color: gray;
+            text-decoration: none;
+            font-weight: 200;
+            font-size: 0.9em;
+            float: right;
+        }
+        .form-field{
+            display: block;
+        }
+        .login-btn{
+            width: 100%;
+        }
+        .err{
+            color: red;
+        }
+    }
+}
