@@ -30,7 +30,7 @@ const appRoutes: Routes = [{
   component: RegisterBufferPageComponent
 }, {
   path: 'event-mgmt',
-  canActivate: [AuthGuard],
+  //canActivate: [AuthGuard],
   component: EventMgmtPageComponent
 }];
 

@@ -1,3 +1,136 @@
-<p>
-  event-mgmt-page works!
-</p>
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Sidebar/menu -->
+
+<nav class="w3-sidebar w3-collapse w3-light-grey w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <button class="w3-button w3-black w3-circle w3-display-middle w3-ripple w3-padding-large" style="width:59%"><br><br><br><b> + New Event</b><br><br><br><br></button>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5 style="display: inline"><b><i class="fa fa-calendar-check-o"></i> My Event</b></h5>
+    <button class="w3-button w3-white w3-padding-large w3-hover-black w3-right" style="margin-bottom:22px"> + New Event</button>
+  </header>
+
+  <!-- Event List -->
+  <div class="w3-row-padding w3-margin-bottom">
+    <!-- Event 1 -->
+    <div class="w3-quarter" style="margin-bottom:22px">
+      <div class="w3-container w3-red w3-padding-16">
+        <h3 style="text-align:center"><strong>Evenet 1</strong></h3>
+        <hr>
+        <div style="text-align:center">
+          <h6>Location 1</h6>
+          <h6>Time 1</h6>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
+        </div>
+      </div>
+    </div>
+    <!-- Event 2 -->
+    <div class="w3-quarter" style="margin-bottom:22px">
+      <div class="w3-container w3-blue w3-padding-16">
+        <h3 style="text-align:center"><strong>Evenet 2</strong></h3>
+        <hr>
+        <div style="text-align:center">
+          <h6>Location 2</h6>
+          <h6>Time 2</h6>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
+        </div>
+      </div>
+    </div>
+    <!-- Event 3 -->
+    <div class="w3-quarter" style="margin-bottom:22px">
+      <div class="w3-container w3-teal w3-padding-16">
+        <h3 style="text-align:center"><strong>Evenet 3</strong></h3>
+        <hr>
+        <div style="text-align:center">
+          <h6>Location 3</h6>
+          <h6>Time 3</h6>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
+        </div>
+      </div>
+    </div>
+    <!-- Event 4 -->
+    <div class="w3-quarter" style="margin-bottom:22px">
+      <div class="w3-container w3-orange w3-text-white w3-padding-16">
+        <h3 style="text-align:center"><strong>Evenet 4</strong></h3>
+        <hr>
+        <div style="text-align:center">
+          <h6>Location 4</h6>
+          <h6>Time 4</h6>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
+        </div>
+      </div>
+    </div>
+    <!-- Event 5 -->
+    <div class="w3-quarter" style="margin-bottom:22px">
+      <div class="w3-container w3-teal w3-padding-16">
+        <h3 style="text-align:center"><strong>Evenet 5</strong></h3>
+        <hr>
+        <div style="text-align:center">
+          <h6>Location 5</h6>
+          <h6>Time 5</h6>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Footer -->
+  <!--
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+  -->
+
+  <!-- End page content -->
+</div>
+<!--
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+</script>
+-->
+</body>
+</html>
