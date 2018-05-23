@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-event-mgmt-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventMgmtPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: AuthService) { }
 
   ngOnInit() {
+      console.log(this.user.getUserLoggedIn());
   }
 
 }

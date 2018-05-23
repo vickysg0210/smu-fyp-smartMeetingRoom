@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -9,11 +10,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ToolbarComponent implements OnInit {
     // isLoggedIn$: Observable<boolean>;
-    public isLoggedIn: boolean = true;
+    public isLoggedIn: boolean = false;
 
-    constructor() { }
+    constructor(private user: AuthService) { }
 
     ngOnInit() {
+      this.isLoggedIn = this.user.getUserLoggedIn();
+
         // this.isLoggedIn$ = this.authService.isLoggedIn;
         // this.isLoggedIn$.subscribe((isLoggedin) => {
         // if(!isLoggedin){

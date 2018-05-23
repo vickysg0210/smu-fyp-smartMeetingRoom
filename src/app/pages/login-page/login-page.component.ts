@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -13,7 +12,7 @@ export class LoginPageComponent implements OnInit {
     public password: string;
     public errorMsg: string;
 
-    constructor(private router: Router, private user: AuthService) {
+    constructor(private user: AuthService) {
         this.email = "";
         this.password = "";
     }

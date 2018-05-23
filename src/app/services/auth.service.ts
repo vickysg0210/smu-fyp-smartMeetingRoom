@@ -31,4 +31,12 @@ export class AuthService {
       }
     }
 
+    private register = function(email, password){
+      //this.api.register(this.email, this.password);
+      localStorage.setItem('email', email);
+      this.setUserLoggedIn();
+      // console.log("register setUserLoggedIn: ", this.getUserLoggedIn());
+      this.router.navigate(['register-buffer']);
+    }
+
 }

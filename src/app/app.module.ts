@@ -12,6 +12,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AuthService } from './services/auth.service';
 import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { RegisterBufferPageComponent } from './pages/register-buffer-page/register-buffer-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -20,6 +22,12 @@ const appRoutes: Routes = [{
 }, {
   path: 'login',
   component: LoginPageComponent
+}, {
+  path: 'register',
+  component: RegisterPageComponent
+}, {
+  path: 'register-buffer',
+  component: RegisterBufferPageComponent
 }, {
   path: 'event-mgmt',
   canActivate: [AuthGuard],
@@ -32,7 +40,9 @@ const appRoutes: Routes = [{
     AppComponent,
     LoginPageComponent,
     ToolbarComponent,
-    EventMgmtPageComponent
+    EventMgmtPageComponent,
+    RegisterPageComponent,
+    RegisterBufferPageComponent
   ],
   imports: [
     FormsModule,
