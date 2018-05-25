@@ -1,16 +1,22 @@
-<!-- <mat-toolbar *ngIf="isLoggedIn$ | async">
-<mat-toolbar *ngIf="isLoggedIn">
-  <mat-toolbar-row>
-    <span>Third Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-  </mat-toolbar-row>
+ <!-- <mat-toolbar *ngIf="isLoggedIn$ | async"> -->
+<!-- <mat-toolbar *ngIf="isLoggedIn"> -->
+<mat-toolbar class="toolbar">
+  <img class="logo" src="assets/viatick.png">
+  <span class="title">Smart Meeting Room</span>
+  <span class="example-spacer"></span>
+  <div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
+    <i class="material-icons">{{view_icon}}</i>
+    <p class="btn-name">{{view_name}}</p>
+  </div>
+  <div class="top-btn">
+    <i class="material-icons">account_circle</i>
+    <p class="btn-name">Account</p>
+  </div>
 </mat-toolbar>
--->
 
 
-<!DOCTYPE html>
+
+<!-- <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -23,9 +29,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 
 
-<!-- Top container -->
 <div *ngIf="isLoggedIn" class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <!--<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>-->
   <span class="w3-bar-item">   Smart Metting Room   </span>
   <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-cog"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-envelope"></i></a>
@@ -36,3 +40,4 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
 </div>
+ -->

@@ -1,7 +1,29 @@
-.example-icon {
-  padding: 0 14px;
-}
-
-.example-spacer {
-  flex: 1 1 auto;
+.toolbar{
+    border-bottom: solid 1px lightgray;
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+    .logo{
+        max-width: 7em;
+    }
+    .title{
+            padding: 0 1em;
+        font-weight: 400;
+        color: gray;
+    }
+    .material-icons{
+        font-size: 1.4em;
+        color: gray;
+        position: relative;
+        top: 0.3em;
+    }
+    .top-btn{
+        color: gray;
+        padding: 0 1em;
+        .btn-name{
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 400;
+        }
+    }
 }

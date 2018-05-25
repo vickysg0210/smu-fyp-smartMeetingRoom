@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewService } from './services/view.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+    title = 'app';
+
+    constructor(private viewService: ViewService) {
+        viewService.isGridView$.subscribe(isGrid=>{
+            console.log("subscribe called with isGrid: ",isGrid);
+            // this.isGridView = isGrid;
+        });
+    }
 }

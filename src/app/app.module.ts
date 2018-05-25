@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MatToolbarModule, MatIconModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule} from '@angular/material';
+import {MatToolbarModule, MatIconModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatDividerModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AuthService } from './services/auth.service';
+import { ViewService } from './services/view.service';
 import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -30,7 +31,7 @@ const appRoutes: Routes = [{
   component: RegisterBufferPageComponent
 }, {
   path: 'event-mgmt',
-  //canActivate: [AuthGuard],
+  // canActivate: [AuthGuard],
   component: EventMgmtPageComponent
 }];
 
@@ -54,12 +55,14 @@ const appRoutes: Routes = [{
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,
+    MatDividerModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: true
     })
   ],
   providers: [
   AuthService,
+  ViewService,
   AuthGuard],
   bootstrap: [AppComponent]
 })
