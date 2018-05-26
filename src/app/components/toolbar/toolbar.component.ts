@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -17,6 +17,8 @@ export class ToolbarComponent implements OnInit {
     public page: string;
     public view_icon: string;
     public view_name: string;
+
+    public isGrid: boolean;
 
     constructor(private user: AuthService, private router: Router, private viewService: ViewService) {
       this.view_icon = 'view_list';
@@ -41,14 +43,19 @@ export class ToolbarComponent implements OnInit {
     }
 
     public changeView = function(){
-      console.log("changeview called!!!");
+      console.log("changeview called!!! with isGrid: ",this.isGrid);
       //change to list/grid view;
       if (this.view_icon == "view_list"){
-        this.viewService.toList();
+        this.isGrid = false;
+        // this.switched.emit(false);
         this.view_icon = 'view_module';
         this.view_name = 'Grid View';
+        // this.viewService.toList();
+
       }else{
-        this.viewService.toGrid();
+        this.isGrid = true;
+        // this.switched.emit(true);
+        // this.viewService.toGrid();
         this.view_icon = 'view_list';
         this.view_name = 'List View';
       }
