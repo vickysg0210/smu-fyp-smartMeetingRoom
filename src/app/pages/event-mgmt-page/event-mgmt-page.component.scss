@@ -1,17 +1,22 @@
 .grid{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
-    padding: 4em 6em;
+    padding: 4em 10em;
     .card{
         .material-icons{
             color: gray;
         }
         position: relative;
-        width: 13em;
+        width: 16em;
         margin: 2em 0;
+        height: 12em;
         .event-icon{
+            cursor: pointer;
+            &:hover{
+                background-color: green;
+            }
             color: white;
             font-size: 3em;
             position: absolute;
@@ -39,6 +44,25 @@
         }
         .foot{
             text-align: right;
+        }
+    }
+    .add-event{
+        width: 18em;
+        height: 14em;
+        border-radius: 2em;
+        border: dashed lightgrey 0.4em;
+        &:hover{
+            border-color: gray;
+        }
+        cursor: pointer;
+        .plus{
+            font-size: 10em;
+            color: lightgrey;
+            &:hover{
+                color: gray;
+            }
+            padding: 0.1em;
+            text-align: center;
         }
     }
 }

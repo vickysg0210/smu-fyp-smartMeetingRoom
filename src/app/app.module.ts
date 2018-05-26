@@ -15,6 +15,8 @@ import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterBufferPageComponent } from './pages/register-buffer-page/register-buffer-page.component';
+import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
+import { EventPageComponent } from './pages/event-page/event-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -33,6 +35,14 @@ const appRoutes: Routes = [{
   path: 'event-mgmt',
   // canActivate: [AuthGuard],
   component: EventMgmtPageComponent
+}, {
+  path: 'event-mgmt/:id',
+  // canActivate: [AuthGuard],
+  component: EventPageComponent
+}, {
+  path: 'add-event',
+  // canActivate: [AuthGuard],
+  component: AddEventPageComponent
 }];
 
 
@@ -43,7 +53,9 @@ const appRoutes: Routes = [{
     ToolbarComponent,
     EventMgmtPageComponent,
     RegisterPageComponent,
-    RegisterBufferPageComponent
+    RegisterBufferPageComponent,
+    AddEventPageComponent,
+    EventPageComponent
   ],
   imports: [
     FormsModule,
