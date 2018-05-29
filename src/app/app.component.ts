@@ -8,11 +8,11 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 })
 export class AppComponent {
     title = 'app';
-    isGridView: boolean;
-    @ViewChild(ToolbarComponent)
-    set toolbar(child: ToolbarComponent){
-        this.isGridView = child.isGrid;
-    }
+    //isGridView: boolean;
+    //@ViewChild(ToolbarComponent)
+    //set toolbar(child: ToolbarComponent){
+    //    this.isGridView = child.isGrid;
+    //}
 
     constructor(private viewService: ViewService) {
         // viewService.isGridView$.subscribe(isGrid=>{
@@ -24,7 +24,7 @@ export class AppComponent {
     onSwitch(isGrid: boolean){
     }
 
-    ngAfterViewInit() {
-        console.log("app.component isGrid = ", this.isGridView);
-    }
+    //ngAfterViewInit() {
+    //    console.log("app.component isGrid = ", this.isGridView);
+    //}
 }

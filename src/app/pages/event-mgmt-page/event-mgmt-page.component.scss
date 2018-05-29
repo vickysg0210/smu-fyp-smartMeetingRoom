@@ -1,3 +1,20 @@
+.top-btn{
+    float:right;
+    color: gray;
+    padding: 0 1em;
+    .btn-name{
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: 400;
+    }
+}
+.material-icons{
+    font-size: 1.4em;
+    color: gray;
+    position: relative;
+    top: 0.3em;
+}
+
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -65,4 +82,16 @@
             text-align: center;
         }
     }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
 }

@@ -15,19 +15,8 @@ export class ToolbarComponent implements OnInit {
     // isLoggedIn$: Observable<boolean>;
     public isLoggedIn: boolean = false;
     public page: string;
-    public view_icon: string;
-    public view_name: string;
 
-    public isGrid: boolean;
-
-    constructor(private user: AuthService, private router: Router, private viewService: ViewService) {
-      this.view_icon = 'view_list';
-      this.view_name = 'List View';
-      router.events.subscribe((res)=>{
-        this.page = this.router.url;
-        console.log(this.page == '/event-mgmt', "!!router");
-      })
-    }
+    constructor(private user: AuthService, private router: Router, private viewService: ViewService) {}
 
     ngOnInit() {
       this.isLoggedIn = this.user.getUserLoggedIn();
@@ -42,23 +31,5 @@ export class ToolbarComponent implements OnInit {
         // });
     }
 
-    public changeView = function(){
-      console.log("changeview called!!! with isGrid: ",this.isGrid);
-      //change to list/grid view;
-      if (this.view_icon == "view_list"){
-        this.isGrid = false;
-        // this.switched.emit(false);
-        this.view_icon = 'view_module';
-        this.view_name = 'Grid View';
-        // this.viewService.toList();
-
-      }else{
-        this.isGrid = true;
-        // this.switched.emit(true);
-        // this.viewService.toGrid();
-        this.view_icon = 'view_list';
-        this.view_name = 'List View';
-      }
-    }
 
 }
