@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MatToolbarModule, MatIconModule, MatCardModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatDividerModule} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -65,6 +66,7 @@ const appRoutes: Routes = [{
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatTableModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatDividerModule,

@@ -87,11 +87,27 @@
 .list {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
-}
+  max-height: 50em;
+  min-width: 100px;
+  max-width: 100em;
+  margin: 1em;
 
-.mat-table {
-  overflow: auto;
-  max-height: 500px;
+  .search-btn {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+
+  .new-evnt-btn{
+      float: right;
+      font-weight: 200;
+      font-size: 0.9em;
+      padding: 15px 24px 0;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+    border: solid 1px gray;
+  }
+
 }

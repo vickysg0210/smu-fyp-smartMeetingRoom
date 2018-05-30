@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { ViewService } from '../../services/view.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-event-mgmt-page',
   templateUrl: './event-mgmt-page.component.html',
@@ -18,8 +19,8 @@ export class EventMgmtPageComponent implements OnInit {
     public isGrid: boolean;
     public page: string;
 
-    //displayedColumns = ['id', 'name', 'date', 'venue','description'];
-    //dataSource = ELEMENT_DATA;
+    displayedColumns = ['id', 'name', 'date', 'venue','description'];
+    dataSource = ELEMENT_DATA;
 
     constructor(private user: AuthService, private viewService: ViewService, private router: Router) {
         viewService.isGridView$.subscribe(isGrid=>{
@@ -96,7 +97,7 @@ export class EventMgmtPageComponent implements OnInit {
       }
     }
 }
-/*
+
 export interface Element {
   id: number;
   name: string;
@@ -138,4 +139,3 @@ const ELEMENT_DATA: Element[] = [
       description: "This is a description for the event"
   }
 ];
-*/

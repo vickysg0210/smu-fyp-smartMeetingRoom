@@ -88,11 +88,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </html>
  -->
 
-<!-- grid view -->
+<!-- List/Grid Switch -->
 <div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
   <i class="material-icons">{{view_icon}}</i>
   <p class="btn-name">{{view_name}}</p>
 </div>
+<br>
+<!-- Grid view -->
 <div class="grid" *ngIf="isGrid; else listView">
   <mat-card *ngFor="let event of items.events" class="card"  >
     <i class="material-icons event-icon" (click)="onSelect($event)" id="{{event.id}}">event</i>
@@ -125,51 +127,63 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 </div>
 
-<!-- list view -->
+<!-- List view -->
 <ng-template #listView>
   <div class="list">
-    this is list view page
-  </div>
-  <!--
-  <div class="list">
+
+    <!-- Search -->
+    <div class="search-btn">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter event name/id">
+      </mat-form-field>
+      <button mat-raised-button>Search</button>
+
+      <!-- Add New Event Button -->
+      <div class="new-evnt-btn">
+          <button mat-raised-button color="primary"> + New Event</button>
+      </div>
+    </div>
+
+    <!-- Table -->
     <mat-table #table [dataSource]="dataSource">
 
       <!-- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Position Column ->
+      <!-- ID Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column ->
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
 
-      <!-- Weight Column ->
+      <!-- Date Column -->
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column ->
+      <!-- Venue Column -->
       <ng-container matColumnDef="venue">
         <mat-header-cell *matHeaderCellDef> Venue </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.venue}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column ->
+      <!-- Description Column -->
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
       </ng-container>
 
+      <!-- Header -->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
--->
+
 </ng-template>
