@@ -17,13 +17,19 @@
     // background: linear-gradient(to bottom, #59D2FE,#44E5E7);
     // background: linear-gradient(to bottom, #59D2FE,#87F1FF,#60E1E0);
     background-image: url(assets/background.jpg);
-
     .card{
         margin: auto;
         width: 300px;
         height:400px;
         text-align: center;
         color: #335C67;
+        .title{
+          text-align: center;
+          font-size: 2em;
+          margin-bottom: 20px;
+          margin-top: -30px;
+          color: whitesmoke;
+        }
         .icon{
           font-size: 5em;
           width:100%;
@@ -31,7 +37,6 @@
           }
         .email-field,
         .pwd-field{
-          // text-align: center;
           font-weight: 300;
         }
         .hint{
@@ -57,24 +62,4 @@
           color: whitesmoke;
         }
       }
-        // .login{
-        //     font-size: 1.5em;
-        // }
-        // .forgot-pwd{
-        //     color: gray;
-        //     text-decoration: none;
-        //     font-weight: 200;
-        //     font-size: 0.9em;
-        //     float: right;
-        // }
-        // .form-field{
-        //     display: block;
-        // }
-        // .login-btn{
-        //     width: 100%;
-        // }
-        // .err{
-        //     color: red;
-        //     float: right;
-        // }
-      }
+    }

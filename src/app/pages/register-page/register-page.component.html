@@ -1,28 +1,55 @@
-<div class="login-page">
-    <mat-card class="card">
-      <!-- <mat-card-header class="header"> -->
-      <!-- </mat-card-header> -->
-      <mat-card-content class="card-content">
-        <span class="login">Create a New Account</span>
-        <form #f="ngForm" class="form" (ngSubmit)="register(f)"><br>
-            <mat-form-field class="form-field">
-                <input matInput placeholder="Email" type="text" name="email" ngModel>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="form-field">
-                <input matInput placeholder="Password" type="password" name="password" ngModel>
-            </mat-form-field>
-            <mat-form-field class="form-field">
-                <input matInput placeholder="Confirm Password" type="password" name="cfmPassword" ngModel>
-            </mat-form-field>
-            <!-- <a [routerLink]="['/register']" class="forgot-pwd">Forgot Password?</a> -->
-            <br><br>
-            <button mat-raised-button class="login-btn" value="login">Sign Up</button><br><br>
-            <!-- <button mat-button [routerLink]="['/register']">Register</button> -->
-            <span class="err"><small>{{errorMsg}}</small></span>
-        </form >
-      </mat-card-content>
-      <!-- <mat-card-actions> -->
-      <!-- </mat-card-actions> -->
-    </mat-card>
+<div class="register-page">
+  <div class="card">
+    <form (submit) = "register()">
+      <mat-form-field class="email-field">
+        <input matInput placeholder="Your Email"
+                        [(ngModel)] = "account.email"
+                        [formControl]="formControl.email"
+                        required />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="formControl.email.hasError('email') && !formControl.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="formControl.email.hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="username-field">
+        <input matInput placeholder="Username"
+                        [(ngModel)] = "account.username"
+                        [formControl]="formControl.username"
+                        required />
+        <mat-icon matSuffix>local_offer</mat-icon>
+        <mat-error *ngIf="formControl.username.hasError('required')">
+          User is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="pwd-field">
+        <input matInput placeholder="Password"
+                        type="password"
+                        [(ngModel)] = "account.password"
+                        [formControl]="formControl.password"
+                        required/>
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="formControl.password.hasError('required')">
+          Password secret is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="pwd-field">
+        <input matInput placeholder="Confirm Password"
+                        type="password"
+                        [(ngModel)] = "account.cfmPassword"
+                        [formControl]="formControl.password"
+                        required/>
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="formControl.password.hasError('required')">
+          Password secret is required
+        </mat-error>
+      </mat-form-field>
+      <div class="hint">
+        <div class="left" [routerLink]="['/login']">Login?</div>
+      </div>
+      <button mat-stroked-button class="button" type="submit">Create</button>
+    </form>
+  </div>
 </div>

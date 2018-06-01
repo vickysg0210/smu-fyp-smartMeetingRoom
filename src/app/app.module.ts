@@ -54,7 +54,6 @@ import { ViewService } from './services/view.service';
 import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { RegisterBufferPageComponent } from './pages/register-buffer-page/register-buffer-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
 
@@ -68,9 +67,6 @@ const appRoutes: Routes = [{
 }, {
   path: 'register',
   component: RegisterPageComponent
-}, {
-  path: 'register-buffer',
-  component: RegisterBufferPageComponent
 }, {
   path: 'event-mgmt',
   // canActivate: [AuthGuard],
@@ -93,7 +89,6 @@ const appRoutes: Routes = [{
     ToolbarComponent,
     EventMgmtPageComponent,
     RegisterPageComponent,
-    RegisterBufferPageComponent,
     AddEventPageComponent,
     EventPageComponent
   ],

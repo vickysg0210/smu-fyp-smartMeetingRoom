@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-import {NgForm} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -10,7 +9,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-    // public errorMsg: string;
     public account: {
       email: string,
       password: string
@@ -38,10 +36,8 @@ export class LoginPageComponent implements OnInit {
         password: ""
       };
     }
-
     ngOnInit() {
     }
-
     public login = function(){
       if(this.account.email == "admin@email.com" && this.account.password == "pwd1pwd1"){
         this.router.navigate(['event-mgmt']);
@@ -58,17 +54,4 @@ export class LoginPageComponent implements OnInit {
         positionClass: 'toast-bottom-center'
       });
     }
-
-    // public auth = function(f: NgForm){
-    //     console.log(f.value.username, f.value.password);
-    //     this.email = f.value.email;
-    //     this.password = f.value.password
-    //     var logginIn = this.user.login(this.email, this.password);
-    //     if (!logginIn){
-    //         this.errorMsg = 'Failed to login! try again ...';
-    //     }
-    // }
-
-
-
 }

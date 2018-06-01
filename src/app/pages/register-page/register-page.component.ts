@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-page',
@@ -8,28 +9,70 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPageComponent implements OnInit {
-    public email: string;
-    public password: string;
-    public errorMsg: string;
+    public account: {
+      email: string,
+      username: string,
+      password: string,
+      cfmPassword: string
+    };
 
-    constructor(private user: AuthService) {
-        this.email = "";
-        this.password = "";
+    public formControl: {
+      email: FormControl,
+      password: FormControl,
+      username: FormControl,
+      // cfmPassword : FormControl
+    } = {
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl('', [
+        Validators.required
+        // Validators.pattern(this.PWD_REGEX)
+      ]),
+      username: new FormControl('',[
+        Validators.required
+      ]),
+      // cfmPassword : new FormControl('',[
+      //   Validators.required
+      // ])
+    };
+
+    constructor(public router: Router,
+                private toastr: ToastrService) {
+        this.account = {
+          email: "",
+          username: "",
+          password: "",
+          cfmPassword: ""
+        };
     }
 
     ngOnInit() {
     }
 
-    public register = function(f: NgForm){
-        console.log(f.value.username, f.value.password);
-        this.email = f.value.email;
-        this.password = f.value.password;
-        var cfmPassword = f.value.cfmPassword;
-        if (cfmPassword != this.password){
-            this.errorMsg = "Confirm password must match password";
-        }else{
-            this.user.register(this.email, this.password);
-        }
+    public register = function(){
+      if(this.account.password != this.account.cfmPassword) {
+        this.showErrorMessage();
+      }else {
+        this.showSuccessMessage("Account created successfully");
+        this.router.navigate(['/login']);
+      }
+    }
+
+    public showSuccessMessage = function(text : string){
+      this.toastr.success(text, 'Congratulations!'{
+        timeOut: 4000,
+        progressBar: true,
+        positionClass: 'toast-bottom-center'
+      })
+    }
+    public showErrorMessage = function(){
+      this.toastr.warning('Please confirm your password.', 'Oops!',{
+        timeOut: 3000,
+        progressBar: true,
+        positionClass: 'toast-bottom-center'
+      });
     }
 
 }

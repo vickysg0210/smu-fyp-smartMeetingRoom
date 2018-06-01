@@ -1,46 +1,55 @@
 :host{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-
-.login-page{
-    /* Full height */
+.register-page{
     position: relative;
     height: 100%;
     width: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    // background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PDaTSuJ/videoblocks-particles-business-white-bright-glitter-bokeh-dust-abstract-background-loop_hsuwse_g_thumbnail-full01.png');
-    background-color: rgba(4, 107, 97, 0.58);
+    display: flex;
+    background-image: url(assets/background.jpg);
     .card{
         margin: auto;
-        width: 23em;
-        top: 27%;
-        .login{
-            font-size: 1.5em;
+        width: 300px;
+        height:400px;
+        text-align: center;
+        color: #335C67;
+        .title{
+          text-align: center;
+          font-size: 2em;
+          margin-bottom: 20px;
+          margin-top: -30px;
+          color: whitesmoke;
         }
-        .forgot-pwd{
-            color: gray;
-            text-decoration: none;
-            font-weight: 200;
-            font-size: 0.9em;
-            float: right;
+        .email-field,
+        .username-field
+        .pwd-field{
+          font-weight: 300;
         }
-        .form-field{
-            display: block;
+        .hint{
+          display: flex;
+          width: 80%;
+          margin: 0.5em auto 1em auto;
+          font-size: 0.7em;
+          color: whitesmoke;
+          .left{
+            flex: 1;
+            cursor: pointer;
+          }
+          .right{
+            flex: 1;
+            cursor: pointer;
+          }
         }
-        .login-btn{
-            width: 100%;
+        .button{
+          margin: 14px;
+          width: 10em;
+          border-radius: 4em;
+          background-color: #335C67;
+          color: whitesmoke;
         }
-        .err{
-            color: red;
-            float: right;
-        }
+      }
     }
-}
