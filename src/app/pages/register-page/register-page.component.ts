@@ -61,7 +61,7 @@ export class RegisterPageComponent implements OnInit {
     }
 
     public showSuccessMessage = function(text : string){
-      this.toastr.success(text, 'Congratulations!'{
+      this.toastr.success(text, 'Congratulations!',{
         timeOut: 4000,
         progressBar: true,
         positionClass: 'toast-bottom-center'

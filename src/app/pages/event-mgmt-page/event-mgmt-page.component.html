@@ -1,93 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-</style>
-<body class="w3-light-grey">
-
-
-<nav class="w3-sidebar w3-collapse w3-light-grey w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <button class="w3-button w3-black w3-circle w3-display-middle w3-ripple w3-padding-large" style="width:59%"><br><br><br><b> + New Event</b><br><br><br><br></button>
-</nav>
-
-
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
-
-  <header class="w3-container" style="padding-top:22px">
-    <h5 style="display: inline"><b><i class="fa fa-calendar-check-o"></i> My Event</b></h5>
-    <button class="w3-button w3-white w3-padding-large w3-hover-black w3-right" style="margin-bottom:22px"> + New Event</button>
-  </header>
-
-  <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter" style="margin-bottom:22px">
-      <div class="w3-container w3-red w3-padding-16">
-        <h3 style="text-align:center"><strong>Evenet 1</strong></h3>
-        <hr>
-        <div style="text-align:center">
-          <h6>Location 1</h6>
-          <h6>Time 1</h6>
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter" style="margin-bottom:22px">
-      <div class="w3-container w3-blue w3-padding-16">
-        <h3 style="text-align:center"><strong>Evenet 2</strong></h3>
-        <hr>
-        <div style="text-align:center">
-          <h6>Location 2</h6>
-          <h6>Time 2</h6>
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter" style="margin-bottom:22px">
-      <div class="w3-container w3-teal w3-padding-16">
-        <h3 style="text-align:center"><strong>Evenet 3</strong></h3>
-        <hr>
-        <div style="text-align:center">
-          <h6>Location 3</h6>
-          <h6>Time 3</h6>
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter" style="margin-bottom:22px">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <h3 style="text-align:center"><strong>Evenet 4</strong></h3>
-        <hr>
-        <div style="text-align:center">
-          <h6>Location 4</h6>
-          <h6>Time 4</h6>
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter" style="margin-bottom:22px">
-      <div class="w3-container w3-teal w3-padding-16">
-        <h3 style="text-align:center"><strong>Evenet 5</strong></h3>
-        <hr>
-        <div style="text-align:center">
-          <h6>Location 5</h6>
-          <h6>Time 5</h6>
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Enter</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
- -->
-
 <!-- List/Grid Switch -->
 <div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
   <i class="material-icons">{{view_icon}}</i>
@@ -126,64 +36,52 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="plus">+</div>
   </div>
 </div>
-
 <!-- List view -->
 <ng-template #listView>
   <div class="list">
-
     <!-- Search -->
     <div class="search-btn">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter event name/id">
       </mat-form-field>
       <button mat-raised-button>Search</button>
-
       <!-- Add New Event Button -->
       <div class="new-evnt-btn">
           <button mat-raised-button color="primary"> + New Event</button>
       </div>
     </div>
-
     <!-- Table -->
     <mat-table #table [dataSource]="dataSource">
-
       <!-- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
-
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
-
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
-
       <!-- Date Column -->
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
       </ng-container>
-
       <!-- Venue Column -->
       <ng-container matColumnDef="venue">
         <mat-header-cell *matHeaderCellDef> Venue </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.venue}} </mat-cell>
       </ng-container>
-
       <!-- Description Column -->
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
       </ng-container>
-
       <!-- Header -->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
-
 </ng-template>
