@@ -1,0 +1,26 @@
+<div class="page-container">
+  <button class="addNewBotton" mat-raised-button color="primary" [routerLink]="['./attendee-profile']"> + New Attendee </button>
+  <div class="grid-content">
+    <mat-card *ngFor="let attendee of attendeesList.attendees" class="card">
+      <div class="img-center">
+        <img mat-card-image
+        src={{attendee.avatar}} alt="photo of MA">
+      </div>
+      <mat-card-content>
+        <div class="txt-center">
+          uuid: {{attendee.uuid}}<br><br>
+          <b>{{attendee.name}}</b><br>
+          {{attendee.position}} <br>
+          {{attendee.organization}}<br><br>
+          <mat-slide-toggle><b>Present</b></mat-slide-toggle>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="btn-center">
+          <button mat-raised-button color="accent" [routerLink]="['./attendee-profile']"> Edit </button>
+          <button mat-raised-button color="warn"> Delete </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

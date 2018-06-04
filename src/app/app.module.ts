@@ -41,8 +41,9 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgUploaderModule } from 'ngx-uploader';
 
 
 
@@ -56,6 +57,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
+import { AttendeesComponent } from './pages/attendees/attendees.component';
+import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -79,6 +82,14 @@ const appRoutes: Routes = [{
   path: 'add-event',
   // canActivate: [AuthGuard],
   component: AddEventPageComponent
+}, {
+  path: 'attendees',
+  // canActivate: [AuthGuard],
+  component: AttendeesComponent
+}, {
+  path: 'attendees/attendee-profile',
+  // canActivate: [AuthGuard],
+  component: AttendeeProfileComponent
 }];
 
 
@@ -90,7 +101,9 @@ const appRoutes: Routes = [{
     EventMgmtPageComponent,
     RegisterPageComponent,
     AddEventPageComponent,
-    EventPageComponent
+    EventPageComponent,
+    AttendeesComponent,
+    AttendeeProfileComponent
   ],
   imports: [
     FormsModule,
@@ -133,6 +146,7 @@ const appRoutes: Routes = [{
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    NgUploaderModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: true
     }),
