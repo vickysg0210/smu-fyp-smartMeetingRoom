@@ -1,3 +1,62 @@
-<p>
-  add-event-page works!
-</p>
+<div class="page">
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <h4>Add New Event</h4>
+    </mat-card-header>
+    <mat-card-content class="content">
+      <form class="form" action="index.html" method="post">
+
+        <mat-form-field class="">
+          <mat-label>Name</mat-label>
+          <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="">
+          <mat-label>id</mat-label>
+          <input matInput class="" type="number" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="">
+          <mat-label>Date</mat-label>
+          <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="">
+          <mat-label>Venue</mat-label>
+          <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="">
+          <mat-label>Address</mat-label>
+          <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="">
+          <mat-label>Postal</mat-label>
+          <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
+        </mat-form-field>
+
+        <br>
+        Avatar <br>
+        <label class="upload-button">
+          <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+          or choose file(s)
+        </label>
+
+        <button type="button" class="start-upload-btn" (click)="startUpload()">
+          Start Upload
+        </button>
+
+        <!-- submit button -->
+        <br><br><br>
+        <button mat-raised-button  type="button" name="button" color="primary">Submit</button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
