@@ -1,8 +1,11 @@
 <!-- List/Grid Switch -->
-<div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
-  <i class="material-icons">{{view_icon}}</i>
+<!-- <div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
+  <i class="material-icons">view_list</i>
   <p class="btn-name">{{view_name}}</p>
-</div>
+</div> -->
+<button mat-icon-button (click) = "changeView()">
+  <mat-icon>{{view_icon}}</mat-icon>
+</button>
 <br>
 <!-- Grid view -->
 <div class="grid" *ngIf="isGrid; else listView">

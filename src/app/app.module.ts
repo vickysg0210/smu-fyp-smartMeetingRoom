@@ -43,13 +43,15 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
-
 
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { ViewService } from './services/view.service';
 import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.component';
@@ -57,6 +59,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { EventPageComponent } from './pages/event-page/event-page.component';
+import { ServiceInterceptor } from './interceptors/service-interceptor';
 import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
 
@@ -150,9 +153,16 @@ const appRoutes: Routes = [{
     RouterModule.forRoot(appRoutes, {
       enableTracing: true
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ServiceInterceptor,
+    multi: true
+  },
+  ApiService,
   AuthService,
   ViewService,
   AuthGuard],

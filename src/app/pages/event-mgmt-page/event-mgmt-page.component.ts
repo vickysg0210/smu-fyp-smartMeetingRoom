@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ViewService } from '../../services/view.service';
 import { Router } from '@angular/router';
-
-
 @Component({
   selector: 'app-event-mgmt-page',
   templateUrl: './event-mgmt-page.component.html',
@@ -32,7 +30,6 @@ export class EventMgmtPageComponent implements OnInit {
         this.isGrid = true;
         router.events.subscribe((res)=>{
           this.page = this.router.url;
-          console.log(this.page == '/event-mgmt', "!!router");
         })
         this.items = {
             events: [{
