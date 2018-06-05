@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DaoService } from '../../services/dao.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,6 +14,8 @@ export class LoginPageComponent implements OnInit {
       email: string,
       password: string
     };
+
+    public secret: string;
     /* Form Validators */
     // private PWD_REGEX = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
     public formControl: {
@@ -37,9 +40,12 @@ export class LoginPageComponent implements OnInit {
       };
     }
     ngOnInit() {
+      // this.checkLogin();
     }
     public login = function(){
       if(this.account.email == "admin@email.com" && this.account.password == "pwd1pwd1"){
+        this.daoService.storeAccount(this.account);
+        this.daoService.setSecret(this.secret);
         this.router.navigate(['event-mgmt']);
       }
       else {
@@ -54,4 +60,12 @@ export class LoginPageComponent implements OnInit {
         positionClass: 'toast-bottom-center'
       });
     }
+
+    private checkLogin = function() {
+      let secret = this.daoService.getSecret();
+      // console.log(secret);
+      if(secret) {
+        this.router.navigate(['event-mgmt']);
+      }
+    };
 }
