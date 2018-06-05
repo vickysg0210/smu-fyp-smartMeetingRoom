@@ -1,6 +1,7 @@
  <!-- <mat-toolbar *ngIf="isLoggedIn$ | async"> -->
 <!-- <mat-toolbar *ngIf="isLoggedIn"> -->
 <mat-toolbar class="toolbar">
+  <button mat-icon-button [disabled] = "navbarIconShow"><mat-icon>menu</mat-icon></button>
   <div class="title">Smart Meeting</div>
   <div class="front-spacer"></div>
   <div class="searchBar">
@@ -8,8 +9,9 @@
       <input matInput class="input" placeholder="Search Event Name" [(ngModel)]= "searchEventText"/>
   </div>
   <div class="end-spacer"></div>
-  <button mat-icon-button (click) = "changeView()">
+  <button mat-icon-button (click) = "changeView()" *ngIf = "!navbarIconShow">
     <mat-icon>{{viewIcon}}</mat-icon>
+    <!-- {{viewIcon}} -->
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon class="profile-icon">perm_identity</mat-icon>

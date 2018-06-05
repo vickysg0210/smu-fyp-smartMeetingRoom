@@ -11,6 +11,7 @@ export class EventMgmtPageComponent implements OnInit {
     public viewChange: string = "";
     public items;
     public isGrid: boolean = false;
+    public pageName: string;
     public page: string;
 
     displayedColumns = ['id', 'name', 'date', 'venue','description'];
@@ -53,6 +54,7 @@ export class EventMgmtPageComponent implements OnInit {
                 'description': "This is a description for the event"
             }]
         }
+        this.pageName = "eventMgmt"
     }
 
     ngOnInit() {

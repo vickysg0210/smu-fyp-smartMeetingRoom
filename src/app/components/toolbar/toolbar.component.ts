@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -11,16 +11,16 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
     @Output() viewChange = new EventEmitter<string>();
+    @Input() pageName: string;
 
     public viewIcon: string = "view_module";
-    public isLoggedIn: boolean = false;
     public searchEventText: string = "";
+    public navbarIconShow : boolean = false;
 
     constructor(private user: AuthService, private router: Router) {}
 
     ngOnInit() {
-      this.isLoggedIn = this.user.getUserLoggedIn();
-      console.log("toolbar isloggedin: ", this.isLoggedIn);
+      this.checkPageName()
     }
     public changeView = function(){
       if(this.viewIcon == "view_list"){
@@ -29,6 +29,12 @@ export class ToolbarComponent implements OnInit {
         this.viewIcon = "view_list"
       }
       this.viewChange.emit(this.viewIcon);
+    }
+
+    public checkPageName = function(){
+      if (this.pageName == "eventMgmt"){
+        this.navbarIconShow = true;
+      }
     }
 
 }

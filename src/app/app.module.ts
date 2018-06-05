@@ -93,6 +93,9 @@ const appRoutes: Routes = [{
   path: 'attendees/attendee-profile',
   // canActivate: [AuthGuard],
   component: AttendeeProfileComponent
+},{
+  path: 'home',
+  component : HomePageComponent
 }];
 
 

@@ -3,7 +3,7 @@
   <i class="material-icons">view_list</i>
   <p class="btn-name">{{view_name}}</p>
 </div> -->
-<app-toolbar (viewChange) = "changeView($event)"></app-toolbar>
+<app-toolbar (viewChange) = "changeView($event)" [pageName] = "pageName"></app-toolbar>
 <br>
 <!-- Grid view -->
 <div class="grid" *ngIf="isGrid; else listView">
