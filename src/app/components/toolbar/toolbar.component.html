@@ -9,7 +9,7 @@
       <input matInput class="input" placeholder="Search Event Name" [(ngModel)]= "searchEventText"/>
   </div>
   <div class="end-spacer"></div>
-  <button mat-icon-button (click) = "changeView()" *ngIf = "!navbarIconShow">
+  <button mat-icon-button (click) = "changeView()" *ngIf = "navbarIconShow">
     <mat-icon>{{viewIcon}}</mat-icon>
     <!-- {{viewIcon}} -->
   </button>
