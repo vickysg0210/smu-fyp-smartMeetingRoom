@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-register-page',
@@ -15,7 +16,6 @@ export class RegisterPageComponent implements OnInit {
       password: string,
       cfmPassword: string
     };
-
     public formControl: {
       email: FormControl,
       password: FormControl,
@@ -39,7 +39,8 @@ export class RegisterPageComponent implements OnInit {
     };
 
     constructor(public router: Router,
-                private toastr: ToastrService) {
+                private toastr: ToastrService,
+                private apiService : ApiService) {
         this.account = {
           email: "",
           username: "",
@@ -52,11 +53,16 @@ export class RegisterPageComponent implements OnInit {
     }
 
     public register = function(){
+      console.log("anything here");
       if(this.account.password != this.account.cfmPassword) {
+        console.log("pwd not equal to cfmPwd");
         this.showErrorMessage();
       }else {
-        this.showSuccessMessage("Account created successfully");
-        this.router.navigate(['/login']);
+        // this.showSuccessMessage("Account created successfully");
+        console.log("before api");
+        this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
+        console.log("after api");
+        // this.router.navigate(['/login']);
       }
     }
 

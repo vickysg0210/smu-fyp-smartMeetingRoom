@@ -1,0 +1,7 @@
+{
+  "/accounts" :{
+    "target": "http://localhost:9999/smart_meeting_room/service",
+    "secure": false,
+    "changeOrigin" : true
+  }
+}

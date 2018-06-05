@@ -53,7 +53,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "smu-fyp-smart-meeting-room:build:production"
+              "browserTarget": "smu-fyp-smart-meeting-room:build:production",
+              "proxyConfig": "proxyconfig.json"
             }
           }
         },
