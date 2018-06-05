@@ -53,7 +53,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
-import { ViewService } from './services/view.service';
 import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -62,6 +61,7 @@ import { EventPageComponent } from './pages/event-page/event-page.component';
 import { ServiceInterceptor } from './interceptors/service-interceptor';
 import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -93,6 +93,9 @@ const appRoutes: Routes = [{
   path: 'attendees/attendee-profile',
   // canActivate: [AuthGuard],
   component: AttendeeProfileComponent
+},{
+  path: 'home',
+  component : HomePageComponent
 }];
 
 
@@ -106,7 +109,8 @@ const appRoutes: Routes = [{
     AddEventPageComponent,
     EventPageComponent,
     AttendeesComponent,
-    AttendeeProfileComponent
+    AttendeeProfileComponent,
+    HomePageComponent
   ],
   imports: [
     FormsModule,
@@ -164,7 +168,6 @@ const appRoutes: Routes = [{
   },
   ApiService,
   AuthService,
-  ViewService,
   AuthGuard],
   bootstrap: [AppComponent]
 })

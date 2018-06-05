@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { ViewService } from '../../services/view.service';
+import { DaoService } from '../../services/dao.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-event-mgmt-page',
@@ -9,25 +8,16 @@ import { Router } from '@angular/router';
 })
 export class EventMgmtPageComponent implements OnInit {
     selected = [];
+    public viewChange: string = "";
     public items;
-    public isGridView = true;
-
-    public view_icon: string;
-    public view_name: string;
-    public isGrid: boolean;
+    public isGrid: boolean = false;
+    public pageName: string;
     public page: string;
 
     displayedColumns = ['id', 'name', 'date', 'venue','description'];
     dataSource = ELEMENT_DATA;
 
-    constructor(private user: AuthService, private viewService: ViewService, private router: Router) {
-        viewService.isGridView$.subscribe(isGrid=>{
-            console.log("subscribe called with isGrid: ",isGrid);
-            this.isGridView = isGrid;
-        })
-        this.view_icon = 'view_list';
-        this.view_name = 'List View';
-        this.isGrid = true;
+    constructor(private daoService : DaoService, private router: Router) {
         router.events.subscribe((res)=>{
           this.page = this.router.url;
         })
@@ -64,33 +54,27 @@ export class EventMgmtPageComponent implements OnInit {
                 'description': "This is a description for the event"
             }]
         }
+        this.pageName = "eventMgmt"
     }
 
     ngOnInit() {
-        console.log(this.user.getUserLoggedIn());
+      let secret : string = this.daoService.getSecret();
+      console.log("BTS "+secret);
+      // if(secret == null){
+      //   this.router.navigate(['/login']);
+      // }
     }
-
     onSelect(e) {
         console.log("onselect event: ", e, e.path[0].id);
         this.router.navigate(['/event-mgmt', e.path[0].id]);
     }
 
-    public changeView = function(){
-      console.log("changeview called!!! with isGrid: ",this.isGrid);
-      //change to list/grid view;
-      if (this.view_icon == "view_list"){
-        this.isGrid = false;
-        // this.switched.emit(false);
-        this.view_icon = 'view_module';
-        this.view_name = 'Grid View';
-        // this.viewService.toList();
-
-      }else{
+    public changeView = function($event){
+      this.viewChange = $event;
+      if(this.viewChange == "view_list"){
         this.isGrid = true;
-        // this.switched.emit(true);
-        // this.viewService.toGrid();
-        this.view_icon = 'view_list';
-        this.view_name = 'List View';
+      } else {
+        this.isGrid = false;
       }
     }
 }

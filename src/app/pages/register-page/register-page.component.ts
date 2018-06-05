@@ -58,11 +58,11 @@ export class RegisterPageComponent implements OnInit {
         console.log("pwd not equal to cfmPwd");
         this.showErrorMessage();
       }else {
-        // this.showSuccessMessage("Account created successfully");
-        console.log("before api");
-        this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
-        console.log("after api");
-        // this.router.navigate(['/login']);
+        this.showSuccessMessage("Account created successfully");
+        // console.log("before api");
+        // this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
+        // console.log("after api");
+        this.router.navigate(['/login']);
       }
     }
 
