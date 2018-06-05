@@ -1,35 +1,34 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { ViewService } from '../../services/view.service';
 
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss'],
-  providers: [ViewService]
+  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-    // isLoggedIn$: Observable<boolean>;
-    public isLoggedIn: boolean = false;
-    public page: string;
+    @Output() viewChange = new EventEmitter<string>();
 
-    constructor(private user: AuthService, private router: Router, private viewService: ViewService) {}
+    public viewIcon: string = "view_module";
+    public isLoggedIn: boolean = false;
+    public searchEventText: string = "";
+
+    constructor(private user: AuthService, private router: Router) {}
 
     ngOnInit() {
       this.isLoggedIn = this.user.getUserLoggedIn();
       console.log("toolbar isloggedin: ", this.isLoggedIn);
-      // console.log(this.router.url, "!!router");
-
-        // this.isLoggedIn$ = this.authService.isLoggedIn;
-        // this.isLoggedIn$.subscribe((isLoggedin) => {
-        // if(!isLoggedin){
-        //     this.router.navigate(['/login']);
-        // }
-        // });
     }
-
+    public changeView = function(){
+      if(this.viewIcon == "view_list"){
+        this.viewIcon = "view_module";
+      }else {
+        this.viewIcon = "view_list"
+      }
+      this.viewChange.emit(this.viewIcon);
+    }
 
 }

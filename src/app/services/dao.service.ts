@@ -21,7 +21,7 @@ export class DaoService {
     localStorage.setItem(this.keys.AUTH_SECRET, secret);
   };
 
-  private getSecret = function() {
+  public getSecret = function() {
     return localStorage.getItem(this.keys.AUTH_SECRET);
   };
 }

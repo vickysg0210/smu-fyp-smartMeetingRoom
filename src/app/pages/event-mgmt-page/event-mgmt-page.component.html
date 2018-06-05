@@ -3,10 +3,7 @@
   <i class="material-icons">view_list</i>
   <p class="btn-name">{{view_name}}</p>
 </div> -->
-<app-toolbar></app-toolbar>
-<button mat-icon-button (click) = "changeView()">
-  <mat-icon>{{view_icon}}</mat-icon>
-</button>
+<app-toolbar (viewChange) = "changeView($event)"></app-toolbar>
 <br>
 <!-- Grid view -->
 <div class="grid" *ngIf="isGrid; else listView">
@@ -45,11 +42,6 @@
   <div class="list">
     <!-- Search -->
     <div class="search-btn">
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Enter event name/id">
-      </mat-form-field>
-      <button mat-raised-button>Search</button>
-      <!-- Add New Event Button -->
       <div class="new-evnt-btn">
           <button mat-raised-button color="primary"> + New Event</button>
       </div>
@@ -61,7 +53,7 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
       </ng-container>
       <!-- Name Column -->
       <ng-container matColumnDef="name">
