@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AttendeesComponent implements OnInit {
 
   attendeesList;
+  public pageName: string;
 
   constructor() {
+    this.pageName = 'attendees';
    }
 
   ngOnInit() {

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEventPageComponent implements OnInit {
 
-  constructor() { }
+  public pageName: string;
+
+  constructor() {
+    this.pageName = 'add-event-page';
+  }
 
   ngOnInit() {
   }
