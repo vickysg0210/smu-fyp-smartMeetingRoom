@@ -1,10 +1,15 @@
 .page-container{
   margin: 1em;
-  .addNewBotton{
-    margin: 1em;
+  display: flex;
+  flex-direction: column;
+  .new-button-container{
+    flex: 1;
+    .new-button{
+      float: right;
+    }
   }
   .grid-content{
-    width: 80%;//to be removed if got navbar
+    // width: 80%;//to be removed if got navbar
     float:right;
     display: grid;
     grid-template-columns: repeat(4,25%);

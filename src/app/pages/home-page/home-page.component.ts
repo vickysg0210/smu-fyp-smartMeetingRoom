@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
 
   public pageName : String = "home";
-  
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public showSubContent = function(item: string){
+
   }
 
 }

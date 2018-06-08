@@ -1,19 +1,24 @@
 .toolbar{
     // border-bottom: solid 1px lightgray;
     height: 3em;
+    .navmenu-trigger{
+      display: flex;
+      flex-direction: row;
+      .title{
+        align-self: center;
+      }
+    }
+    .navMenu{
+      width: 10em;
+    }
     .front-spacer{
-      flex: 0.1;
-    }
-    .searchBar{
-      .icon{
-        height: 100%;
-      }
-      .input{
-        width: 5em;
-      }
-    }
-    .end-spacer {
       flex: 1 1 auto;
+    }
+    .back-hint{
+      font-size: 0.6em;
+      font-weight: 100;
+      font-style: italic;
+      padding-right: 1.1em;
     }
     .profile-icon{
       font-size: 2em;

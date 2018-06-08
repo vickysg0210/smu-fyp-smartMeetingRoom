@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
     @Output() viewChange = new EventEmitter<string>();
+    @Output() navbarToggle = new EventEmitter<string>();
     @Input() pageName: string;
 
     public viewIcon: string = "view_module";
@@ -35,6 +36,10 @@ export class ToolbarComponent implements OnInit {
       if (this.pageName == "eventMgmt"){
         this.navbarIconShow = true;
       }
+    }
+
+    public toggleNavbar = function(){
+      this.navbarToggle.emit("");
     }
 
 }
