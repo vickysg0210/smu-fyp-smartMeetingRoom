@@ -1,1 +1,32 @@
 <app-toolbar [pageName] = "pageName"></app-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidediv" >
+      <button mat-raised-button color="primary" class="sidebutton">home</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Speaker</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Sponsors</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">About</button>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    Main content
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

@@ -1,31 +1,53 @@
-<app-toolbar [pageName] = "pageName" (navbarToggle) = "toggleNav()"></app-toolbar>
-<div class="page-container">
-  <div class="new-button-container">
-    <button class="new-button" mat-raised-button color="primary"
-            [routerLink]="['./attendee-profile']"> + New Attendee </button>
-  </div>
 
-  <div class="grid-content">
-    <mat-card *ngFor="let attendee of attendeesList.attendees" class="card">
-      <div class="img-center">
-        <img mat-card-image
-        src={{attendee.avatar}} alt="photo of MA">
+<app-toolbar [pageName] = "pageName"></app-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">home</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Speaker</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-raised-button color="primary" class="sidebutton">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">Sponsors</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton">About</button>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <div class="page-container">
+      <button class="addNewBotton" mat-raised-button color="primary" [routerLink]="['./attendee-profile']"> + New Attendee </button>
+      <div class="grid-content">
+        <mat-card *ngFor="let attendee of attendeesList.attendees" class="card">
+          <div class="img-center">
+            <img mat-card-image
+            src={{attendee.avatar}} alt="photo of MA">
+          </div>
+          <mat-card-content>
+            <div class="txt-center">
+              uuid: {{attendee.uuid}}<br><br>
+              <b>{{attendee.name}}</b><br>
+              {{attendee.position}} <br>
+              {{attendee.organization}}<br><br>
+              <mat-slide-toggle><b>Present</b></mat-slide-toggle>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="btn-center">
+              <button mat-raised-button color="accent" [routerLink]="['./attendee-profile']"> Edit </button>
+              <button mat-raised-button color="warn"> Delete </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
       </div>
-      <mat-card-content>
-        <div class="txt-center">
-          uuid: {{attendee.uuid}}<br><br>
-          <b>{{attendee.name}}</b><br>
-          {{attendee.position}} <br>
-          {{attendee.organization}}<br><br>
-          <mat-slide-toggle><b>Present</b></mat-slide-toggle>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <div class="btn-center">
-          <button mat-raised-button color="accent" [routerLink]="['./attendee-profile']"> Edit </button>
-          <button mat-raised-button color="warn"> Delete </button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
