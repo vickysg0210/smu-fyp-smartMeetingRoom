@@ -1,20 +1,13 @@
-<!-- List/Grid Switch -->
-<!-- <div class="top-btn" *ngIf="page == '/event-mgmt'" (click)="changeView()">
-  <i class="material-icons">view_list</i>
-  <p class="btn-name">{{view_name}}</p>
-</div> -->
 <app-toolbar (viewChange) = "changeView($event)" [pageName] = "pageName"></app-toolbar>
-<br>
-<!-- Grid view -->
 <div class="grid" *ngIf="isGrid; else listView">
   <mat-card *ngFor="let event of items.events" class="card"  >
     <i class="material-icons event-icon" (click)="onSelect($event)" id="{{event.id}}">event</i>
     <div class="event-title">{{event.name}}</div>
     <table class="content">
-      <tr>
+      <!-- <tr>
         <th width="20%">id:</th>
         <td width="80%">{{event.id}}</td>
-      </tr>
+      </tr> -->
       <tr>
         <th>date:</th>
         <td>{{event.date}}</td>
@@ -37,45 +30,31 @@
     <div class="plus">+</div>
   </div>
 </div>
-<!-- List view -->
+
 <ng-template #listView>
   <div class="list">
-    <!-- Search -->
     <div class="search-btn">
       <div class="new-evnt-btn">
-          <button mat-raised-button color="primary" [routerLink]="['/add-event']"> + New Event</button>
+          <button mat-raised-button color="primary"> + New Event</button>
       </div>
     </div>
-    <!-- Table -->
     <mat-table #table [dataSource]="dataSource">
-      <!-- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element" > {{element.id}} </mat-cell>
-      </ng-container>
-      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        <mat-cell *matCellDef="let element" [routerLink] = "['/home']"> {{element.name}} </mat-cell>
       </ng-container>
-      <!-- Date Column -->
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
       </ng-container>
-      <!-- Venue Column -->
       <ng-container matColumnDef="venue">
         <mat-header-cell *matHeaderCellDef> Venue </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.venue}} </mat-cell>
       </ng-container>
-      <!-- Description Column -->
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
       </ng-container>
-      <!-- Header -->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

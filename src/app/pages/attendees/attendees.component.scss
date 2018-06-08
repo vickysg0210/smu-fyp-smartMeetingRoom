@@ -24,8 +24,13 @@
 
 .page-container{
   margin: 1em;
-  .addNewBotton{
-    margin: 1em;
+  display: flex;
+  flex-direction: column;
+  .new-button-container{
+    flex: 1;
+    .new-button{
+      float: right;
+    }
   }
   .grid-content{
     float:right;

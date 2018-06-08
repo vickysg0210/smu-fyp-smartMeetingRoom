@@ -44,9 +44,9 @@ export class LoginPageComponent implements OnInit {
     }
     public login = function(){
       if(this.account.email == "admin@email.com" && this.account.password == "pwd1pwd1"){
-        this.daoService.storeAccount(this.account);
-        this.daoService.setSecret(this.secret);
-        // this.router.navigate(['/event-mgmt']);
+        // this.daoService.storeAccount(this.account);
+        // this.daoService.setSecret(this.secret);
+        this.router.navigate(['/event-mgmt']);
       }
       else {
         this.showErrorMessage();

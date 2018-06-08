@@ -1,3 +1,4 @@
+
 .sidenav-container{
   margin-top:3em;
   min-height: 35em;
@@ -20,4 +21,12 @@
 }
 .sidenav-content{
   margin-top:3em;
+
+:host{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
+

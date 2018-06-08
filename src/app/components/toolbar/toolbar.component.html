@@ -1,17 +1,47 @@
- <!-- <mat-toolbar *ngIf="isLoggedIn$ | async"> -->
-<!-- <mat-toolbar *ngIf="isLoggedIn"> -->
 <mat-toolbar class="toolbar">
-  <button mat-icon-button [disabled] = "navbarIconShow"><mat-icon>menu</mat-icon></button>
-  <div class="title">Smart Meeting</div>
+<div *ngIf = "!navbarIconShow else content">
+  <div class="navmenu-trigger" [matMenuTriggerFor] = "navMenu">
+    <button mat-icon-button [disabled] = "navbarIconShow" ><mat-icon>menu</mat-icon></button>
+    <div class="title">Smart Meeting</div>
+  </div>
+  <mat-menu #navMenu = "matMenu" [overlapTrigger]="false">
+    <button mat-menu-item [routerLink] = "['/home']">
+      &nbsp;&nbsp;
+     <mat-icon>dashboard</mat-icon>
+     <span>Dashboard</span>
+      &nbsp;&nbsp;
+    </button>
+    <button mat-menu-item [routerLink] = "['/attendees']">
+       &nbsp;&nbsp;
+      <mat-icon>people</mat-icon>
+      <span>Attendees</span>
+       &nbsp;&nbsp;
+    </button>
+    <button mat-menu-item >
+       &nbsp;&nbsp;
+      <mat-icon>my_location</mat-icon>
+      <span>Map</span>
+       &nbsp;&nbsp;
+    </button>
+  </mat-menu>
+</div>
+<ng-template #content>
+  <div class="navmenu-trigger">
+    <button mat-icon-button disabled ><mat-icon>menu</mat-icon></button>
+    <div class="title">Smart Meeting</div>
+  </div>
+</ng-template>
+
   <div class="front-spacer"></div>
-  <div class="searchBar">
+  <!-- <div class="searchBar">
     <mat-icon class="icon">search</mat-icon>
       <input matInput class="input" placeholder="Search Event Name" [(ngModel)]= "searchEventText"/>
-  </div>
-  <div class="end-spacer"></div>
+  </div> -->
+  <a class="back-hint" [routerLink] = "['/event-mgmt']" *ngIf="!navbarIconShow">
+    Manage Other Events?
+  </a>
   <button mat-icon-button (click) = "changeView()" *ngIf = "navbarIconShow">
     <mat-icon>{{viewIcon}}</mat-icon>
-    <!-- {{viewIcon}} -->
   </button>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon class="profile-icon">perm_identity</mat-icon>
@@ -19,9 +49,8 @@
       {{account.username}}
     </div> -->
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
     <button mat-menu-item>My Profile</button>
-    <button mat-menu-item>Log out</button>
+    <button mat-menu-item [routerLink] = "['/login']">Log out</button>
   </mat-menu>
-
 </mat-toolbar>

@@ -14,7 +14,7 @@ export class EventMgmtPageComponent implements OnInit {
     public pageName: string;
     public page: string;
 
-    displayedColumns = ['id', 'name', 'date', 'venue','description'];
+    displayedColumns = ['name', 'date', 'venue','description'];
     dataSource = ELEMENT_DATA;
 
     constructor(private daoService : DaoService, private router: Router) {

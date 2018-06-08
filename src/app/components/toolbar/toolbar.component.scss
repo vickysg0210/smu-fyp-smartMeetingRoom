@@ -18,8 +18,17 @@
         width: 5em;
       }
     }
-    .end-spacer {
+    .navMenu{
+      width: 10em;
+    }
+    .front-spacer{
       flex: 1 1 auto;
+    }
+    .back-hint{
+      font-size: 0.6em;
+      font-weight: 100;
+      font-style: italic;
+      padding-right: 1.1em;
     }
     .profile-icon{
       font-size: 2em;

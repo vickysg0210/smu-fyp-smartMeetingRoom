@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Input, ViewChild} from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-attendees',
@@ -6,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendees.component.scss']
 })
 export class AttendeesComponent implements OnInit {
-
+  @ViewChild('sidenav') sidenav : MatSidenav;
   attendeesList;
-  public pageName: string;
+  public pageName: string = "attendees";
 
   constructor() {
-    this.pageName = 'attendees';
    }
+
+
 
   ngOnInit() {
     this.attendeesList = {
@@ -50,5 +52,8 @@ export class AttendeesComponent implements OnInit {
     }
   }
 
+  public toggleNav = function(){
+    this.sidenav.toggle();
+  }
 
 }
