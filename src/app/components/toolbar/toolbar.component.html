@@ -2,7 +2,7 @@
 <div *ngIf = "!navbarIconShow else content">
   <div class="navmenu-trigger" [matMenuTriggerFor] = "navMenu">
     <button mat-icon-button [disabled] = "navbarIconShow" ><mat-icon>menu</mat-icon></button>
-    <div class="title">Smart Meeting</div>
+    Smart Meeting Room
   </div>
   <mat-menu #navMenu = "matMenu" [overlapTrigger]="false">
     <button mat-menu-item [routerLink] = "['/home']">
@@ -28,7 +28,7 @@
 <ng-template #content>
   <div class="navmenu-trigger">
     <button mat-icon-button disabled ><mat-icon>menu</mat-icon></button>
-    <div class="title">Smart Meeting</div>
+    Smart Meeting Room
   </div>
 </ng-template>
 
