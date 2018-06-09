@@ -1,5 +1,7 @@
 import { Component, OnInit, Directive, Input, ViewChild} from '@angular/core';
 import { MatSidenav } from '@angular/material';
+import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material';
+
 
 @Component({
   selector: 'app-attendees',
@@ -7,16 +9,27 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./attendees.component.scss']
 })
 export class AttendeesComponent implements OnInit {
-  @ViewChild('sidenav') sidenav : MatSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   attendeesList;
-  public pageName: string = "attendees";
+  //present: boolean;
+  public pageName: string = 'attendees';
+  displayedColumns = ['avatar', 'uuid', 'name', 'position', 'organization', 'isPresent', 'actions'];
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   constructor() {
    }
 
-
+  applyFilter(filterValue: string) {
+   filterValue = filterValue.trim(); // Remove whitespace
+   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+   this.dataSource.filter = filterValue;
+  }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.attendeesList = {
         attendees: [{
           'name': "MICHELE ACUTO",
@@ -57,3 +70,45 @@ export class AttendeesComponent implements OnInit {
   }
 
 }
+
+
+export interface PeriodElement {
+  avatar: string;
+  uuid: number;
+  name: string;
+  position: string;
+  organizaiton: string;
+  isPresent: boolean;
+}
+
+const ELEMENT_DATA: PeriodElement[] = [
+  {
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
+    uuid: 123;
+    name: 'MICHELE ACUTO';
+    position: 'Professor of Urban Politics';
+    organization: 'Melbourne School of Design';
+    isPresent: true;
+  },{
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
+    uuid: 123;
+    name: 'Bernise Ang';
+    position: 'Principal and Methodology Lead';
+    organization: 'Zeroth Labs';
+    isPresent: false;
+  },{
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
+    uuid: 123;
+    name: 'MICHELE ACUTO';
+    position: 'Professor of Urban Politics';
+    organization: 'Melbourne School of Design';
+    isPresent: true;
+  },{
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
+    uuid: 123;
+    name: 'MICHELE ACUTO';
+    position: 'Professor of Urban Politics';
+    organization: 'Melbourne School of Design';
+    isPresent: true;
+  }
+];
