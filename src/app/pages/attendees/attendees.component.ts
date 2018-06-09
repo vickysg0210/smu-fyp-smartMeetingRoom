@@ -72,43 +72,43 @@ export class AttendeesComponent implements OnInit {
 }
 
 
-export interface PeriodElement {
+export interface PeriodicElement {
   avatar: string;
   uuid: number;
   name: string;
   position: string;
-  organizaiton: string;
+  organization: string;
   isPresent: boolean;
 }
 
-const ELEMENT_DATA: PeriodElement[] = [
+const ELEMENT_DATA: PeriodicElement[] = [
   {
-    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
-    uuid: 123;
-    name: 'MICHELE ACUTO';
-    position: 'Professor of Urban Politics';
-    organization: 'Melbourne School of Design';
-    isPresent: true;
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
+    uuid: 123,
+    name: 'MICHELE ACUTO',
+    position: 'Professor of Urban Politics',
+    organization: 'Melbourne School of Design',
+    isPresent: true
   },{
-    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
-    uuid: 123;
-    name: 'Bernise Ang';
-    position: 'Principal and Methodology Lead';
-    organization: 'Zeroth Labs';
-    isPresent: false;
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
+    uuid: 123,
+    name: 'Bernise Ang',
+    position: 'Principal and Methodology Lead',
+    organization: 'Zeroth Labs',
+    isPresent: false
   },{
-    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
-    uuid: 123;
-    name: 'MICHELE ACUTO';
-    position: 'Professor of Urban Politics';
-    organization: 'Melbourne School of Design';
-    isPresent: true;
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
+    uuid: 123,
+    name: 'MICHELE ACUTO',
+    position: 'Professor of Urban Politics',
+    organization: 'Melbourne School of Design',
+    isPresent: true
   },{
-    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz';
-    uuid: 123;
-    name: 'MICHELE ACUTO';
-    position: 'Professor of Urban Politics';
-    organization: 'Melbourne School of Design';
-    isPresent: true;
+    avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
+    uuid: 123,
+    name: 'MICHELE ACUTO',
+    position: 'Professor of Urban Politics',
+    organization: 'Melbourne School of Design',
+    isPresent: true
   }
 ];
