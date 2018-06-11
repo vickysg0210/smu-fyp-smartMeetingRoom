@@ -1,0 +1,56 @@
+<!-- <div class="change-pwd-page">
+  <div class="card">
+    <form (submit) = "changePwd()">
+      <mat-form-field class="old-pwd-field">
+        <input matInput placeholder="Old Password"
+                        [(ngModel)] = "oldPassword"
+                        type = "text"
+                        required />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="formControl.email.hasError('email') && !formControl.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="formControl.email.hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="username-field">
+        <input matInput placeholder="Username"
+                        [(ngModel)] = "account.username"
+                        [formControl]="formControl.username"
+                        type = "text"
+                        required />
+        <mat-icon matSuffix>local_offer</mat-icon>
+        <mat-error *ngIf="formControl.username.hasError('required')">
+          User is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="pwd-field">
+        <input matInput placeholder="Password"
+                        type="password"
+                        [(ngModel)] = "account.password"
+                        [formControl]="formControl.password"
+                        required/>
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="formControl.password.hasError('required')">
+          Password secret is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="pwd-field">
+        <input matInput placeholder="Confirm Password"
+                        type="password"
+                        [(ngModel)] = "account.cfmPassword"
+                        [formControl]="formControl.password"
+                        required/>
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-error *ngIf="formControl.password.hasError('required')">
+          Password secret is required
+        </mat-error>
+      </mat-form-field>
+      <div class="hint">
+        <div class="left" [routerLink]="['/login']">Login?</div>
+      </div>
+      <button mat-stroked-button class="button" type="button" (click)="register()">Create</button>
+    </form>
+  </div>
+</div> -->

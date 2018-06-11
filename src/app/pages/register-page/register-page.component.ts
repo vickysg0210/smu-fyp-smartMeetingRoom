@@ -59,9 +59,9 @@ export class RegisterPageComponent implements OnInit {
         this.showErrorMessage();
       }else {
         this.showSuccessMessage("Account created successfully");
-        // console.log("before api");
-        // this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
-        // console.log("after api");
+        console.log("before api");
+        this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
+        console.log("after api");
         this.router.navigate(['/login']);
       }
     }
