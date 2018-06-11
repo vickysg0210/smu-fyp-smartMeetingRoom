@@ -62,6 +62,8 @@ import { ServiceInterceptor } from './interceptors/service-interceptor';
 import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MapComponent } from './pages/map/map.component';
+import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -96,6 +98,9 @@ const appRoutes: Routes = [{
 },{
   path: 'home',
   component : HomePageComponent
+},{
+  path: 'change-pwd',
+  component : ChangePwdPageComponent
 }];
 
 
@@ -110,7 +115,9 @@ const appRoutes: Routes = [{
     EventPageComponent,
     AttendeesComponent,
     AttendeeProfileComponent,
-    HomePageComponent
+    HomePageComponent,
+    MapComponent,
+    ChangePwdPageComponent
   ],
   imports: [
     FormsModule,

@@ -50,7 +50,7 @@
     </div> -->
   </button>
   <mat-menu #menu="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item>My Profile</button>
+    <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
     <button mat-menu-item [routerLink] = "['/login']">Log out</button>
   </mat-menu>
 </mat-toolbar>
