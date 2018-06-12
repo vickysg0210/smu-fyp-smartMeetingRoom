@@ -13,10 +13,10 @@
   - [ ] display how many participants present as a chart (use library)
   - [ ] display events schedule (fake one)
 
-- [ ]speaker Page
+- [ ] speaker Page
   - [ ] 有一个全屏健，可以redirect到另一个url 新窗口
   - [ ] 新窗口上 就是 名字 position，
-  - [ ]这个page上 design
+  - [ ] 这个page上 design
   - [ ] 没有人在speaking的时候 display
 
 - [ ] Change Password Page
