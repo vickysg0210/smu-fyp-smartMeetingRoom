@@ -1,31 +1,31 @@
-# BmsUi
+# SMRUi
 
 ## TODO
--[ ]Side Nav bar
-  -[ ]change content : Dashboard; Speaker; Attendees; Maps; Go Live; About
-  -[ ] navigation (每页之间互相连接，互相navigate)
+- [ ] Side Nav bar
+  - [ ] change content : Dashboard; Speaker; Attendees; Maps; Go Live; About
+  - [ ] navigation (每页之间互相连接，互相navigate)
 
--[ ]attendees page
-  -[ ] remove the grid view
-  -[ ]redesign the new attendee button
+- [ ] attendees page
+  - [ ] remove the grid view
+  - [ ] redesign the new attendee button
 
--[ ] home page/ Dashboard Page
-  -[ ] display how many participants present as a chart (use library)
-  -[ ] display events schedule (fake one)
-  
--[ ]speaker Page
-  -[ ] 有一个全屏健，可以redirect到另一个url 新窗口
-  -[ ] 新窗口上 就是 名字 position，
-  -[ ]这个page上 design
-  -[ ] 没有人在speaking的时候 display
+- [ ] home page/ Dashboard Page
+  - [ ] display how many participants present as a chart (use library)
+  - [ ] display events schedule (fake one)
 
--[ ] Change Password Page
-  -[ ] password page UI
-  -[ ] save button / back button
-  -[ ] after change password navigate to login Page
+- [ ]speaker Page
+  - [ ] 有一个全屏健，可以redirect到另一个url 新窗口
+  - [ ] 新窗口上 就是 名字 position，
+  - [ ]这个page上 design
+  - [ ] 没有人在speaking的时候 display
 
--[ ] Tool bar
-  -[ ] remove the top-left icon beside the Smart Meeting Room
+- [ ] Change Password Page
+  - [ ] password page UI
+  - [ ] save button / back button
+  - [ ] after change password navigate to login Page
+
+- [ ] Tool bar
+  - [ ] remove the top-left icon beside the Smart Meeting Room
 
 
 
