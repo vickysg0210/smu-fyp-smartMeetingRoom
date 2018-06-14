@@ -64,6 +64,7 @@ import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-prof
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MapComponent } from './pages/map/map.component';
 import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
+import { SpeakerComponent } from './pages/speaker/speaker.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -95,12 +96,18 @@ const appRoutes: Routes = [{
   path: 'attendees/attendee-profile',
   // canActivate: [AuthGuard],
   component: AttendeeProfileComponent
-},{
+}, {
   path: 'home',
   component : HomePageComponent
-},{
+}, {
   path: 'change-pwd',
   component : ChangePwdPageComponent
+}, {
+  path: 'map',
+  component : MapComponent
+}, {
+  path: 'speaker',
+  component : SpeakerComponent
 }];
 
 
@@ -117,7 +124,8 @@ const appRoutes: Routes = [{
     AttendeeProfileComponent,
     HomePageComponent,
     MapComponent,
-    ChangePwdPageComponent
+    ChangePwdPageComponent,
+    SpeakerComponent
   ],
   imports: [
     FormsModule,

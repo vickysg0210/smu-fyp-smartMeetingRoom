@@ -1,7 +1,9 @@
 <mat-toolbar class="toolbar">
 <div *ngIf = "!navbarIconShow else content">
   <div class="navmenu-trigger" [matMenuTriggerFor] = "navMenu">
+    <!--
     <button mat-icon-button [disabled] = "navbarIconShow" ><mat-icon>menu</mat-icon></button>
+    -->
     Smart Meeting Room
   </div>
   <mat-menu #navMenu = "matMenu" [overlapTrigger]="false">
@@ -27,7 +29,9 @@
 </div>
 <ng-template #content>
   <div class="navmenu-trigger">
+    <!--
     <button mat-icon-button disabled ><mat-icon>menu</mat-icon></button>
+    -->
     Smart Meeting Room
   </div>
 </ng-template>
