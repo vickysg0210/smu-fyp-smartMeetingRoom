@@ -4,7 +4,7 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions }
 @Component({
   selector: 'app-attendee-profile',
   templateUrl: './attendee-profile.component.html',
-  styleUrls: ['./attendee-profile.component.css']
+  styleUrls: ['./attendee-profile.component.scss']
 })
 export class AttendeeProfileComponent {
   options: UploaderOptions;

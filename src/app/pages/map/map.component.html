@@ -1,3 +1,31 @@
-<p>
-  map works!
-</p>
+<app-toolbar [pageName] = "pageName"></app-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/home']">Home</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/map']">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/go-live']">Go Live</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/about']">About</button>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    Map page Works!
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+  </mat-sidenav-content>
+</mat-sidenav-container>
