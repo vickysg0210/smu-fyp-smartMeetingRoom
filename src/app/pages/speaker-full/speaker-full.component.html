@@ -1,0 +1,23 @@
+<!--Check whether got anyone speaking-->
+<mat-checkbox [(ngModel)]="speaking">someone speaking</mat-checkbox>
+<div class="page"  *ngIf="speaking">
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+      <div class="content">
+        <img class="img" src={{avatar}}>
+        <h1>MICHELE ACUTO</h1>
+        <br>
+        <h3>Professor of Urban Politics</h3>
+        <h3>Melbourne School of Design</h3>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<!--no one speaking-->
+<div class="" *ngIf="!speaking">
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile>
+      No One Speaking Now
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

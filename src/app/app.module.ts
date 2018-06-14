@@ -65,6 +65,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MapComponent } from './pages/map/map.component';
 import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
 import { SpeakerComponent } from './pages/speaker/speaker.component';
+import { SpeakerFullComponent } from './pages/speaker-full/speaker-full.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -108,6 +109,9 @@ const appRoutes: Routes = [{
 }, {
   path: 'speaker',
   component : SpeakerComponent
+}, {
+  path: 'speaker-full',
+  component : SpeakerFullComponent
 }];
 
 
@@ -125,7 +129,8 @@ const appRoutes: Routes = [{
     HomePageComponent,
     MapComponent,
     ChangePwdPageComponent,
-    SpeakerComponent
+    SpeakerComponent,
+    SpeakerFullComponent
   ],
   imports: [
     FormsModule,
