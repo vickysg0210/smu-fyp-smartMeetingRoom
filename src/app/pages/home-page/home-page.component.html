@@ -23,9 +23,28 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    Main content
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
+    <div class="page">
+      <h3>Number of People Present</h3>
+      <div class="chart">
+        <circle-progress
+          [title]="84"
+          [percent]="85"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="'#78C000'"
+          [innerStrokeColor]="'#C7E596'"
+          [animation]="true"
+          [animationDuration]="300"
+          [subtitle]="'Present'"
+          [showUnits]="false"
+        ></circle-progress>
+      </div>
+      <br><br>
+      <h3>Event Schedule</h3>
+      <div class="schedule-div">
+        <img src="assets/schedule.png">
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

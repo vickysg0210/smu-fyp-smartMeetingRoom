@@ -46,7 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -178,7 +178,13 @@ const appRoutes: Routes = [{
       enableTracing: true
     }),
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      "radius": 60,
+      "outerStrokeWidth": 10,
+      "innerStrokeWidth": 5,
+      "showBackground": false
+    })
   ],
   providers: [
     {

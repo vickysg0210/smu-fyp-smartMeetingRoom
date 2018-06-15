@@ -27,6 +27,13 @@
 }
 .sidenav-content{
   margin-top:3em;
+  .page{
+    margin: auto 2em auto 2em;
+    width: 100%;
+    .schedule-div{
+      padding: 0 0 3em 2em;
+    }
+  }
 }
 
 :host{
