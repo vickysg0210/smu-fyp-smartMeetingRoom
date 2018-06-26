@@ -1,0 +1,23 @@
+<div class="map-container">
+</div>
+<div class="customization">
+  <div *ngFor="let table of tables ; index as i">
+    Table {{i+1}}
+    <mat-form-field>
+      <input matInput placeholder="Table X" [(ngModel)]="table.tableX">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Table Y" [(ngModel)]="table.tableY">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Table Shape" [(ngModel)]= "table.shape">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Table Radius" [(ngModel)]= "table.radius">
+    </mat-form-field>
+    <button mat-icon-button (click)="removeTable(i)">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <button mat-button (click)="addTable()">Add Table</button>
+</div>

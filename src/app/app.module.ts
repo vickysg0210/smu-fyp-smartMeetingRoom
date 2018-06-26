@@ -66,6 +66,7 @@ import { MapComponent } from './pages/map/map.component';
 import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
 import { SpeakerComponent } from './pages/speaker/speaker.component';
 import { SpeakerFullComponent } from './pages/speaker-full/speaker-full.component';
+import { D3MapContainerComponent } from './components/d3-map-container/d3-map-container.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -130,7 +131,8 @@ const appRoutes: Routes = [{
     MapComponent,
     ChangePwdPageComponent,
     SpeakerComponent,
-    SpeakerFullComponent
+    SpeakerFullComponent,
+    D3MapContainerComponent
   ],
   imports: [
     FormsModule,

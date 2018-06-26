@@ -1,9 +1,15 @@
-<app-toolbar [pageName] = "pageName"></app-toolbar>
+<!-- <app-toolbar [pageName] = "pageName"></app-toolbar> -->
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
+    <div class="navlogo">
+      <img src="assets/logo.png" width="40" height="30"/>
+      <div class="navlogo-text">
+        Smart Event
+      </div>
+    </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/home']">Home</button>
+      <button mat-button class="sidebutton" [routerLink]="['/home']">Dashboard</button>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
@@ -12,20 +18,52 @@
       <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/map']">Locations</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/map']">Locations</button>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/about']">About</button>
+      <button mat-button class="sidebutton" [routerLink]="['/about']">Profile</button>
+    </div>
+
+    <div class="bottom-nav">
+      <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
+        Manage Other Events?
+      </button>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="profile-icon">perm_identity</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+        <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+      </mat-menu> -->
     </div>
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    Map page Works!
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
+    <div>
+      <div>
+        empty
+      </div>
+      <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
+        <mat-form-field>
+          <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Width" [(ngModel)]="map.width" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field>
+        <mat-select placeholder="Scale" [(value)]="map.scale">
+          <mat-option *ngFor="let scale of scaleOptions" [value]="scale">
+            {{ scale }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="mapExistence">
+      <app-d3-map-container [map]="map"></app-d3-map-container>
+    </div>
+    <button mat-button (click)="SaveMap()">Save The Map</button>
   </mat-sidenav-content>
 </mat-sidenav-container>
