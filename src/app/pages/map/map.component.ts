@@ -33,8 +33,6 @@ export class MapComponent implements OnInit {
   ngOnInit(){
     this.checkMap();
   }
-  // ngAfterContentInit() {
-  // }
 
   public checkMap = function(){
     if(this.map.width == 0 || this.map.height ==0 || this.map.scale == 0){

@@ -15,6 +15,8 @@ export class D3MapContainerComponent implements OnInit {
   public containerHeight: number;
   public x: any;
   public y: any;
+  @Input() customized: boolean;
+  @Input() participants: Array<any>;
 
   public
   constructor() {
@@ -75,7 +77,7 @@ export class D3MapContainerComponent implements OnInit {
     let windowHeight = window.innerHeight;
 
     this.containerWidth = windowWidth - 152;
-    this.containerHeight = windowHeight-200;
+    this.containerHeight = windowHeight-180;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
     // Scale the range of the data
@@ -99,35 +101,6 @@ export class D3MapContainerComponent implements OnInit {
     this.drawTableOnMap();
   }
   ngAfterContentInit(){
-  // success
-    // let container = d3.select('.map-container')
-    //   .append('svg')
-    //   .attr('width', 1000)
-    //   .attr('height', 1000)
-    //   .style("fill", "blue");;
-    //
-    //   let mapArea = container.append('svg')
-    //             .attr("x",100)
-    //             .attr("y",100)
-    //             .attr("width", this.map.width*40)
-    //             .attr("height", this.map.height*40)
-    //             .style("fill", "blue");
-    //
-    //   let tables = mapArea.selectAll("rect")
-    //                       .data(this.table)
-    //                       .enter()
-    //                       .append("rect")
-    //                       .style("stroke-width","4");;
-    //
-    //   let tablesAttributes = tables
-    //                           .attr("x", function(d){return d.tableX})
-    //                           .attr("y", function(d){return d.tableY})
-    //                           .attr("rx",function(d){return d.radius;})
-    //                           .attr("ry", function(d){return d.radius;})
-    //                           .attr("width",function(d){return d.radius;})
-    //                           .attr("height", function(d){return d.radius})
-    //                           .style("fill","red");
-
     let margin = {top: 20, right: 20, bottom: 30, left: 50};
     let widthRatio = this.map.width / this.map.scale;
     let heightRatio = this.map.height / this.map.scale;
@@ -172,14 +145,9 @@ export class D3MapContainerComponent implements OnInit {
                   attr("stroke", "#777").
                   attr("stroke-dasharray", "2");
 
-//table
+    //table
     this.drawTableOnMap();
-
-            // container.selectAll("rect")
-            //         .attr("x", function(d){ return d.tableX; })
-            //         .attr("y", function(d){ return d.tableY; })
-            //         .attr("width", function(d){ return d.radius;})
-            //         .attr("height", function(d){ return d.radius});
+    this.drawParticipantsOnMap();
   }
 
   public make_x_gridlines = function(){
@@ -218,24 +186,55 @@ export class D3MapContainerComponent implements OnInit {
                .data(this.tables)
                .enter()
                .append("text")
-                .attr("x", function(d){return (d.tableX) *80-5)
+                .attr("x", function(d){return d.tableX*80-5;})
                 .attr("y", function(d){return (heightRatio- d.tableY+d.radius/2)*80})
                 .attr("dy", ".35em")
                 .text(function(d,i) { return i+1; });
-                // .attr("cx",function(d){return d.tableX*80})
-                // .attr("cy", function(d){return (heightRatio- d.tableY) *80})
-                // .attr("r",function(d){return d.radius*80})
-                // .text(function(d,i){return i+1;})
-                // .attr('color', "white");
-      // tableContainer.selectAll("rect")
-      //           .data(this.tables.filter(function(d){ return d.shape == 'rect'}))
-      //           .enter()
-      //           .append("rect")
-      //           .attr("x",function(d){return d.tableX*80})
-      //           .attr("y", function(d){return (heightRatio- d.tableY) *80})
-      //           .attr("width",function(d){return d.radius*80})
-      //           .attr("height", function(d){return d.radius*80})
-      //           .text(function(d,i){return i+1;});
   }
 
+
+  public drawParticipantsOnMap = function(){
+    let margin = {top: 20, right: 20, bottom: 30, left: 50};
+    let imageConfig = 40;
+
+    let widthRatio = this.map.width / this.map.scale;
+    let heightRatio = this.map.height / this.map.scale;
+    let mapHeight = this.map.height;
+    let mapWidth = this.map.width;
+    let mapScale = this.map.scale;
+    let imageLength = 40;
+    let participantG = d3.select('.map-container svg');
+
+    let defs = participantG.append('svg:defs');
+    let participantId = this.participants.forEach(function(d,i){
+      defs.append("svg:pattern")
+          .attr("id","avatar"+i)
+          .attr("width",1000)
+          .attr("height",1000)
+          .attr("patternUnits", "userSpaceOnUse")
+          .append("svg:image")
+          .attr("xlink:href", d.avatar.url)
+          .attr("width", imageConfig)
+          .attr("height", imageConfig)
+          .attr("x", d.coordinateX/mapScale*80-imageConfig/2)
+          .attr("y", (mapHeight- d.coordinateY)/mapScale*80-imageConfig/2);
+
+    });
+
+    var circle = participantG.selectAll("circle")
+      .data(this.participants)
+      .enter()
+      .append("circle")
+      .attr("transform", "translate(" +50 + "," +20
+       + ")")
+      .attr("cx", function(d){return d.coordinateX/mapScale*80})
+      .attr("cy", function(d){return (mapHeight-d.coordinateY)/mapScale*80})
+      .attr("r", imageConfig/2)
+      .style("fill", "#fff")
+      .style("fill", function(d,i){return "url(#avatar" + i + ")";})
+      .on("click", function(d){
+        d.coordinateX = 60;
+        console.log(d);
+      })
+  }
 }

@@ -18,10 +18,10 @@
       <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button class="chosenButton" [routerLink]="['/map']">Locations</button>
+      <button mat-button class="sidebutton" [routerLink]="['/map']">Locations</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/goLive']">Go Live</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/goLive']">Go Live</button>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/about']">Profile</button>
@@ -42,28 +42,6 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <div>
-      <div>
-        empty
-      </div>
-      <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
-        <mat-form-field>
-          <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Width" [(ngModel)]="map.width" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <mat-form-field>
-        <mat-select placeholder="Scale" [(value)]="map.scale">
-          <mat-option *ngFor="let scale of scaleOptions" [value]="scale">
-            {{ scale }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div *ngIf="mapExistence">
-      <app-d3-map-container [map]="map" [customized]="true"></app-d3-map-container>
-    </div>
-    <button mat-button (click)="SaveMap()">Save The Map</button>
+    <app-d3-map-container [map]="map" [customized]="false" [participants]="participants"></app-d3-map-container>
   </mat-sidenav-content>
 </mat-sidenav-container>
