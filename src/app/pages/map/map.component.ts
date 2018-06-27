@@ -1,7 +1,9 @@
 import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as d3 from "d3";
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 // import {MapDialogComponent} from '../components/map-dialog'
+
 
 @Component({
   selector: 'app-map',
@@ -10,11 +12,15 @@ import * as d3 from "d3";
 })
 export class MapComponent implements OnInit {
   public pageName: string = 'map';
+  private eventId: number;
 
   public mapExistence: boolean = false;
   public map: any;
   public scaleOptions: Array<number>;
-  constructor() {
+  constructor(private route: ActivatedRoute) {
+      this.route.params.subscribe((param) => {
+          this.eventId = param.id;
+      });
     // this.map = {
     //   width: 0,
     //   height: 0,

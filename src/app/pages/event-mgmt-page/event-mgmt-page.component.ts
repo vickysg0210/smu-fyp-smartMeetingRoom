@@ -66,7 +66,12 @@ export class EventMgmtPageComponent implements OnInit {
     }
     onSelect(e) {
         console.log("onselect event: ", e, e.path[0].id);
-        this.router.navigate(['/event-mgmt', e.path[0].id]);
+        this.router.navigate([e.path[0].id, 'home']);
+    }
+
+    selectRow(row) {
+      this.router.navigate([row.id, 'home']);
+      console.log(row);
     }
 
     public changeView = function($event){

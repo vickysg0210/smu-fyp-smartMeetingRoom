@@ -92,24 +92,24 @@ const appRoutes: Routes = [{
   // canActivate: [AuthGuard],
   component: AddEventPageComponent
 }, {
-  path: 'attendees',
+  path: ':id/attendees',
   // canActivate: [AuthGuard],
   component: AttendeesComponent
 }, {
-  path: 'attendees/attendee-profile',
+  path: ':id/attendees/attendee-profile',
   // canActivate: [AuthGuard],
   component: AttendeeProfileComponent
 }, {
-  path: 'home',
+  path: ':id/home',
   component : HomePageComponent
 }, {
   path: 'change-pwd',
   component : ChangePwdPageComponent
 }, {
-  path: 'map',
+  path: ':id/map',
   component : MapComponent
 }, {
-  path: 'speaker',
+  path: ':id/speaker',
   component : SpeakerComponent
 }, {
   path: 'speaker-full',

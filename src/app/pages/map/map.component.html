@@ -9,22 +9,23 @@
       </div>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/home']">Dashboard</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Dashboard</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button class="chosenButton" [routerLink]="['/map']">Locations</button>
+
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'map']">Locations</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/goLive']">Go Live</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/about']">Profile</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'about']">Profile</button>
     </div>
 
     <div class="bottom-nav">

@@ -1,6 +1,7 @@
 import { Component, OnInit, Directive, Input, ViewChild} from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,9 +18,13 @@ export class AttendeesComponent implements OnInit {
   public pageName: string = 'attendees';
   displayedColumns = ['avatar', 'uuid', 'name', 'position', 'organization', 'isPresent', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  private eventId: number;
 
-  constructor() {
-   }
+  constructor(private route: ActivatedRoute) {
+      this.route.params.subscribe((param)=>{
+          this.eventId = param.id;
+      });
+  }
 
   applyFilter(filterValue: string) {
    filterValue = filterValue.trim(); // Remove whitespace
