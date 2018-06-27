@@ -117,6 +117,9 @@
     overflow: auto;
     max-height: 500px;
     border: solid 1px gray;
+    .mat-row:hover{
+      background-color: #EEEEEE;
+    }
   }
 
 }

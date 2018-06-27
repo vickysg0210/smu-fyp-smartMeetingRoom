@@ -3,22 +3,22 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <div class="sidediv" >
-      <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/home']">Home</button>
+      <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/map']">Locations</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Locations</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/go-live']">Go Live</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/about']">About</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'about']">About</button>
     </div>
 
   </mat-sidenav>

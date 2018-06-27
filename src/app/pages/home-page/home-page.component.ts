@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,8 +10,13 @@ export class HomePageComponent implements OnInit {
 
 
   public pageName: String = 'home';
+  private eventId: number;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+      this.route.params.subscribe((param)=>{
+          this.eventId = param.id;
+      });
+  }
 
   ngOnInit() {
   }
