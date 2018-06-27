@@ -1,0 +1,47 @@
+<!-- <app-toolbar [pageName] = "pageName"></app-toolbar> -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="navlogo">
+      <img src="assets/logo.png" width="40" height="30"/>
+      <div class="navlogo-text">
+        Smart Event
+      </div>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/home']">Dashboard</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/map']">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-raised-button class="chosenButton" [routerLink]="['/goLive']">Go Live</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/about']">Profile</button>
+    </div>
+
+    <div class="bottom-nav">
+      <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
+        Manage Other Events?
+      </button>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="profile-icon">perm_identity</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+        <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+      </mat-menu> -->
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <app-d3-map-container [map]="map" [customized]="false" [participants]="participants"></app-d3-map-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>

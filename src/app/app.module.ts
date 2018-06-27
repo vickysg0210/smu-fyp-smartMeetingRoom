@@ -66,6 +66,8 @@ import { MapComponent } from './pages/map/map.component';
 import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
 import { SpeakerComponent } from './pages/speaker/speaker.component';
 import { SpeakerFullComponent } from './pages/speaker-full/speaker-full.component';
+import { D3MapContainerComponent } from './components/d3-map-container/d3-map-container.component';
+import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -112,6 +114,9 @@ const appRoutes: Routes = [{
 }, {
   path: 'speaker-full',
   component : SpeakerFullComponent
+},{
+  path:'goLive',
+  component: GoLivePageComponent
 }];
 
 
@@ -130,7 +135,9 @@ const appRoutes: Routes = [{
     MapComponent,
     ChangePwdPageComponent,
     SpeakerComponent,
-    SpeakerFullComponent
+    SpeakerFullComponent,
+    D3MapContainerComponent,
+    GoLivePageComponent
   ],
   imports: [
     FormsModule,
