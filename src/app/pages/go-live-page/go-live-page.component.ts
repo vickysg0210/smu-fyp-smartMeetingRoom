@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-go-live-page',
@@ -9,12 +10,16 @@ export class GoLivePageComponent implements OnInit {
 
   public map: any;
   public participants: Array<any>;
-  constructor() {
+  private eventId: number;
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe((param) => {
+        this.eventId = param.id;
+    });
     this.map = {
       width : 18,
       height: 12,
       scale: 2
-    }
+    };
     this.participants = [{
       name: "MICHELE ACUTO",
       position:"Professor of Urban Politics\n Melbourne School of Design",

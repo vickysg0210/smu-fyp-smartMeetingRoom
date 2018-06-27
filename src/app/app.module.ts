@@ -114,8 +114,8 @@ const appRoutes: Routes = [{
 }, {
   path: 'speaker-full',
   component : SpeakerFullComponent
-},{
-  path:'goLive',
+}, {
+  path: ':id/go-live',
   component: GoLivePageComponent
 }];
 

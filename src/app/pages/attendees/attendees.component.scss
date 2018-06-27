@@ -1,22 +1,54 @@
+:host{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .sidenav-container{
-  margin-top:3em;
   height: 100%;
 }
 .sidenav{
-  width: 15em;
-  height: 100em;
-  background-color: inherit;
+  width: 11em;
+  background-color: #335C67;
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
-
-  .sidediv{
-    height:4em;
-
-    .sidebutton{
-      height: 70%;
-      margin-top: 2em;
-      width: 100%;
+  .navlogo{
+    color: #335C67;
+    display: flex;
+    background-color: white;
+    img{
+      margin: auto;
+    }
+    .navlogo-text{
+      line-height: 3em;
+      height: 3em;
+      color: #335C67;
+      text-align: center;
+      margin: auto;
+      font-weight: 700;
     }
   }
+  .sidediv{
+    height:4em;
+    .sidebutton{
+      color: white;
+      line-height: 4em;
+      width: 100%;
+    }
+    .chosenButton{
+      color: white;
+      line-height: 4em;
+      width: 100%;
+      background-color: #E69317;
+      }
+  }
+  .bottom-nav{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    }
 }
 .sidenav-content{
   //margin-top:3em;
@@ -44,9 +76,6 @@
 }
 .edit-dele-button{
   margin: 2px;
-}
-.material-icons{
-  color: green;
 }
 .page-container{
   margin: 1em;
