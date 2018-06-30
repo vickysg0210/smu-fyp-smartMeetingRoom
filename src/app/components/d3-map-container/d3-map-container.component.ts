@@ -1,5 +1,6 @@
 import { Component, OnInit, Input,
-AfterContentInit} from '@angular/core';
+AfterContentInit,ViewChild,
+ElementRef} from '@angular/core';
 import * as d3 from "d3";
 
 @Component({
@@ -17,52 +18,72 @@ export class D3MapContainerComponent implements OnInit {
   public y: any;
   @Input() customized: boolean;
   @Input() participants: Array<any>;
+  @Input() windowWidth: number;
+  @Input() windowHeight: number;
 
   public
   constructor() {
     this.tables = [{
         radius: 0.8,
         tableX: 1.5,
-        tableY: 4,
-        shape: "square"
+        tableY: 3,
+        shape: "circle"
       },
       {
         radius: 0.8,
-        tableX: 3,
-        tableY: 4,
-        shape: "circle"
-      },{
-        radius: 0.8,
-        tableX: 6,
-        tableY: 4,
-        shape: "circle"
-      },{
-        radius: 0.8,
-        tableX: 7.5,
-        tableY: 4,
+        tableX: 1.5,
+        tableY: 4.5,
         shape: "circle"
       },{
         radius: 0.8,
         tableX: 1.5,
+        tableY: 6,
+        shape: "circle"
+      },{
+        radius: 0.8,
+        tableX: 3,
         tableY: 1.5,
+        shape: "circle"
+      },{
+        radius: 0.8,
+        tableX: 3,
+        tableY: 3,
         shape: "circle"
       },
       {
         radius: 0.8,
         tableX: 3,
+        tableY: 4.5,
+        shape: "circle"
+      },
+      {
+        radius: 0.8,
+        tableX: 3,
+        tableY: 6,
+        shape: "circle"
+      },
+      {
+        radius: 0.8,
+        tableX: 4.5,
         tableY: 1.5,
         shape: "circle"
       },
       {
         radius: 0.8,
-        tableX: 6,
-        tableY: 1.5,
+        tableX: 4.5,
+        tableY: 3,
         shape: "circle"
       },
       {
         radius: 0.8,
-        tableX: 7.5,
-        tableY: 1.5,
+        tableX: 4.5,
+        tableY: 4.5,
+        shape: "circle"
+      },
+      {
+        radius: 0.8,
+        tableX: 4.5,
+        tableY: 6,
         shape: "circle"
       }
     ];
@@ -70,19 +91,17 @@ export class D3MapContainerComponent implements OnInit {
 
   ngOnInit() {
     this.getMapContainerMatrix();
+    // console.log(this.windowWidth);
   }
 
   public getMapContainerMatrix = function(){
-    let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight;
+    // let windowWidth = window.innerWidth;
+    // let windowHeight = window.innerHeight;
 
-    this.containerWidth = windowWidth - 152;
-    this.containerHeight = windowHeight-180;
+    this.containerWidth = this.windowWidth/5*3;
+    this.containerHeight = this.windowHeight;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
-    // Scale the range of the data
-      // x.domain(d3.extent(data, function(d) { return d.date; }));
-      // y.domain([0, d3.max(data, function(d) { return d.close; })]);
   }
 
   public addTable = function(){
@@ -106,13 +125,12 @@ export class D3MapContainerComponent implements OnInit {
     let heightRatio = this.map.height / this.map.scale;
     let container = d3.select('.map-container')
       .append('svg')
-      .attr('width', this.containerWidth + margin.right + margin.left)
-      .attr('height', this.containerHeight + margin.top +margin.bottom)
+      .attr('width', this.containerWidth)
+      .attr('height', this.containerHeight)
       .append("g")
       .attr("transform",
       "translate("+margin.left +
       ","+margin.top+")");
-
 
     container.append("g")
       .attr("class","xgrid")
@@ -176,7 +194,7 @@ export class D3MapContainerComponent implements OnInit {
                 .data(this.tables)
                 .enter()
                 .append("image")
-                .attr("xlink:href", "https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1529997346512table.png")
+                .attr("xlink:href", "https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530338218430table.jpg")
                 .attr("x", function(d){return (d.tableX-d.radius/2) *80})
                 .attr("y", function(d){return (heightRatio- d.tableY-d.radius/2)*80})
                 .attr("width", function(d){return d.radius*80})

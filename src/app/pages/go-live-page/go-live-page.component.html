@@ -1,47 +1,63 @@
-<!-- <app-toolbar [pageName] = "pageName"></app-toolbar> -->
-
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
-    <div class="navlogo">
-      <img src="assets/logo.png" width="40" height="30"/>
-      <div class="navlogo-text">
-        Smart Event
+<mat-grid-list cols="5" rowHeight="fit" class="go-live-container">
+  <mat-grid-tile [colspan]="1" [rowspan]="4">
+    <div class="total-present-chart">
+      <div>
+        Number of Participants Present
       </div>
+      <circle-progress
+        [title]="presentList.length"
+        [percent]="presentList.length / (presentList.length+absentList.length)*100"
+        [radius]="80"
+        [outerStrokeWidth]="16"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="300"
+        [subtitle]="'Present'"
+        [showUnits]="false"
+      ></circle-progress>
     </div>
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Dashboard</button>
-    </div>
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
-    </div>
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
-    </div>
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Locations</button>
-    </div>
-    <div class="sidediv" >
-      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'goLive']">Go Live</button>
-    </div>
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'about']">Profile</button>
-    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" [rowspan]="4">
+    <app-d3-map-container [map]="map" [customized]="false" [participants]="participants" [windowWidth]="windowWidth" [windowHeight]="windowHeight"></app-d3-map-container>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="3" class="attendance-list">
+    <mat-list>
+      <mat-list-item *ngFor="let present of presentList">
+        <div class="overlay-present">
+          <img src="{{present.url}}" width="40" height="40" class="participant-image"/>
+          <h2>{{present.participantName}}</h2>
+        </div>
+      </mat-list-item>
+      <mat-list-item *ngFor = "let absent of absentList">
+        <div class="overlay-absent">
+          <img src="{{absent.url}}" width="40" height="40" class="participant-image"/>
+          <h2>{{absent.participantName}}</h2>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
 
-    <div class="bottom-nav">
-      <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
-        Other Events
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon class="profile-icon">perm_identity</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
-        <button mat-menu-item [routerLink] = "['/login']">Log out</button>
-      </mat-menu>
-    </div>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-card>
+      <mat-card-header class="closer-look-title">
+        Get A Closer Look
+      </mat-card-header>
+      <div class="image-container">
+        <img class="closer-look-image" src="https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530005406059micheleAcuto.jpeg" width="50" height="50">
+      </div>
+      <mat-card-content class="closer-look-content">
+        <h2 class="closer-look-name">Name</h2>
+        <p class="closer-look-position">Professor of Mexican University Finance</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <!-- <mat-grid-tile [colspan]="1" [rowspan]="4">1</mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="4">2</mat-grid-tile>
 
-  </mat-sidenav>
-  <mat-sidenav-content class="sidenav-content">
-    <app-d3-map-container [map]="map" [customized]="false" [participants]="participants"></app-d3-map-container>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-grid-tile [colspan]="1" [rowspan]="3">3</mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1" [rowspan]="1">4</mat-grid-tile> -->
+
+</mat-grid-list>

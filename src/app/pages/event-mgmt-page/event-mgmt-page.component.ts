@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DaoService } from '../../services/dao.service';
 import { Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+
 @Component({
   selector: 'app-event-mgmt-page',
   templateUrl: './event-mgmt-page.component.html',
@@ -13,11 +15,13 @@ export class EventMgmtPageComponent implements OnInit {
     public isGrid: boolean = false;
     public pageName: string;
     public page: string;
+    public dataSource: Array<any>;
 
     displayedColumns = ['name', 'date', 'venue','description'];
-    dataSource = ELEMENT_DATA;
+    // dataSource = ELEMENT_DATA;
 
-    constructor(private daoService : DaoService, private router: Router) {
+    constructor(private daoService : DaoService, private router: Router,
+      private apiService : ApiService) {
         router.events.subscribe((res)=>{
           this.page = this.router.url;
         })
@@ -58,11 +62,20 @@ export class EventMgmtPageComponent implements OnInit {
     }
 
     ngOnInit() {
-      let secret : string = this.daoService.getSecret();
-      console.log("BTS "+secret);
-      // if(secret == null){
-      //   this.router.navigate(['/login']);
-      // }
+      this.loadEvents()
+    }
+
+    public loadEvents = function(){
+      this.apiService.getEvents((data)=>{
+        // this.daoService.storeAccount(data.account);
+        // console.log(this.daoService.getAccount();
+        // this.router.navigate(['/event-mgmt'])
+        console.log(data);
+        this.dataSource = data;
+      }, (err)=>{
+        // console.log(err);
+        // this.showErrorMessage()
+      })
     }
     onSelect(e) {
         console.log("onselect event: ", e, e.path[0].id);
@@ -70,7 +83,7 @@ export class EventMgmtPageComponent implements OnInit {
     }
 
     selectRow(row) {
-      this.router.navigate([row.id, 'home']);
+      this.router.navigate([row.eventId, 'home']);
       console.log(row);
     }
 
@@ -91,37 +104,37 @@ export interface Element {
   venue: string;
   description: string;
 }
-
-const ELEMENT_DATA: Element[] = [
-  {
-      id: 1,
-      name: 'Event 1',
-      date: '7/15/2018',
-      venue: 'MBS',
-      description: 'This is a description for the event'
-  },{
-      id: 2,
-      name: "Event 2",
-      date: "7/15/2018",
-      venue: "MBS",
-      description: "This is a description for the event"
-  },{
-      id: 3,
-      name: "Event 3",
-      date: "7/15/2018",
-      venue: "MBS",
-      description: "This is a description for the event"
-  },{
-      id: 4,
-      name: "Event 4",
-      date: "7/15/2018",
-      venue: "MBS",
-      description: "This is a description for the event"
-  },{
-      id: 5,
-      name: "Event 5",
-      date: "7/15/2018",
-      venue: "MBS",
-      description: "This is a description for the event"
-  }
-];
+//
+// const ELEMENT_DATA: Element[] = [
+//   {
+//       id: 1,
+//       name: 'Event 1',
+//       date: '7/15/2018',
+//       venue: 'MBS',
+//       description: 'This is a description for the event'
+//   },{
+//       id: 2,
+//       name: "Event 2",
+//       date: "7/15/2018",
+//       venue: "MBS",
+//       description: "This is a description for the event"
+//   },{
+//       id: 3,
+//       name: "Event 3",
+//       date: "7/15/2018",
+//       venue: "MBS",
+//       description: "This is a description for the event"
+//   },{
+//       id: 4,
+//       name: "Event 4",
+//       date: "7/15/2018",
+//       venue: "MBS",
+//       description: "This is a description for the event"
+//   },{
+//       id: 5,
+//       name: "Event 5",
+//       date: "7/15/2018",
+//       venue: "MBS",
+//       description: "This is a description for the event"
+//   }
+// ];

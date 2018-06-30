@@ -1,7 +1,7 @@
 <div class="login-page">
   <div class="card">
     <mat-icon class="icon">person</mat-icon>
-    <form (submit) = "login()">
+    <form>
     <mat-form-field class="email-field" appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput placeholder="Your Email"
@@ -31,7 +31,7 @@
     <div class="hint">
       <div class="left" [routerLink]="['/register']">Sign up?</div>
     </div>
-    <button mat-stroked-button class="button" type="submit" (click)="login()">Enter</button>
+    <button mat-stroked-button class="button" (click)="login()">Enter</button>
     </form>
   </div>
 

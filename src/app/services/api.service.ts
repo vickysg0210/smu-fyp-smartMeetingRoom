@@ -6,17 +6,34 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private login = function(email, password){
+  private login = function(email, password, success: any, error: any){
     this.http.post("http://localhost:9999/smart_meeting_room/service/authentication", {
       email: email,
       password: password
-    }).subscribe(
+    })
+    .subscribe(
           data => {
-              return data;
+            console.log(data);
+              success(data);
           },
           err => {
-              return err;
+            console.log(err);
+              error(err);
           });
+  }
+
+  private getEvents = function(success: any, error: any){
+    this.http.get("http://localhost:9999/smart_meeting_room/service/events/")
+              .subscribe(
+                data=>{
+                  console.log(data);
+                  success(data);
+                },
+                err =>{
+                  console.log(err);
+                  error(err);
+                }
+              )
   }
 
   private register = function(email, password, accountName, phone){
@@ -27,15 +44,13 @@ export class ApiService {
       phone :phone
     }).subscribe(
       data => {
-          console.log(data);
+          // console.log(data);
           return data;
       },
       err => {
-          console.log(err);
+          // console.log(err);
           return err;
       });
   }
-
-  //header: put auth secret in header
 
 }

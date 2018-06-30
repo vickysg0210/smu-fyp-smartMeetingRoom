@@ -60,7 +60,8 @@ export class RegisterPageComponent implements OnInit {
       }else {
         this.showSuccessMessage("Account created successfully");
         console.log("before api");
-        this.apiService.register(this.account.email,this.account.password,this.account.username,"phone");
+        this.apiService
+        .register(this.account.email,this.account.password,this.account.username,"phone");
         console.log("after api");
         this.router.navigate(['/login']);
       }

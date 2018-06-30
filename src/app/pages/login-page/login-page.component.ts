@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DaoService } from '../../services/dao.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login-page',
@@ -33,7 +34,9 @@ export class LoginPageComponent implements OnInit {
     };
     /* End of Validators */
     constructor(public router: Router,
-                private toastr: ToastrService) {
+                private toastr: ToastrService,
+                private apiService : ApiService,
+                private daoService: DaoService) {
         this.account = {
         email: "",
         password: ""
@@ -43,14 +46,15 @@ export class LoginPageComponent implements OnInit {
       // this.checkLogin();
     }
     public login = function(){
-      if(this.account.email == "admin@email.com" && this.account.password == "pwd1pwd1"){
-        // this.daoService.storeAccount(this.account);
-        // this.daoService.setSecret(this.secret);
-        this.router.navigate(['/event-mgmt']);
-      }
-      else {
-        this.showErrorMessage();
-      }
+      this.apiService.login(this.account.email, this.account.password, (data)=>{
+        this.daoService.storeAccount(data.account);
+        console.log(data);
+        this.router.navigate(['/event-mgmt'])
+      }, (err)=>{
+        console.log(err);
+        this.showErrorMessage()
+      })
+
     }
 
     public showErrorMessage = function(){
@@ -68,4 +72,6 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['event-mgmt']);
       }
     };
+
+
 }

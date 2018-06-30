@@ -6,18 +6,18 @@
       <h4>Add New Event</h4>
     </mat-card-header>
     <mat-card-content class="content">
-      <form class="form" action="index.html" method="post">
+      <form class="form">
 
         <mat-form-field class="">
           <mat-label>Name</mat-label>
           <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
         </mat-form-field>
 
-        <br>
+        <!-- <br>
         <mat-form-field class="">
           <mat-label>id</mat-label>
           <input matInput class="" type="number" name="" value="" placeholder="{{sth}}">
-        </mat-form-field>
+        </mat-form-field> -->
 
         <br>
         <mat-form-field class="">
@@ -43,7 +43,7 @@
           <input matInput class="" type="text" name="" value="" placeholder="{{sth}}">
         </mat-form-field>
 
-        <br>
+        <!-- <br>
         Avatar <br>
         <label class="upload-button">
           <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
@@ -52,11 +52,12 @@
 
         <button type="button" class="start-upload-btn" (click)="startUpload()">
           Start Upload
-        </button>
+        </button> -->
 
         <!-- submit button -->
         <br><br><br>
         <button mat-raised-button  type="button" name="button" color="primary">Submit</button>
+        <button mat-raised-button>Back</button>
 
       </form>
     </mat-card-content>
