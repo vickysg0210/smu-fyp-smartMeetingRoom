@@ -63,7 +63,7 @@
       </mat-form-field>
     </div>
     <div *ngIf="mapExistence">
-      <app-d3-map-container [map]="map" [customized]="true"></app-d3-map-container>
+      <app-d3-map-container [map]="map" [customized]="true" [windowWidth]="windowWidth" [windowHeight]="windowHeight"></app-d3-map-container>
     </div>
     <button mat-button (click)="SaveMap()">Save The Map</button>
   </mat-sidenav-content>

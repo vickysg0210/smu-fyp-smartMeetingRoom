@@ -78,7 +78,6 @@ export class GoLivePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(document.getElementById("map"));
     this.getContainerMatrix();
   }
 

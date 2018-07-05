@@ -1,5 +1,9 @@
 import { Component, EventEmitter } from '@angular/core';
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-attendee-profile',
@@ -7,69 +11,62 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions }
   styleUrls: ['./attendee-profile.component.scss']
 })
 export class AttendeeProfileComponent {
-  options: UploaderOptions;
-  formData: FormData;
-  files: UploadFile[];
-  uploadInput: EventEmitter<UploadInput>;
-  humanizeBytes: Function;
-  dragOver: boolean;
-  pageName: string;
+  public participant: {
+      participantName: string,
+      position: string,
+      organization: string,
+      uuid:string,
+      major: string,
+      minor: string,
+      remark: string
+    }
+  public eventId: number;
 
-  constructor() {
-    this.files = []; // local uploading files array
-    this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
-    this.humanizeBytes = humanizeBytes;
-    this.pageName = 'attendee-profile';
-  }
-
-  onUploadOutput(output: UploadOutput): void {
-    if (output.type === 'allAddedToQueue') { // when all files added in queue
-      // uncomment this if you want to auto upload files when added
-      // const event: UploadInput = {
-      //   type: 'uploadAll',
-      //   url: '/upload',
-      //   method: 'POST',
-      //   data: { foo: 'bar' }
-      // };
-      // this.uploadInput.emit(event);
-    } else if (output.type === 'addedToQueue'  && typeof output.file !== 'undefined') { // add file to array when added
-      this.files.push(output.file);
-    } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
-      // update current data in files array for uploading file
-      const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
-      this.files[index] = output.file;
-    } else if (output.type === 'removed') {
-      // remove file from array when removed
-      this.files = this.files.filter((file: UploadFile) => file !== output.file);
-    } else if (output.type === 'dragOver') {
-      this.dragOver = true;
-    } else if (output.type === 'dragOut') {
-      this.dragOver = false;
-    } else if (output.type === 'drop') {
-      this.dragOver = false;
+  constructor(private route: ActivatedRoute,private router: Router,private apiService: ApiService,private toastr: ToastrService) {
+    this.route.params.subscribe((param)=>{
+        this.eventId = Number(param.id);
+    });
+    this.participant = {
+      participantName: "",
+      position: "",
+      organization: "",
+      uuid:"",
+      major: "",
+      minor:"",
+      remark: ""
     }
   }
 
-  startUpload(): void {
-    const event: UploadInput = {
-      type: 'uploadAll',
-      url: 'http://ngx-uploader.com/upload',
-      method: 'POST',
-      data: { foo: 'bar' }
-    };
-
-    this.uploadInput.emit(event);
+  public createNewAttendee = function(){
+    this.apiService.createParticipant(this.participant.participantName,
+      this.eventId,
+      this.participant.position,
+      this.participant.organization,
+      this.participant.uuid,
+      this.participant.major,
+      this.participant.minor,
+      this.participant.remark,
+      (data)=>{
+      console.log(data);
+      this.router.navigate(['/',this.eventId,"attendees"]);
+      this.showSuccessMessage("Created a new attendee");
+    }, (err)=>{
+      this.showErrorMessage()
+    })
   }
 
-  cancelUpload(id: string): void {
-    this.uploadInput.emit({ type: 'cancel', id: id });
+  public showSuccessMessage = function(text : string){
+    this.toastr.success(text, 'Success!',{
+      timeOut: 4000,
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    })
   }
-
-  removeFile(id: string): void {
-    this.uploadInput.emit({ type: 'remove', id: id });
-  }
-
-  removeAllFiles(): void {
-    this.uploadInput.emit({ type: 'removeAll' });
+  public showErrorMessage = function(){
+    this.toastr.warning('There is something wrong.', 'Oops!',{
+      timeOut: 3000,
+      progressBar: true,
+      positionClass: 'toast-bottom-center'
+    });
   }
 }

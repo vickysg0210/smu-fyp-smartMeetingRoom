@@ -57,7 +57,6 @@ import { EventMgmtPageComponent } from './pages/event-mgmt-page/event-mgmt-page.
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
-import { EventPageComponent } from './pages/event-page/event-page.component';
 import { ServiceInterceptor } from './interceptors/service-interceptor';
 import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
@@ -84,10 +83,6 @@ const appRoutes: Routes = [{
   // canActivate: [AuthGuard],
   component: EventMgmtPageComponent
 }, {
-  path: 'event-mgmt/:id',
-  // canActivate: [AuthGuard],
-  component: EventPageComponent
-}, {
   path: 'add-event',
   // canActivate: [AuthGuard],
   component: AddEventPageComponent
@@ -96,7 +91,7 @@ const appRoutes: Routes = [{
   // canActivate: [AuthGuard],
   component: AttendeesComponent
 }, {
-  path: ':id/attendees/attendee-profile',
+  path: ':id/attendee-profile',
   // canActivate: [AuthGuard],
   component: AttendeeProfileComponent
 }, {
@@ -128,7 +123,6 @@ const appRoutes: Routes = [{
     EventMgmtPageComponent,
     RegisterPageComponent,
     AddEventPageComponent,
-    EventPageComponent,
     AttendeesComponent,
     AttendeeProfileComponent,
     HomePageComponent,

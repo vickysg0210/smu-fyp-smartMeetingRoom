@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
       this.route.params.subscribe((param)=>{
-          this.eventId = param.eventId;
+          this.eventId = param.id;
       });
   }
 

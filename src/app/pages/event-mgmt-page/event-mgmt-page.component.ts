@@ -18,7 +18,6 @@ export class EventMgmtPageComponent implements OnInit {
     public dataSource: Array<any>;
 
     displayedColumns = ['name', 'date', 'venue','description'];
-    // dataSource = ELEMENT_DATA;
 
     constructor(private daoService : DaoService, private router: Router,
       private apiService : ApiService) {
@@ -77,10 +76,10 @@ export class EventMgmtPageComponent implements OnInit {
         // this.showErrorMessage()
       })
     }
-    onSelect(e) {
-        console.log("onselect event: ", e, e.path[0].id);
-        this.router.navigate([e.path[0].id, 'home']);
-    }
+    // onSelect(e) {
+    //     console.log("onselect event: ", e, e.path[0].id);
+    //     this.router.navigate([e.path[0].id, 'home']);
+    // }
 
     selectRow(row) {
       this.router.navigate([row.eventId, 'home']);
@@ -104,37 +103,3 @@ export interface Element {
   venue: string;
   description: string;
 }
-//
-// const ELEMENT_DATA: Element[] = [
-//   {
-//       id: 1,
-//       name: 'Event 1',
-//       date: '7/15/2018',
-//       venue: 'MBS',
-//       description: 'This is a description for the event'
-//   },{
-//       id: 2,
-//       name: "Event 2",
-//       date: "7/15/2018",
-//       venue: "MBS",
-//       description: "This is a description for the event"
-//   },{
-//       id: 3,
-//       name: "Event 3",
-//       date: "7/15/2018",
-//       venue: "MBS",
-//       description: "This is a description for the event"
-//   },{
-//       id: 4,
-//       name: "Event 4",
-//       date: "7/15/2018",
-//       venue: "MBS",
-//       description: "This is a description for the event"
-//   },{
-//       id: 5,
-//       name: "Event 5",
-//       date: "7/15/2018",
-//       venue: "MBS",
-//       description: "This is a description for the event"
-//   }
-// ];
