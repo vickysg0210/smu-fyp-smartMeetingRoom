@@ -38,6 +38,28 @@ export class ApiService {
               )
   }
 
+  private getMapByEventId = function(eventId: number,success: any,error: any){
+    this.http.get(this.domain+"maps/"+eventId).subscribe(
+      data=>{
+        success(data);
+      },
+      err =>{
+        error(err);
+      }
+    )
+  }
+
+  private getTablesByMapId = function(mapId:number,success: any, error: any){
+    this.http.get(this.domain+"readers/"+mapId).subscribe(
+      data=>{
+        success(data);
+      },
+      err =>{
+        error(err);
+      }
+    )
+  }
+
   private register = function(email, password, accountName, phone){
     this.http.post(this.domain+ "accounts", {
       email: email,
@@ -46,13 +68,40 @@ export class ApiService {
       phone :phone
     }).subscribe(
       data => {
-          // console.log(data);
           return data;
       },
       err => {
-          // console.log(err);
           return err;
       });
+  }
+
+  private createTable = function(mapId,mac,tableX,tableY,success: any,error: any){
+    this.http.post(this.domain+"readers",{
+      mapId: mapId,
+      mac: mac,
+      tableX: tableX,
+      tableY: tableY
+    }).subscribe(data=>{success(data);});
+  }
+
+  private updateTable = function(tableId,mac,tableX,tableY,success:any,error:any){
+    this.http.put(this.domain+"readers/"+tableId,{
+      mac: mac,
+      tableX: tableX,
+      tableY: tableY
+    }).subscribe(
+      data=>{
+        success(data);
+      }
+    );
+  }
+
+  private updateMap = function(mapId,width,height,scale,success: any,error: any){
+    this.http.put(this.domain+"maps/"+mapId, {
+      width: width,
+      height: height,
+      scale: scale
+    }).subscribe(data=>{success(data);},err=>{error(err);});
   }
 
   private getAttendees = function(success: any, error: any){
@@ -76,6 +125,11 @@ export class ApiService {
             },err =>{
               error(err);
             })
+  }
+
+  private deleteTable = function(tableId,success: any,error: any){
+    this.http.delete(this.domain+"readers/"+tableId)
+    .subscribe(data=>{success(data);},err=>{error(err)};)
   }
 
   private createParticipant = function(participantName,eventId,position,organization,uuid,major,minor,remark,

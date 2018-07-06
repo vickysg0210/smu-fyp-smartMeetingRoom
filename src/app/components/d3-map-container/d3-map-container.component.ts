@@ -1,7 +1,10 @@
 import { Component, OnInit, Input,
 AfterContentInit,ViewChild,
-ElementRef} from '@angular/core';
+ElementRef,
+OnChanges, SimpleChanges} from '@angular/core';
 import * as d3 from "d3";
+import { ApiService } from '../../services/api.service';
+
 
 @Component({
   selector: 'app-d3-map-container',
@@ -11,114 +14,50 @@ import * as d3 from "d3";
 export class D3MapContainerComponent implements OnInit {
 
   @Input() map: any;
-  public tables: Array<any>;
+  @Input() tables: Array<any>;
   public containerWidth : number;
   public containerHeight: number;
   public x: any;
   public y: any;
   @Input() customized: boolean;
-  @Input() participants: Array<any>;
+  // public participants: Array<any>;
   @Input() windowWidth: number;
   @Input() windowHeight: number;
 
-  public
-  constructor() {
-    this.tables = [{
-        radius: 0.8,
-        tableX: 1.5,
-        tableY: 3,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 1.5,
-        tableY: 4.5,
-        shape: "circle"
-      },{
-        radius: 0.8,
-        tableX: 1.5,
-        tableY: 6,
-        shape: "circle"
-      },{
-        radius: 0.8,
-        tableX: 3,
-        tableY: 1.5,
-        shape: "circle"
-      },{
-        radius: 0.8,
-        tableX: 3,
-        tableY: 3,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 3,
-        tableY: 4.5,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 3,
-        tableY: 6,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 4.5,
-        tableY: 1.5,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 4.5,
-        tableY: 3,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 4.5,
-        tableY: 4.5,
-        shape: "circle"
-      },
-      {
-        radius: 0.8,
-        tableX: 4.5,
-        tableY: 6,
-        shape: "circle"
-      }
-    ];
+  constructor(private apiService : ApiService) {
+    // this.containerWidth = this.windowWidth/5*3;
+    // this.containerHeight = this.windowHeight;
+    // console.log(this.map);
+    // this.x = d3.scaleLinear().range([0,this.map.width*40]);
+    // this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
 
-  ngOnInit() {
-    this.getMapContainerMatrix();
-    // console.log(this.windowWidth);
-  }
-
-  public getMapContainerMatrix = function(){
-    // let windowWidth = window.innerWidth;
-    // let windowHeight = window.innerHeight;
-
+  ngOnChanges(){
     this.containerWidth = this.windowWidth/5*3;
     this.containerHeight = this.windowHeight;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
 
-  public addTable = function(){
-    this.tables.push({
-      radius: 0,
-      tableX: 0,
-      tableY: 0,
-      shape: "circle"
-    })
+  ngOnInit() {
+    this.getMapContainerMatrix();
+    this.loadParticipants();
+    // console.log(this.windowWidth);
   }
 
-  public removeTable = function(index: number){
-    console.log(index);
-    this.tables.splice(index,1);
-    console.log(this.tables);
-    this.drawTableOnMap();
+
+
+  public getMapContainerMatrix = function(){
+    this.containerWidth = this.windowWidth/5*3;
+    this.containerHeight = this.windowHeight;
+    this.x = d3.scaleLinear().range([0,this.map.width*40]);
+    this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
+
+  public loadParticipants = function(){
+    // this.apiService.getTrackings()
+  }
+
   ngAfterContentInit(){
     let margin = {top: 20, right: 20, bottom: 30, left: 50};
     let widthRatio = this.map.width / this.map.scale;

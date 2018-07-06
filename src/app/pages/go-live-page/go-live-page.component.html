@@ -20,7 +20,9 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="3" [rowspan]="4">
-    <app-d3-map-container [map]="map" [customized]="false" [participants]="participants" [windowWidth]="windowWidth" [windowHeight]="windowHeight"></app-d3-map-container>
+    <div *ngIf="map && tables">
+      <app-d3-map-container [map]="map" [tables]="tables" [windowWidth]="windowWidth" [windowHeight]="windowHeight" ></app-d3-map-container>
+    </div>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="3" class="attendance-list">
     <mat-list>
