@@ -153,7 +153,7 @@ export class ApiService {
 
   private getTrackings = function(trackingTime,success :any, error: any){
     this.http.get(this.domain+"trackings/"+trackingTime).subscribe(data=>{
-      console.log(data);
+      console.log("####",data);
       success(data);
     },err=>{
       error(err);

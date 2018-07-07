@@ -16,9 +16,9 @@
               <!-- <img src="{{present.participant.remark || safeHtml}} " width="40" height="40" class="participant-image"/> -->
               <!-- <h4 mat-line>{{note.name}}</h4>
               <p mat-line> {{note.updated | date}} </p> -->
-              <div class="participant-image" [style.backgroundImage]="{{present.participant.remark | safeHtml}}" >
+              <div class="participant-image" [style.backgroundImage]="present.participant?.remark | safeHtml" >
               </div>
-              <h2>{{present.participantName}}</h2>
+              <h2>{{present.participant.participantName}}</h2>
             </div>
           </mat-list-item>
           <mat-list-item *ngFor = "let absent of absentParticipants">
@@ -26,9 +26,9 @@
 
             <div class="overlay-absent">
               <!-- <img src="{{absent.participant.remark || safeHtml}}" width="40" height="40" class="participant-image"/> -->
-              <div class="participant-image" [style.backgroundImage]="{{absent.participant.remark | safeHtml}}">
+              <div class="participant-image" [style.backgroundImage]="absent.participant?.remark | safeHtml">
               </div>
-              <h2>{{absent.participantName}}</h2>
+              <h2>{{absent.participant.participantName}}</h2>
             </div>
           </mat-list-item>
         </mat-list>
@@ -40,7 +40,7 @@
           Number of Participants Present
         </div>
         <circle-progress
-          [title]="participants.length"
+          [title]=""
           [percent]="participants.length / (participants.length+absentParticipants.length)*100"
           [radius]="80"
           [outerStrokeWidth]="16"
@@ -49,7 +49,7 @@
           [innerStrokeColor]="'#C7E596'"
           [animation]="true"
           [animationDuration]="300"
-          [subtitle]="'Present'"
+          [subtitle]="'Present Percentage'"
           [showUnits]="false"
         ></circle-progress>
       </div>
