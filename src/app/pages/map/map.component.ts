@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import * as d3 from "d3";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';

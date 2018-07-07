@@ -48,6 +48,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
+
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -67,6 +68,7 @@ import { SpeakerComponent } from './pages/speaker/speaker.component';
 import { SpeakerFullComponent } from './pages/speaker-full/speaker-full.component';
 import { D3MapContainerComponent } from './components/d3-map-container/d3-map-container.component';
 import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 const appRoutes: Routes = [{
   path: '',
@@ -131,7 +133,8 @@ const appRoutes: Routes = [{
     SpeakerComponent,
     SpeakerFullComponent,
     D3MapContainerComponent,
-    GoLivePageComponent
+    GoLivePageComponent,
+    SafeHtmlPipe
   ],
   imports: [
     FormsModule,

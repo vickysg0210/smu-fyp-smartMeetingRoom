@@ -4,6 +4,9 @@ ElementRef,
 OnChanges, SimpleChanges} from '@angular/core';
 import * as d3 from "d3";
 import { ApiService } from '../../services/api.service';
+import { Tracking } from'../../interfaces/tracking';
+import { Participant } from'../../interfaces/participant';
+
 
 
 @Component({
@@ -14,22 +17,18 @@ import { ApiService } from '../../services/api.service';
 export class D3MapContainerComponent implements OnInit {
 
   @Input() map: any;
-  @Input() tables: Array<any>;
+  // @Input() tables: Array<any>;
   public containerWidth : number;
   public containerHeight: number;
   public x: any;
   public y: any;
   @Input() customized: boolean;
+  @Input() participants: Array<Tracking>;
   // public participants: Array<any>;
   @Input() windowWidth: number;
   @Input() windowHeight: number;
 
   constructor(private apiService : ApiService) {
-    // this.containerWidth = this.windowWidth/5*3;
-    // this.containerHeight = this.windowHeight;
-    // console.log(this.map);
-    // this.x = d3.scaleLinear().range([0,this.map.width*40]);
-    // this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
 
   ngOnChanges(){
@@ -37,28 +36,50 @@ export class D3MapContainerComponent implements OnInit {
     this.containerHeight = this.windowHeight;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
+    if(this.participants.length != 0){
+      let div = d3.select('.map-container')
+      div.selectAll("*").remove();
+      this.ngAfterContentInit();
+      // this.drawParticipantsOnMap();
+    }
   }
 
   ngOnInit() {
     this.getMapContainerMatrix();
-    this.loadParticipants();
-    // console.log(this.windowWidth);
+
   }
 
 
 
   public getMapContainerMatrix = function(){
-    this.containerWidth = this.windowWidth/5*3;
-    this.containerHeight = this.windowHeight;
+    this.containerWidth = this.windowWidth/5*4;
+    this.containerHeight = this.windowHeight/5*4;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
 
-  public loadParticipants = function(){
-    // this.apiService.getTrackings()
-  }
+  // public loadParticipants = function(){
+  //   this.apiService.getTrackings("2018-07-03T22:38:00+08:00",(data)=>{
+  //     this.trackings = data;
+  //     this.processTrackings();
+  //   },(err)=>{
+  //     console.log("failed to load participants");
+  //   });
+  // }
+  //
+  // public processTrackings = function(){
+  //   for(let tracking in trackings){
+  //     if(tracking.coordinateX != -100 || tracking.coordinateY == -100){
+  //       this.absentParticipants.push(tracking.participant);
+  //     }else{
+  //       this.participants.push(tracking);
+  //     }
+  //   }
+  // }
 
   ngAfterContentInit(){
+    console.log(this.map);
+    console.log(this.participants);
     let margin = {top: 20, right: 20, bottom: 30, left: 50};
     let widthRatio = this.map.width / this.map.scale;
     let heightRatio = this.map.height / this.map.scale;
@@ -103,7 +124,8 @@ export class D3MapContainerComponent implements OnInit {
                   attr("stroke-dasharray", "2");
 
     //table
-    this.drawTableOnMap();
+    console.log(this.participants);
+    // this.drawTableOnMap();
     this.drawParticipantsOnMap();
   }
 
@@ -134,23 +156,24 @@ export class D3MapContainerComponent implements OnInit {
                 .enter()
                 .append("image")
                 .attr("xlink:href", "https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530338218430table.jpg")
-                .attr("x", function(d){return (d.tableX-d.radius/2) *80})
-                .attr("y", function(d){return (heightRatio- d.tableY-d.radius/2)*80})
-                .attr("width", function(d){return d.radius*80})
-                .attr("height",function(d){return d.radius*80})
+                .attr("x", function(d){return (d.tableX-d.radius) *40})
+                .attr("y", function(d){return (heightRatio- d.tableY-d.radius)*40})
+                .attr("width", function(d){return d.radius*40*2})
+                .attr("height",function(d){return d.radius*40*2})
 
       tableContainer.selectAll(".table")
                .data(this.tables)
                .enter()
                .append("text")
-                .attr("x", function(d){return d.tableX*80-5;})
-                .attr("y", function(d){return (heightRatio- d.tableY+d.radius/2)*80})
+                .attr("x", function(d){return d.tableX*40-5;})
+                .attr("y", function(d){return (heightRatio- d.tableY+d.radius)*40})
                 .attr("dy", ".35em")
                 .text(function(d,i) { return i+1; });
   }
 
 
   public drawParticipantsOnMap = function(){
+    console.log("interval");
     let margin = {top: 20, right: 20, bottom: 30, left: 50};
     let imageConfig = 40;
 
@@ -163,18 +186,25 @@ export class D3MapContainerComponent implements OnInit {
     let participantG = d3.select('.map-container svg');
 
     let defs = participantG.append('svg:defs');
-    let participantId = this.participants.forEach(function(d,i){
-      defs.append("svg:pattern")
-          .attr("id","avatar"+i)
-          .attr("width",1000)
-          .attr("height",1000)
-          .attr("patternUnits", "userSpaceOnUse")
-          .append("svg:image")
-          .attr("xlink:href", d.avatar.url)
-          .attr("width", imageConfig)
-          .attr("height", imageConfig)
-          .attr("x", d.coordinateX/mapScale*80-imageConfig/2)
-          .attr("y", (mapHeight- d.coordinateY)/mapScale*80-imageConfig/2);
+    console.log(this.participants);
+    // if(this.participants){
+      let participantId = this.participants.forEach(function(d,i){
+        let participantData : Participant = d.participant;
+        // console.log(participantData);
+        // console.log(participantData.remark);
+        defs.append("svg:pattern")
+            .attr("id","avatar"+i)
+            .attr("width",1000)
+            .attr("height",1000)
+            .attr("patternUnits", "userSpaceOnUse")
+            .append("svg:image")
+            .attr("xlink:href", d.participant.remark)
+            .attr("width", imageConfig)
+            .attr("height", imageConfig)
+            .attr("x", d.coordinateX*40-imageConfig/2)
+            .attr("y", (mapHeight- d.coordinateY)*40-imageConfig/2);
+    // }
+
 
     });
 
@@ -184,13 +214,13 @@ export class D3MapContainerComponent implements OnInit {
       .append("circle")
       .attr("transform", "translate(" +50 + "," +20
        + ")")
-      .attr("cx", function(d){return d.coordinateX/mapScale*80})
-      .attr("cy", function(d){return (mapHeight-d.coordinateY)/mapScale*80})
+      .attr("cx", function(d){return d.coordinateX/mapScale*40})
+      .attr("cy", function(d){return (mapHeight-d.coordinateY)/mapScale*40})
       .attr("r", imageConfig/2)
       .style("fill", "#fff")
       .style("fill", function(d,i){return "url(#avatar" + i + ")";})
       .on("click", function(d){
-        d.coordinateX = 60;
+        d.participant.speaking = 1;
         console.log(d);
       })
   }

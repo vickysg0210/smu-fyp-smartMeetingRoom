@@ -13,6 +13,10 @@
 
 .attendance-list{
   align-items: initial;
+  .attendance-list-container{
+    overflow: auto;
+    flex-grow: 1;
+  }
   .overlay-present{
     display: flex;
     align-items: center;

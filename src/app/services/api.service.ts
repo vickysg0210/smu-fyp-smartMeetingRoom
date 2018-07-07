@@ -129,7 +129,7 @@ export class ApiService {
 
   private deleteTable = function(tableId,success: any,error: any){
     this.http.delete(this.domain+"readers/"+tableId)
-    .subscribe(data=>{success(data);},err=>{error(err)};)
+    .subscribe(data=>{success(data);},err=>{error(err);})
   }
 
   private createParticipant = function(participantName,eventId,position,organization,uuid,major,minor,remark,
@@ -147,6 +147,15 @@ export class ApiService {
       console.log(data);
       success(data);
     },err =>{
+      error(err);
+    })
+  }
+
+  private getTrackings = function(trackingTime,success :any, error: any){
+    this.http.get(this.domain+"trackings/"+trackingTime).subscribe(data=>{
+      console.log(data);
+      success(data);
+    },err=>{
       error(err);
     })
   }
