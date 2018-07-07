@@ -7,17 +7,27 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="4" class="attendance-list">
-      <div *ngIf="participants !=0 && absentParticipants !=0">
+      <div *ngIf="participants.length !=0 && absentParticipants.length !=0">
         <mat-list class="attendance-list-container">
           <mat-list-item *ngFor="let present of participants">
+            <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
+
             <div class="overlay-present">
-              <img src="{{present.participant.remark}} " width="40" height="40" class="participant-image"/>
+              <!-- <img src="{{present.participant.remark || safeHtml}} " width="40" height="40" class="participant-image"/> -->
+              <!-- <h4 mat-line>{{note.name}}</h4>
+              <p mat-line> {{note.updated | date}} </p> -->
+              <div class="participant-image" [style.backgroundImage]="{{present.participant.remark | safeHtml}}" >
+              </div>
               <h2>{{present.participantName}}</h2>
             </div>
           </mat-list-item>
           <mat-list-item *ngFor = "let absent of absentParticipants">
+            <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
+
             <div class="overlay-absent">
-              <img src="{{absent.participant.remark}}" width="40" height="40" class="participant-image"/>
+              <!-- <img src="{{absent.participant.remark || safeHtml}}" width="40" height="40" class="participant-image"/> -->
+              <div class="participant-image" [style.backgroundImage]="{{absent.participant.remark | safeHtml}}">
+              </div>
               <h2>{{absent.participantName}}</h2>
             </div>
           </mat-list-item>
@@ -25,7 +35,7 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1" >
-      <div class="total-present-chart" *ngIf="participants">
+      <div class="total-present-chart" *ngIf="participants && absentParticipants">
         <div>
           Number of Participants Present
         </div>

@@ -32,7 +32,7 @@ export class D3MapContainerComponent implements OnInit {
   }
 
   ngOnChanges(){
-    this.containerWidth = this.windowWidth/5*3;
+    this.containerWidth = this.windowWidth;
     this.containerHeight = this.windowHeight;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
@@ -53,7 +53,7 @@ export class D3MapContainerComponent implements OnInit {
 
   public getMapContainerMatrix = function(){
     this.containerWidth = this.windowWidth/5*4;
-    this.containerHeight = this.windowHeight/5*4;
+    this.containerHeight = this.windowHeight/4*3;
     this.x = d3.scaleLinear().range([0,this.map.width*40]);
     this.y = d3.scaleLinear().range([this.map.height*40,0]);
   }
@@ -80,17 +80,17 @@ export class D3MapContainerComponent implements OnInit {
   ngAfterContentInit(){
     console.log(this.map);
     console.log(this.participants);
-    let margin = {top: 20, right: 20, bottom: 30, left: 50};
+    let margin = {top: 100, right: 20, bottom: 30, left: 100};
     let widthRatio = this.map.width / this.map.scale;
     let heightRatio = this.map.height / this.map.scale;
     let container = d3.select('.map-container')
       .append('svg')
-      .attr('width', this.containerWidth)
-      .attr('height', this.containerHeight)
-      .append("g")
-      .attr("transform",
-      "translate("+margin.left +
-      ","+margin.top+")");
+      .attr('width', this.windowWidth/5*2)
+      .attr('height', this.windowHeight/4*3)
+      .append("g");
+      // .attr("transform",
+      // "translate("+margin.left +
+      // ","+margin.top+")");
 
     container.append("g")
       .attr("class","xgrid")
@@ -137,45 +137,45 @@ export class D3MapContainerComponent implements OnInit {
     return d3.axisLeft(this.y).ticks(this.map.height/this.map.scale);
   }
 
-  public drawTableOnMap = function(){
-    let margin = {top: 20, right: 20, bottom: 30, left: 50};
-
-      let widthRatio = this.map.width / this.map.scale;
-      let heightRatio = this.map.height / this.map.scale;
-       let tableG = d3.select('.map-container svg')
-       let tableContainer = tableG.append("g")
-                                .attr("class","tables")
-                                // .attr('width', this.containerWidth + margin.right + margin.left)
-                                // .attr('height', this.containerHeight + margin.top +margin.bottom)
-                                .attr("transform",
-                                "translate("+margin.left +
-                                ","+margin.top+")");
-
-       tableContainer.selectAll(".table")
-                .data(this.tables)
-                .enter()
-                .append("image")
-                .attr("xlink:href", "https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530338218430table.jpg")
-                .attr("x", function(d){return (d.tableX-d.radius) *40})
-                .attr("y", function(d){return (heightRatio- d.tableY-d.radius)*40})
-                .attr("width", function(d){return d.radius*40*2})
-                .attr("height",function(d){return d.radius*40*2})
-
-      tableContainer.selectAll(".table")
-               .data(this.tables)
-               .enter()
-               .append("text")
-                .attr("x", function(d){return d.tableX*40-5;})
-                .attr("y", function(d){return (heightRatio- d.tableY+d.radius)*40})
-                .attr("dy", ".35em")
-                .text(function(d,i) { return i+1; });
-  }
+  // public drawTableOnMap = function(){
+  //   let margin = {top: 20, right: 20, bottom: 30, left: 50};
+  //
+  //     let widthRatio = this.map.width / this.map.scale;
+  //     let heightRatio = this.map.height / this.map.scale;
+  //      let tableG = d3.select('.map-container svg')
+  //      let tableContainer = tableG.append("g")
+  //                               .attr("class","tables")
+  //                               // .attr('width', this.containerWidth + margin.right + margin.left)
+  //                               // .attr('height', this.containerHeight + margin.top +margin.bottom)
+  //                               .attr("transform",
+  //                               "translate("+margin.left +
+  //                               ","+margin.top+")");
+  //
+  //      tableContainer.selectAll(".table")
+  //               .data(this.tables)
+  //               .enter()
+  //               .append("image")
+  //               .attr("xlink:href", "https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530338218430table.jpg")
+  //               .attr("x", function(d){return (d.tableX-d.radius) *40})
+  //               .attr("y", function(d){return (heightRatio- d.tableY-d.radius)*40})
+  //               .attr("width", function(d){return d.radius*40*2})
+  //               .attr("height",function(d){return d.radius*40*2})
+  //
+  //     tableContainer.selectAll(".table")
+  //              .data(this.tables)
+  //              .enter()
+  //              .append("text")
+  //               .attr("x", function(d){return d.tableX*40-5;})
+  //               .attr("y", function(d){return (heightRatio- d.tableY+d.radius)*40})
+  //               .attr("dy", ".35em")
+  //               .text(function(d,i) { return i+1; });
+  // }
 
 
   public drawParticipantsOnMap = function(){
     console.log("interval");
-    let margin = {top: 20, right: 20, bottom: 30, left: 50};
-    let imageConfig = 40;
+    let margin = {top: 100, right: 20, bottom: 30, left: 100};
+    let imageConfig = 30;
 
     let widthRatio = this.map.width / this.map.scale;
     let heightRatio = this.map.height / this.map.scale;
@@ -183,7 +183,11 @@ export class D3MapContainerComponent implements OnInit {
     let mapWidth = this.map.width;
     let mapScale = this.map.scale;
     let imageLength = 40;
-    let participantG = d3.select('.map-container svg');
+    let participantG = d3.select('.map-container svg')
+    .attr("transform",
+    "translate("+margin.left +
+    ","+margin.top+")");
+
 
     let defs = participantG.append('svg:defs');
     console.log(this.participants);

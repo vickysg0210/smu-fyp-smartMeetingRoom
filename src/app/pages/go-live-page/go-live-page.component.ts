@@ -14,7 +14,7 @@ export class GoLivePageComponent implements OnInit {
 
   public map: any;
   public mapId : number;
-  public participants: Array<Tracking>;
+  public participants: Array<any>;
   public absentParticipants: Array<any>
   private eventId: number;
   public presentList: Array<any>;
@@ -40,8 +40,8 @@ export class GoLivePageComponent implements OnInit {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
-    this.windowWidth = window.innerWidth;
-    this.windowHeight = window.innerHeight;
+    this.windowWidth = window.innerWidth/5*4;
+    this.windowHeight = window.innerHeight/4*3;
     // this.absentParticipants = null;
     // this.participants=null;
   }
@@ -53,7 +53,7 @@ export class GoLivePageComponent implements OnInit {
     setInterval(()=> {
        this.loadParticipants();
        console.log(this.participants);
-     },3000);
+     },8000);
     // this.loadParticipants();
   };
     // this.loadParticipants();

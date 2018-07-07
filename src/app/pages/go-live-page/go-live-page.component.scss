@@ -13,9 +13,11 @@
 
 .attendance-list{
   align-items: initial;
+
   .attendance-list-container{
     overflow: auto;
     flex-grow: 1;
+    width: 100px;
   }
   .overlay-present{
     display: flex;
@@ -25,7 +27,13 @@
     background-color: rgba(165,190,0,0.5);
     color: #335367;
     .participant-image{
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
+      background-size: cover;
+    }
+    .participant-icon{
+      color: #4BFF44;
     }
   }
   .overlay-absent{
