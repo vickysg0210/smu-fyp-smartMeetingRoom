@@ -40,17 +40,17 @@
           Number of Participants Present
         </div>
         <circle-progress
-          [title]=""
+          [title]="'Present %'"
           [percent]="participants.length / (participants.length+absentParticipants.length)*100"
-          [radius]="80"
-          [outerStrokeWidth]="16"
-          [innerStrokeWidth]="8"
-          [outerStrokeColor]="'#78C000'"
-          [innerStrokeColor]="'#C7E596'"
+          [radius]="60"
+          [space]="-10"
+          [outerStrokeWidth]="10"
+          [outerStrokeColor]="'#4882c2'"
+          [innerStrokeColor]="'#e7e8ea'"
+          [innerStrokeWidth] = "10"
           [animation]="true"
           [animationDuration]="300"
-          [subtitle]="'Present Percentage'"
-          [showUnits]="false"
+          [clockwise]="false"
         ></circle-progress>
       </div>
     </mat-grid-tile>
