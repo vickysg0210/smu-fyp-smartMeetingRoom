@@ -34,8 +34,8 @@ export class D3MapContainerComponent implements OnInit {
   ngOnChanges(){
     this.containerWidth = this.windowWidth;
     this.containerHeight = this.windowHeight;
-    this.x = d3.scaleLinear().range([0,this.map.width*40]);
-    this.y = d3.scaleLinear().range([this.map.height*40,0]);
+    this.x = d3.scaleLinear().range([0,this.map.width*50]);
+    this.y = d3.scaleLinear().range([this.map.height*50,0]);
     if(this.participants.length != 0){
       let div = d3.select('.map-container')
       div.selectAll("*").remove();
@@ -54,8 +54,8 @@ export class D3MapContainerComponent implements OnInit {
   public getMapContainerMatrix = function(){
     this.containerWidth = this.windowWidth/5*4;
     this.containerHeight = this.windowHeight/4*3;
-    this.x = d3.scaleLinear().range([0,this.map.width*40]);
-    this.y = d3.scaleLinear().range([this.map.height*40,0]);
+    this.x = d3.scaleLinear().range([0,this.map.width*50]);
+    this.y = d3.scaleLinear().range([this.map.height*50,0]);
   }
 
   // public loadParticipants = function(){
@@ -80,33 +80,33 @@ export class D3MapContainerComponent implements OnInit {
   ngAfterContentInit(){
     console.log(this.map);
     console.log(this.participants);
-    let margin = {top: 100, right: 20, bottom: 30, left: 100};
+    let margin = {top: 5, right: 20, bottom: 30, left: 50};
     let widthRatio = this.map.width / this.map.scale;
     let heightRatio = this.map.height / this.map.scale;
     let container = d3.select('.map-container')
       .append('svg')
-      .attr('width', this.windowWidth/5*2)
+      .attr('width', this.windowWidth/5*3)
       .attr('height', this.windowHeight/4*3)
-      .append("g");
-      // .attr("transform",
-      // "translate("+margin.left +
-      // ","+margin.top+")");
+      .append("g")
+      .attr("transform",
+      "translate("+margin.left +
+      ","+margin.top+")");
 
     container.append("g")
       .attr("class","xgrid")
-      .attr("transform", "translate(0," + this.map.height*40 + ")")
+      .attr("transform", "translate(0," + this.map.height*50 + ")")
       .call(this.make_x_gridlines()
-          .tickSize(-this.map.height*40)
+          .tickSize(-this.map.height*50)
           .tickFormat(""));
 
     container.append("g")
       .attr("class", "ygrid")
       .call(this.make_y_gridlines()
-          .tickSize(-this.map.width*40)
+          .tickSize(-this.map.width*50)
           .tickFormat(""));
 
     container.append("g")
-      .attr("transform", "translate(0," + this.map.height*40 + ")")
+      .attr("transform", "translate(0," + this.map.height*50 + ")")
       .call(d3.axisBottom(this.x).tickFormat(function(d){
           return (widthRatio*d).toFixed(1);
         }));
@@ -174,7 +174,7 @@ export class D3MapContainerComponent implements OnInit {
 
   public drawParticipantsOnMap = function(){
     console.log("interval");
-    let margin = {top: 100, right: 20, bottom: 30, left: 100};
+    let margin = {top: 30, right: 20, bottom: 30, left: 100};
     let imageConfig = 30;
 
     let widthRatio = this.map.width / this.map.scale;
@@ -182,7 +182,7 @@ export class D3MapContainerComponent implements OnInit {
     let mapHeight = this.map.height;
     let mapWidth = this.map.width;
     let mapScale = this.map.scale;
-    let imageLength = 40;
+    let imageLength = 50;
     let participantG = d3.select('.map-container svg')
     .attr("transform",
     "translate("+margin.left +
@@ -205,8 +205,8 @@ export class D3MapContainerComponent implements OnInit {
             .attr("xlink:href", d.participant.remark)
             .attr("width", imageConfig)
             .attr("height", imageConfig)
-            .attr("x", d.coordinateX*40-imageConfig/2)
-            .attr("y", (mapHeight- d.coordinateY)*40-imageConfig/2);
+            .attr("x", d.coordinateX*50-imageConfig/2)
+            .attr("y", (mapHeight- d.coordinateY)*50-imageConfig/2);
     // }
 
 
@@ -218,8 +218,8 @@ export class D3MapContainerComponent implements OnInit {
       .append("circle")
       .attr("transform", "translate(" +50 + "," +20
        + ")")
-      .attr("cx", function(d){return d.coordinateX/mapScale*40})
-      .attr("cy", function(d){return (mapHeight-d.coordinateY)/mapScale*40})
+      .attr("cx", function(d){return d.coordinateX/mapScale*50})
+      .attr("cy", function(d){return (mapHeight-d.coordinateY)/mapScale*50})
       .attr("r", imageConfig/2)
       .style("fill", "#fff")
       .style("fill", function(d,i){return "url(#avatar" + i + ")";})

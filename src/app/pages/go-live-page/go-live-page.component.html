@@ -1,57 +1,70 @@
 <!-- <div *ngIf="map && tables && trackings"> -->
-  <mat-grid-list cols="5" rowHeight="fit" class="go-live-container">
+  <mat-grid-list cols="7" rowHeight="fit" class="go-live-container">
 
     <mat-grid-tile [colspan]="4" [rowspan]="3">
       <div *ngIf="map && participants && absentParticipants">
         <app-d3-map-container [map]="map" [participants]="participants" [windowWidth]="windowWidth" [windowHeight]="windowHeight" ></app-d3-map-container>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="4" class="attendance-list">
-      <div *ngIf="participants.length !=0 && absentParticipants.length !=0">
-        <mat-list class="attendance-list-container">
-          <mat-list-item *ngFor="let present of participants">
-            <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
-
-            <div class="overlay-present">
-              <!-- <img src="{{present.participant.remark || safeHtml}} " width="40" height="40" class="participant-image"/> -->
-              <!-- <h4 mat-line>{{note.name}}</h4>
-              <p mat-line> {{note.updated | date}} </p> -->
-              <div class="participant-image" [style.backgroundImage]="present.participant?.remark | safeHtml" >
-              </div>
-              <h2>{{present.participant.participantName}}</h2>
+    <mat-grid-tile [colspan]="3" [rowspan]="4" class="attendance-list">
+      <div *ngIf="participants?.length !=0 && absentParticipants?.length !=0">
+        <!-- <mat-list class="attendance-list-container"> -->
+        <div class="attendance-list-container">
+          <div class="attenance-list-grid">
+          <div *ngFor="let present of participants">
+            <div class="content">
+              <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
+              <div class="overlay-present">
+                <div class="participant-image" [style.backgroundImage]="present.participant?.remark | safeHtml" >
+                </div>
+                <h2 class="participant-font">{{present.participant.participantName}}</h2>
+                </div>
             </div>
-          </mat-list-item>
-          <mat-list-item *ngFor = "let absent of absentParticipants">
-            <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
 
-            <div class="overlay-absent">
-              <!-- <img src="{{absent.participant.remark || safeHtml}}" width="40" height="40" class="participant-image"/> -->
-              <div class="participant-image" [style.backgroundImage]="absent.participant?.remark | safeHtml">
-              </div>
-              <h2>{{absent.participant.participantName}}</h2>
             </div>
-          </mat-list-item>
-        </mat-list>
+          </div>
+
+        </div>
+
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="4" [rowspan]="1" >
       <div class="total-present-chart" *ngIf="participants && absentParticipants">
-        <div>
-          Number of Participants Present
+        <div class="circle-progress-individual">
+          <div class="title">
+            Participants Present %
+          </div>
+          <circle-progress
+            [title]="'Present '"
+            [percent]="participants.length / (participants.length+absentParticipants.length)*100"
+            [radius]="60"
+            [space]="-10"
+            [outerStrokeWidth]="10"
+            [outerStrokeColor]="'#4882c2'"
+            [innerStrokeColor]="'#e7e8ea'"
+            [innerStrokeWidth] = "10"
+            [showSubtitle]="false"
+            [animation]="true"
+            [animationDuration]="300"
+            [clockwise]="false"
+          ></circle-progress>
         </div>
-        <circle-progress
-          [title]="'Present %'"
-          [percent]="participants.length / (participants.length+absentParticipants.length)*100"
-          [radius]="60"
-          [space]="-10"
-          [outerStrokeWidth]="10"
-          [outerStrokeColor]="'#4882c2'"
-          [innerStrokeColor]="'#e7e8ea'"
-          [innerStrokeWidth] = "10"
-          [animation]="true"
-          [animationDuration]="300"
-          [clockwise]="false"
-        ></circle-progress>
+        <div class="circle-progress-individual">
+          <div class="title">
+            Total Tables
+          </div>
+          <circle-progress
+          [title] = "'11'"
+          [percent] = "'100'"
+          [radius]= "60"
+          [outerStrokeWidth]= "10"
+          [innerStrokeWidth]="5"
+          [showBackground]= "false"
+          [showUnits]="false"
+          [subtitle]="'Tables'"
+          ></circle-progress>
+        </div>
+
       </div>
     </mat-grid-tile>
 

@@ -14,41 +14,73 @@
 .attendance-list{
   align-items: initial;
 
+
+
   .attendance-list-container{
-    overflow: auto;
-    flex-grow: 1;
-    width: 100px;
-  }
-  .overlay-present{
-    display: flex;
-    align-items: center;
-    width:100%;
-    height: 100%;
-    // background-color: rgba(165,190,0,0.5);
-    color: #335367;
-    .participant-image{
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      background-size: cover;
+    width: 100%;
+    .attenance-list-grid{
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      width: 39em;
+      .content{
+        display: flex;    padding-top: 16px;
+        .overlay-present{
+          display: flex;
+          width: 7em;
+          .participant-image{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-size: cover;
+          }
+          .participant-font{
+            display: inline-block;
+            font-size: 0.7em;
+            // width: 1em;
+          }
+        }
+
+        .participant-icon{
+          color: #cde010;;
+          margin: auto;
+        }
+      }
+
     }
-    .participant-icon{
-      color: #4BFF44;
-    }
   }
-  .overlay-absent{
-    display: flex;
-    align-items: center;
-    width:100%;
-    height: 100%;
-    // background-color: rgba(85,83,88,0.5);
-    color: #335367;
-    .participant-image{
-      border-radius: 100%;
-    }
-  }
+  // .overlay-present{
+  //   display: inline-block;
+  //   align-items: center;
+  //
+  //   color: #335367;
+
+
+  // .overlay-absent{
+  //   display: flex;
+  //   align-items: center;
+  //   width:100%;
+  //   height: 100%;
+  //   // background-color: rgba(85,83,88,0.5);
+  //   color: #335367;
+  //   .participant-image{
+  //     border-radius: 100%;
+  //   }
+  // }
 }
 
+.total-present-chart{
+      display: flex;
+  .circle-progress-individual{
+    margin: 0 45px 0 45px;
+    display: flex;
+    flex-direction: column;
+    .title{
+      margin: auto;
+    }
+  }
+
+}
 .image-container{
   display: flex;
   .closer-look-image{

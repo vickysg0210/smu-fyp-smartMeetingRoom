@@ -83,11 +83,12 @@ export class GoLivePageComponent implements OnInit {
   // }
 
   public loadParticipants = function(){
-    var now  = new Date();
-    var day = moment(now).format("YYYY-MM-DD");
-    var time = moment(now).subtract(5,'seconds').format("HH:mm:ss");
-    var nowApiString = day+"T"+time+"+08:00";
-    console.log("now"+nowApiString);
+    // var now  = new Date();
+    // var day = moment(now).format("YYYY-MM-DD");
+    // var time = moment(now).subtract(5,'seconds').format("HH:mm:ss");
+    // var nowApiString = day+"T"+time+"+08:00";
+    // console.log("now"+nowApiString);
+    var nowApiString = "2018-07-08T10:00:25+08:00"
     this.apiService.getTrackings(nowApiString,(data)=>{
       this.participants = data.present;
       this.absentParticipants = data.absent;
