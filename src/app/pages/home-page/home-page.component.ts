@@ -10,7 +10,7 @@ export class HomePageComponent implements OnInit {
 
 
   public pageName: String = 'home';
-  private eventId: number;
+  public eventId: number;
 
   constructor(private route: ActivatedRoute) {
       this.route.params.subscribe((param)=>{

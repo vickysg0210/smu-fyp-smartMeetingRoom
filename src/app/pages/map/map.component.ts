@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MapComponent implements OnInit {
   public pageName: string = 'map';
-  private eventId: number;
+  public eventId: number;
   public mapId: number;
 
   public mapName : string;

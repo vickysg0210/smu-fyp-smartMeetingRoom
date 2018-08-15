@@ -1,0 +1,31 @@
+.gender{
+  display: flex;
+  padding-left: 22%;
+  .bizwoman{
+    padding-right: 12%;
+  }
+}
+
+.line{
+  display: flex;
+  margin-left: 17%;
+  .country{
+    flex: 1;
+    text-align: center;
+    margin:auto;
+  }
+  .industry{
+    flex:1;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.level{
+  display: flex;
+}
+
+/deep/ ngx-charts-bar-horizontal.level{
+  margin: auto;
+  margin-top: 40px;
+}

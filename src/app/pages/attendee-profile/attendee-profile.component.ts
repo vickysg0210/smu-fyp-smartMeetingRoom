@@ -21,6 +21,7 @@ export class AttendeeProfileComponent {
       remark: string
     }
   public eventId: number;
+  public pageName:String="";
 
   constructor(private route: ActivatedRoute,private router: Router,private apiService: ApiService,private toastr: ToastrService) {
     this.route.params.subscribe((param)=>{

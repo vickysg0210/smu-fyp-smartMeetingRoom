@@ -19,7 +19,7 @@ export class AttendeesComponent implements OnInit {
   public pageName: string = 'attendees';
   displayedColumns = ['avatar', 'uuid', 'name', 'position', 'organization', 'actions'];
   // dataSource = new MatTableDataSource<PeriodicElement>(attendeeList);
-  private eventId: number;
+  public eventId: number;
   public attendeeList: Array<any>;
 
   constructor(private route: ActivatedRoute,

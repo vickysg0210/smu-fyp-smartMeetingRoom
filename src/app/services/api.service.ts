@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private domain: string;
   constructor(private http: HttpClient) {
-    this.domain="http://localhost:9999/smart_meeting_room/service/"
+    this.domain="http://localhost:8080/smart_meeting_room/service/"
   }
 
   private login = function(email, password, success: any, error: any){
@@ -153,7 +153,24 @@ export class ApiService {
 
   private getTrackings = function(trackingTime,success :any, error: any){
     this.http.get(this.domain+"trackings/"+trackingTime).subscribe(data=>{
-      console.log("####",data);
+      // console.log("####",data);
+      success(data);
+    },err=>{
+      error(err);
+    })
+  }
+
+  private getAnalysisDemogra = function(eventId:number,success :any, error: any){
+    this.http.get(this.domain+"analysis/demo/"+eventId).subscribe(data=>{
+      // console.log("####",data);
+      success(data);
+    },err=>{
+      error(err);
+    })
+  }
+
+  private getAnalysisAtte = function(eventId: number,success: any,error: any){
+    this.http.get(this.domain+"analysis/atte/"+eventId).subscribe(data=>{
       success(data);
     },err=>{
       error(err);

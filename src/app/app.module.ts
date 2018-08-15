@@ -47,7 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -63,12 +63,15 @@ import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { AttendeeProfileComponent } from './pages/attendee-profile/attendee-profile.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MapComponent } from './pages/map/map.component';
+import { MapDialogComponent} from'./components/map-dialog/map-dialog.component';
 import { ChangePwdPageComponent } from './pages/change-pwd-page/change-pwd-page.component';
 import { SpeakerComponent } from './pages/speaker/speaker.component';
 import { SpeakerFullComponent } from './pages/speaker-full/speaker-full.component';
 import { D3MapContainerComponent } from './components/d3-map-container/d3-map-container.component';
 import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
+import { AtteAnalysisComponent } from './components/atte-analysis/atte-analysis.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -114,6 +117,9 @@ const appRoutes: Routes = [{
 }, {
   path: ':id/go-live',
   component: GoLivePageComponent
+},{
+  path:':id/analysis',
+  component: AnalysisPageComponent
 }];
 
 
@@ -134,7 +140,10 @@ const appRoutes: Routes = [{
     SpeakerFullComponent,
     D3MapContainerComponent,
     GoLivePageComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    AnalysisPageComponent,
+    AtteAnalysisComponent,
+    MapDialogComponent
   ],
   imports: [
     FormsModule,
@@ -179,7 +188,8 @@ const appRoutes: Routes = [{
     MatTreeModule,
     NgUploaderModule,
     RouterModule.forRoot(appRoutes, {
-      enableTracing: true
+      enableTracing: true,
+      useHash: true
     }),
     ToastrModule.forRoot(),
     HttpClientModule,
@@ -188,7 +198,8 @@ const appRoutes: Routes = [{
       "outerStrokeWidth": 10,
       "innerStrokeWidth": 5,
       "showBackground": false
-    })
+    }),
+    NgxChartsModule
   ],
   providers: [
     {
