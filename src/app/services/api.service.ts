@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private domain: string;
   constructor(private http: HttpClient) {
-    this.domain="http://localhost:8080/smart_meeting_room/service/"
+    this.domain="http://35.240.227.116:8080/smart_meeting_room/service/"
+    // http://35.240.227.116:8080
   }
 
   private login = function(email, password, success: any, error: any){
@@ -47,6 +48,16 @@ export class ApiService {
         error(err);
       }
     )
+  }
+
+  private createEvent = function(eventName,venue,eventaddress,postalCode,eventDate,success: any,error: any){
+    this.http.post(this.domain+"events",{
+      eventName: eventName,
+      venue: venue,
+      eventaddress: eventaddress,
+      postalCode: postalCode,
+      eventDate: eventDate
+    }).subscribe(data=>{success(data);},err =>{return err;});
   }
 
   private getTablesByMapId = function(mapId:number,success: any, error: any){

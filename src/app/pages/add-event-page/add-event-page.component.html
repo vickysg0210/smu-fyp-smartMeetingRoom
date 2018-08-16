@@ -10,7 +10,7 @@
 
         <mat-form-field class="">
           <mat-label>Name</mat-label>
-          <input matInput class="" type="text" name="" value="">
+          <input matInput name="name" class="" type="text" [(ngModel)] = "event.eventName">
         </mat-form-field>
 
         <!-- <br>
@@ -21,26 +21,26 @@
 
         <br>
         <mat-form-field class="">
-          <mat-label>Date</mat-label>
-          <input matInput class="" type="text" name="" value="" >
+          <mat-label>Date (Format: MM-DD-YYYY)</mat-label>
+          <input matInput name="date" class="" type="text" [(ngModel)] = "event.eventDate" >
         </mat-form-field>
 
         <br>
         <mat-form-field class="">
           <mat-label>Venue</mat-label>
-          <input matInput class="" type="text" name="" value="">
+          <input matInput name="venue" class="" type="text" [(ngModel)] = "event.venue">
         </mat-form-field>
 
         <br>
         <mat-form-field class="">
           <mat-label>Address</mat-label>
-          <input matInput class="" type="text" name="" value="">
+          <input matInput name="address" class="" type="text" [(ngModel)] = "event.eventaddress">
         </mat-form-field>
 
         <br>
         <mat-form-field class="">
           <mat-label>Postal</mat-label>
-          <input matInput class="" type="text" name="" value="">
+          <input matInput name="postal" class="" type="text" [(ngModel)] = "event.postalCode">
         </mat-form-field>
 
         <!-- <br>
@@ -56,8 +56,8 @@
 
         <!-- submit button -->
         <br><br><br>
-        <button mat-raised-button  type="button" name="button" color="primary">Submit</button>
-        <button mat-raised-button>Back</button>
+        <button mat-raised-button  type="button" name="button" color="primary" (click)="addNewEvent()">Submit</button>
+        <button mat-raised-button (click)="backToEventMgmt()">Back</button>
 
       </form>
     </mat-card-content>
