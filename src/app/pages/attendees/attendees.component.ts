@@ -37,7 +37,7 @@ export class AttendeesComponent implements OnInit {
 
 
   public loadAttendees = function(){
-    this.apiService.getAttendees((data)=>{
+    this.apiService.getAttendees(this.eventId,(data)=>{
       console.log(data);
       this.attendeeList= data;
     }, (err)=>{

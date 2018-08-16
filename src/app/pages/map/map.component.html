@@ -25,7 +25,7 @@
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'about']">Profile</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'analysis']">Analysis</button>
     </div>
 
     <div class="bottom-nav">
@@ -43,37 +43,40 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <div>
-      <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
-        <mat-form-field>
-          <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Width" [(ngModel)]="map.width" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-        <mat-form-field>
-        <input matInput placeholder="Scale" [(ngModel)]="map.scale" [ngModelOptions]="{standalone: true}">
+    <!-- <div *ng>
 
-      </mat-form-field>
-    </div>
-      <!-- <app-d3-map-container [map]="map" [tables]="tables" [windowWidth]="windowWidth" [windowHeight]="windowHeight" [participants]="participants"></app-d3-map-container> -->
-    <div class="customization">
-      <div *ngFor="let table of tables ; index as i">
-        Table {{i+1}}
-        <mat-form-field>
-          <input matInput placeholder="Table X" [(ngModel)]="table.tableX">
+    </div> -->
+      <div>
+        <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
+          <mat-form-field>
+            <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Width" [(ngModel)]="map.width" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field>
+          <input matInput placeholder="Scale" [(ngModel)]="map.scale" [ngModelOptions]="{standalone: true}">
+
         </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Table Y" [(ngModel)]="table.tableY">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Table Mac" [(ngModel)]= "table.mac">
-        </mat-form-field>
-        <button mat-icon-button (click)="removeTable(i)">
-          <mat-icon>clear</mat-icon>
-        </button>
       </div>
-    </div>
+        <!-- <app-d3-map-container [map]="map" [tables]="tables" [windowWidth]="windowWidth" [windowHeight]="windowHeight" [participants]="participants"></app-d3-map-container> -->
+      <div class="customization">
+        <div *ngFor="let table of tables ; index as i">
+          Table {{i+1}}
+          <mat-form-field>
+            <input matInput placeholder="Table X" [(ngModel)]="table.tableX">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Table Y" [(ngModel)]="table.tableY">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Table Mac" [(ngModel)]= "table.mac">
+          </mat-form-field>
+          <button mat-icon-button (click)="removeTable(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
     <div>
       <button mat-button (click)="addTable()">Add Table</button>
       <button mat-button (click)="saveMap()">Save The Map</button>

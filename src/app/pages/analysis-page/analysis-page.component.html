@@ -1,93 +1,122 @@
-<button mat-button>Close All</button>
-<mat-accordion [multi]="true">
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Demographics
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <div class="gender">
-      <img src="assets/bizwoman.png" width="80" height="80" class="bizwoman"/>
-      <div class="gender-chart" *ngIf="chartData">
-        <ngx-charts-number-card
-          [view]="genderView"
-          [results]="gender"
-          [valueFormatting]="formatGender"
-          [innerPadding]="100"
-          [animations]="true">
-        </ngx-charts-number-card>
-      </div>
-      <img src="assets/bizman.png" width="80" height="80"/>
+<app-toolbar [pageName] = "pageName"></app-toolbar>
+<br>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Navigation Bar-->
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidediv" >
+      <button mat-raised-button [routerLink]="['/',eventId,'home']">Dashboard</button>
     </div>
-
-    <!-- <div class="country" *ngIf="chartData">
-      <ngx-charts-advanced-pie-chart
-        class="countryChart"
-        [scheme]="countryScheme"
-        [view]="countryView"
-        [results]="country"
-        [gradient]="gradient"
-        [label]="'Participants'">
-      </ngx-charts-advanced-pie-chart>
-    </div> -->
-    <div class="line">
-      <div class="country" *ngIf="chartData">
-        <ngx-charts-tree-map
-          class="level"
-          [scheme]="'aqua'"
-          [view]="countryView"
-          [results]="country"
-        ></ngx-charts-tree-map>
-      </div>
-
-      <div class="industry" *ngIf="chartData">
-        <ngx-charts-tree-map
-          class="industry"
-          [scheme]="'fire'"
-          [view]="industryView"
-          [results]="industry"
-        ></ngx-charts-tree-map>
-      </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
     </div>
-
-    <div class="level" *ngIf="chartData">
-      <ngx-charts-bar-horizontal
-        class="level"
-        [scheme]="'natural'"
-        [view]="levelView"
-        [results]="level"
-        [legend]="true"
-        [legendTitle]="'Legend'"
-        [xAxis]="true"
-        [yAxis]="true"
-        [showXAxisLabel]  = "true"
-        [showYAxisLabel]= "true"
-        [xAxisLabel] = "'Number of participants'"
-        [yAxisLabel]="'Job Level'">
-      </ngx-charts-bar-horizontal>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" color="primary" [routerLink]="['/',eventId,'analysis']">Analysis</button>
+    </div>
+  </mat-sidenav>
 
-  </mat-expansion-panel>
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Attendance
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <app-atte-analysis></app-atte-analysis>
+  <!-- Main Content-->
+  <mat-sidenav-content class="sidenav-content">
+    <button mat-button>Close All</button>
+    <mat-accordion [multi]="true">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Demographics
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-  </mat-expansion-panel>
-  <!-- <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Self aware panel
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
-  </mat-expansion-panel> -->
-</mat-accordion>
+        <div class="gender">
+          <img src="assets/bizwoman.png" width="80" height="80" class="bizwoman"/>
+          <div class="gender-chart" *ngIf="chartData">
+            <ngx-charts-number-card
+              [view]="genderView"
+              [results]="gender"
+              [valueFormatting]="formatGender"
+              [innerPadding]="100"
+              [animations]="true">
+            </ngx-charts-number-card>
+          </div>
+          <img src="assets/bizman.png" width="80" height="80"/>
+        </div>
+
+        <!-- <div class="country" *ngIf="chartData">
+          <ngx-charts-advanced-pie-chart
+            class="countryChart"
+            [scheme]="countryScheme"
+            [view]="countryView"
+            [results]="country"
+            [gradient]="gradient"
+            [label]="'Participants'">
+          </ngx-charts-advanced-pie-chart>
+        </div> -->
+        <div class="line">
+          <div class="country" *ngIf="chartData">
+            <ngx-charts-tree-map
+              class="level"
+              [scheme]="'aqua'"
+              [view]="countryView"
+              [results]="country"
+            ></ngx-charts-tree-map>
+          </div>
+
+          <div class="industry" *ngIf="chartData">
+            <ngx-charts-tree-map
+              class="industry"
+              [scheme]="'fire'"
+              [view]="industryView"
+              [results]="industry"
+            ></ngx-charts-tree-map>
+          </div>
+        </div>
+
+        <div class="level" *ngIf="chartData">
+          <ngx-charts-bar-horizontal
+            class="level"
+            [scheme]="'natural'"
+            [view]="levelView"
+            [results]="level"
+            [legend]="true"
+            [legendTitle]="'Legend'"
+            [xAxis]="true"
+            [yAxis]="true"
+            [showXAxisLabel]  = "true"
+            [showYAxisLabel]= "true"
+            [xAxisLabel] = "'Number of participants'"
+            [yAxisLabel]="'Job Level'">
+          </ngx-charts-bar-horizontal>
+        </div>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Attendance
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-atte-analysis></app-atte-analysis>
+
+      </mat-expansion-panel>
+      <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel> -->
+    </mat-accordion>
+  </mat-sidenav-content>
+</mat-sidenav-container>

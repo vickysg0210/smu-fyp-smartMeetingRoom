@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
   public mapId: number;
 
   public mapName : string;
-  public mapExistence: boolean = false;
+  // public mapExistence: boolean = false;
   public map: any;
   public scaleOptions: Array<number>;
   public windowWidth: number;
@@ -65,7 +65,8 @@ export class MapComponent implements OnInit {
       this.mapName = data.mapName;
       this.loadTable();
     },(err)=>{
-      this.showErrorMessage("There is something wrong to load the map.");
+      console.log(err);
+      // this.showErrorMessage("There is something wrong to load the map.");
     })
   }
 
@@ -73,7 +74,8 @@ export class MapComponent implements OnInit {
     this.apiService.getTablesByMapId(this.mapId,(data)=>{
       this.tables = data;
     }),(err)=>{
-      this.showErrorMessage("Failed to load tables")
+      // this.showErrorMessage("Failed to load tables")
+      this.tables=[];
     }
   }
 

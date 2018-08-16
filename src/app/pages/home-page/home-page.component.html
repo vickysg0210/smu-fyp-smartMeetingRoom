@@ -24,7 +24,7 @@
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'about']">About</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'analysis']">Analysis</button>
     </div>
 
     <div class="bottom-nav">
@@ -42,7 +42,7 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <div class="page">
+    <!-- <div class="page">
       <h3>Number of People Present</h3>
       <div class="chart">
         <circle-progress
@@ -58,12 +58,12 @@
           [subtitle]="'Present'"
           [showUnits]="false"
         ></circle-progress>
-      </div>
+      </div> -->
       <br><br>
       <h3>Event Schedule</h3>
       <div class="schedule-div">
         <img src="assets/schedule.png">
       </div>
-    </div>
+    <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
