@@ -49,12 +49,12 @@ export class GoLivePageComponent implements OnInit {
   ngOnInit() {
     this.getContainerMatrix();
     this.loadMap();
-    // this.loadParticipants();
-    // setInterval(()=> {
-    //    this.loadParticipants();
-    //    console.log(this.participants);
-    //  },8000);
-    // this.loadParticipants();
+    this.loadParticipants();
+    setInterval(()=> {
+       this.loadParticipants();
+       console.log(this.participants);
+     },8000);
+    this.loadParticipants();
   };
     // this.loadParticipants();
 
@@ -66,21 +66,21 @@ export class GoLivePageComponent implements OnInit {
       this.map = data;
       this.mapName = data.mapName;
       // console.log(this.map);
-      // this.loadTable();
+      this.loadTable();
     },(err)=>{
       this.showErrorMessage("failed to load map")
       }
     );
   }
 
-  // public loadTable = function(){
-  //   this.apiService.getTablesByMapId(this.mapId,(data)=>{
-  //     this.tables = data;
-  //     console.log(this.tables)
-  //   },(err)=>{
-  //     this.showErrorMessage("error");
-  //   });
-  // }
+  public loadTable = function(){
+    this.apiService.getTablesByMapId(this.mapId,(data)=>{
+      this.tables = data;
+      console.log(this.tables)
+    },(err)=>{
+      this.showErrorMessage("error");
+    });
+  }
 
   public loadParticipants = function(){
     var now  = new Date();

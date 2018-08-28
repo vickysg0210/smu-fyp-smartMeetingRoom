@@ -64,9 +64,6 @@ export class ApiService {
     this.http.get(this.domain+"readers/"+mapId).subscribe(
       data=>{
         success(data);
-      },
-      err =>{
-        error(err);
       }
     )
   }
