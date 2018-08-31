@@ -16,6 +16,7 @@ export class EventMgmtPageComponent implements OnInit {
     public pageName: string;
     public page: string;
     public dataSource: Array<any>;
+    public accountId: number;
 
     displayedColumns = ['name', 'date', 'venue','description'];
 
@@ -24,6 +25,9 @@ export class EventMgmtPageComponent implements OnInit {
         router.events.subscribe((res)=>{
           this.page = this.router.url;
         })
+        // this.route.params.subscribe((param)=>{
+        //     this.accountId = param.id;
+        // });
         this.items = {
             events: [{
                 'id': 1,
@@ -61,18 +65,19 @@ export class EventMgmtPageComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.loadEvents()
+      this.accountId = this.daoService.getAccount();
+      this.loadEvents(this.accountId);
     }
 
-    public loadEvents = function(){
-      this.apiService.getEvents((data)=>{
+    public loadEvents = function(accountId){
+      this.apiService.getEvents(this.accountId,(data)=>{
         // this.daoService.storeAccount(data.account);
         // console.log(this.daoService.getAccount();
         // this.router.navigate(['/event-mgmt'])
         console.log(data);
         this.dataSource = data;
       }, (err)=>{
-        // console.log(err);
+        console.log(err);
         // this.showErrorMessage()
       })
     }
