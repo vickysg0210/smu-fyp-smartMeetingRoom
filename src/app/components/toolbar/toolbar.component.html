@@ -41,12 +41,12 @@
     <mat-icon class="icon">search</mat-icon>
       <input matInput class="input" placeholder="Search Event Name" [(ngModel)]= "searchEventText"/>
   </div> -->
-  <a class="back-hint" [routerLink] = "['/event-mgmt']" *ngIf="!navbarIconShow">
+  <!-- <a class="back-hint" [routerLink] = "['/event-mgmt']" *ngIf="!navbarIconShow">
     Manage Other Events?
-  </a>
-  <button mat-icon-button (click) = "changeView()" *ngIf = "navbarIconShow">
+  </a> -->
+  <!-- <button mat-icon-button (click) = "changeView()" *ngIf = "navbarIconShow">
     <mat-icon>{{viewIcon}}</mat-icon>
-  </button>
+  </button> -->
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon class="profile-icon">perm_identity</mat-icon>
   </button>
