@@ -39,6 +39,20 @@ export class ApiService {
               )
   }
 
+  private getSchedules = function(eventId: number, success: any, error: any){
+    this.http.get(this.domain+"schedules/"+ eventId)
+              .subscribe(
+                data=>{
+                  console.log(data);
+                  success(data);
+                },
+                err =>{
+                  console.log(err);
+                  error(err);
+                }
+              )
+  }
+
   private getMapByEventId = function(eventId: number,success: any,error: any){
     this.http.get(this.domain+"maps/"+eventId).subscribe(
       data=>{
@@ -50,14 +64,44 @@ export class ApiService {
     )
   }
 
-  private createEvent = function(eventName,venue,eventaddress,postalCode,eventDate,success: any,error: any){
+  private createEvent = function(eventName,venue,eventaddress,city,country,postalCode,eventDate,accountId,success: any,error: any){
     this.http.post(this.domain+"events",{
       eventName: eventName,
       venue: venue,
       eventaddress: eventaddress,
+      city: city,
+      country: country,
       postalCode: postalCode,
-      eventDate: eventDate
+      eventDate: eventDate,
+      accountId: accountId
     }).subscribe(data=>{success(data);},err =>{return err;});
+  }
+
+  private createSchedule = function (eventId:number, startTime, endTime, description, success: any, error: any){
+    this.http.post(this.domain + "schedules/", {
+      eventId: eventId,
+      startTime: startTime,
+      endTime: endTime,
+      description: description
+    }).subscribe(data=>{success(data);},err =>{error(err);});
+  }
+
+  private deleteEvent = function(eventId: number, success: any, error: any) {
+    this.http.delete(this.domain+"events/"+ eventId)
+            .subscribe(data=>{
+              success(data);
+            },err =>{
+              error(err);
+            })
+  }
+
+  private deleteSchedule = function(scheduleId: number, success: any, error: any) {
+    this.http.delete(this.domain+"schedules/"+ scheduleId)
+            .subscribe(data=>{
+              success(data);
+            },err =>{
+              error(err);
+            })
   }
 
   private getTablesByMapId = function(mapId:number,success: any, error: any){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DaoService } from '../../services/dao.service';
 
 @Component({
   selector: 'app-add-event-page',
@@ -15,28 +16,36 @@ export class AddEventPageComponent implements OnInit {
     eventName: string,
     venue: string,
     eventaddress: string,
+    city: string,
+    country: string,
     postalCode: string,
-    eventDate: string
+    eventDate: string,
   };
+  public accountId: number;
 
   constructor(public router: Router,
-              private apiService : ApiService,
-              private toastr: ToastrService
+              private apiService: ApiService,
+              private toastr: ToastrService,
+              private daoService: DaoService
     ) {
     this.pageName = 'add-event-page';
+    this.accountId = this.daoService.getAccount();
   }
 
   ngOnInit() {
     this.event = {
       eventName: "",
-    venue: "",
-    eventaddress: "",
-    postalCode: "",
-    eventDate: ""};
+      venue: "",
+      eventaddress: "",
+      city: "",
+      country: "",
+      postalCode: "",
+      eventDate: "",
+    };
   }
 
   public addNewEvent = function(){
-    this.apiService.createEvent(this.event.eventName, this.event.venue,this.event.eventaddress,this.event.postalCode,this.event.eventDate, (data)=>{
+    this.apiService.createEvent(this.event.eventName, this.event.venue,this.event.eventaddress,this.event.city,this.event.country,this.event.postalCode,this.event.eventDate, this.accountId, (data)=>{
       console.log(data);
       this.router.navigate(['/event-mgmt']);
     }, (err)=>{
