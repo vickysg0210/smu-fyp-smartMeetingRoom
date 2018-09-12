@@ -73,13 +73,17 @@
           <br>
           <mat-form-field class="">
             <mat-label>Start Time</mat-label>
-            <input matInput name="startTime" class="" type="text" [(ngModel)] = "schedule.startTime" >
+            <input matInput name="startTime" class="" type="text" [(ngModel)] = "schedule.startTime"
+            [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1">
+            <owl-date-time #dt1></owl-date-time>
           </mat-form-field>
 
           <br>
           <mat-form-field class="">
             <mat-label>End Time</mat-label>
-            <input matInput name="endTime" class="" type="text" [(ngModel)] = "schedule.endTime" >
+            <input matInput name="endTime" class="" type="text" [(ngModel)] = "schedule.endTime"
+            [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2">
+            <owl-date-time #dt2></owl-date-time>
           </mat-form-field>
 
           <button mat-raised-button color="primary" (click)="addNewActivity()">Add Activity</button><br />

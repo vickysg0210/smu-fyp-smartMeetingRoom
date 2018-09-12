@@ -48,7 +48,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -122,6 +122,14 @@ const appRoutes: Routes = [{
   component: AnalysisPageComponent
 }];
 
+export const MY_NATIVE_FORMATS = {
+    fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'},
+    datePickerInput: {year: 'numeric', month: 'numeric', day: 'numeric'},
+    timePickerInput: {hour: 'numeric', minute: 'numeric'},
+    monthYearLabel: {year: 'numeric', month: 'short'},
+    dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+    monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
 
 @NgModule({
   declarations: [
@@ -187,6 +195,8 @@ const appRoutes: Routes = [{
     MatTooltipModule,
     MatTreeModule,
     NgUploaderModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: true,
       useHash: true
