@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'home']">Dashboard</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'home']">Schedule</button>
     </div>
-    <div class="sidediv" >
+    <!-- <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
-    </div>
+    </div> -->
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
@@ -42,6 +42,7 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
+    <div class="page-container">
       <mat-icon [routerLink]="['/',eventId,'home']">arrow_back</mat-icon>
       <h3>Add New Schedule</h3>
       <div class="schedule-div">
@@ -89,5 +90,6 @@
           <button mat-raised-button color="primary" (click)="addNewActivity()">Add</button><br />
         </form>
       </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

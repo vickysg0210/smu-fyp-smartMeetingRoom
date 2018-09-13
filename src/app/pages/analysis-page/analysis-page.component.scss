@@ -1,31 +1,134 @@
-.gender{
-  display: flex;
-  padding-left: 22%;
-  .bizwoman{
-    padding-right: 12%;
-  }
+:host{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.line{
-  display: flex;
-  margin-left: 17%;
-  .country{
-    flex: 1;
-    text-align: center;
-    margin:auto;
+// .gender{
+//   display: flex;
+//   padding-left: 22%;
+//   .bizwoman{
+//     padding-right: 12%;
+//   }
+// }
+//
+// .line{
+//   display: flex;
+//   margin-left: 17%;
+//   .country{
+//     flex: 1;
+//     text-align: center;
+//     margin:auto;
+//   }
+//   .industry{
+//     flex:1;
+//     text-align: center;
+//     margin: auto;
+//   }
+// }
+//
+// .level{
+//   display: flex;
+// }
+//
+// /deep/ ngx-charts-bar-horizontal.level{
+//   margin: auto;
+//   margin-top: 40px;
+// }
+
+
+.sidenav-container{
+  height:100%;
+}
+.sidenav{
+  width: 11em;
+  background-color: #335C67;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+  .navlogo{
+    color: #335C67;
+    display: flex;
+    background-color: white;
+    img{
+      margin: auto;
+    }
+    .navlogo-text{
+      line-height: 3em;
+      height: 3em;
+      color: #335C67;
+      text-align: center;
+      margin: auto;
+      font-weight: 700;
+    }
   }
-  .industry{
-    flex:1;
-    text-align: center;
+  .sidediv{
+    height:4em;
+    .sidebutton{
+      color: white;
+      line-height: 4em;
+      width: 100%;
+    }
+    .chosenButton{
+      color: white;
+      line-height: 4em;
+      width: 100%;
+      background-color: #E69317;
+      }
+  }
+  .bottom-nav{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    }
+}
+.sidenav-content{
+  margin-top:3em;
+  .page{
+    margin: auto 2em auto 2em;
+    width: 100%;
+    .schedule-div{
+      padding: 0 0 3em 2em;
+    }
+  }
+  .gender{
+    display: flex;
+    padding-left: 22%;
+    .bizwoman{
+      padding-right: 12%;
+    }
+  }
+
+  .line{
+    display: flex;
+    margin-left: 17%;
+    .country{
+      flex: 1;
+      text-align: center;
+      margin:auto;
+    }
+    .industry{
+      flex:1;
+      text-align: center;
+      margin: auto;
+    }
+  }
+
+  .level{
+    display: flex;
+  }
+
+  /deep/ ngx-charts-bar-horizontal.level{
     margin: auto;
+    margin-top: 40px;
   }
 }
 
-.level{
-  display: flex;
-}
-
-/deep/ ngx-charts-bar-horizontal.level{
-  margin: auto;
-  margin-top: 40px;
+:host{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
