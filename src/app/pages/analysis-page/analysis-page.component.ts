@@ -11,6 +11,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 export class AnalysisPageComponent implements OnInit {
   public eventId : number;
   public chartData : boolean;
+  public attendanceData: boolean = false;
   public gender = [];
   public country=[];
   public industry=[];
@@ -34,51 +35,9 @@ export class AnalysisPageComponent implements OnInit {
 
   ngOnInit() {
     this.loadDemographics();
-    // this.loadAttendances();
-    this.attendances = [
-      {
-        "name": "Germany",
-        "series": [
-          {
-            "name": "2010",
-            "value": 7300000
-          },
-          {
-            "name": "2011",
-            "value": 8940000
-          }
-        ]
-      },
+    this.loadAttendances();
 
-      {
-        "name": "USA",
-        "series": [
-          {
-            "name": "2010",
-            "value": 7870000
-          },
-          {
-            "name": "2011",
-            "value": 8270000
-          }
-        ]
-      },
-
-      {
-        "name": "France",
-        "series": [
-          {
-            "name": "2010",
-            "value": 5000002
-          },
-          {
-            "name": "2011",
-            "value": 5800000
-          }
-        ]
-      }
-    ];
-      }
+  }
 
 
   public loadDemographics = function(){
@@ -97,8 +56,9 @@ export class AnalysisPageComponent implements OnInit {
   }
   public loadAttendances = function(){
     this.apiService.getAnalysisAtte(this.eventId,(data)=>{
+      this.attendanceData = true;
       console.log(data);
-      // this.attendances = data;
+      this.attendances = data;
     }),(error)=>{
       console.log(error);
     }

@@ -40,14 +40,11 @@ export class ApiService {
   }
 
   private getSchedules = function(eventId: number, success: any, error: any){
-    this.http.get(this.domain+"schedules/"+ eventId)
-              .subscribe(
+    this.http.get(this.domain+"schedules/"+ eventId).subscribe(
                 data=>{
-                  console.log(data);
                   success(data);
                 },
                 err =>{
-                  console.log(err);
                   error(err);
                 }
               )
@@ -170,6 +167,7 @@ export class ApiService {
               )
   }
 
+
   private deleteAttendee = function(participantName, success: any,error: any){
     this.http.delete(this.domain+"participants/"+participantName)
             .subscribe(data=>{
@@ -223,6 +221,14 @@ export class ApiService {
 
   private getAnalysisAtte = function(eventId: number,success: any,error: any){
     this.http.get(this.domain+"analysis/atte/"+eventId).subscribe(data=>{
+      success(data);
+    },err=>{
+      error(err);
+    })
+  }
+
+  private getAnalysisHeat = function(eventId, scheduleId, success: any, error: any){
+    this.http.get(this.domain+"analysis/heat/"+eventId+"/"+scheduleId).subscribe(data=>{
       success(data);
     },err=>{
       error(err);

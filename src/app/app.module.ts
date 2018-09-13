@@ -156,7 +156,7 @@ export const MY_NATIVE_FORMATS = {
     SafeHtmlPipe,
     AnalysisPageComponent,
     MapDialogComponent,
-    AnalysisHeatmapComponent
+    AnalysisHeatmapComponent,
     MapDialogComponent,
     AddSchedulePageComponent
   ],

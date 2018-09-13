@@ -13,17 +13,17 @@ declare let h337: any;
 export class AnalysisHeatmapComponent implements OnInit {
 
   public programChosen: number;
-  public max: number;
+  public max: number =0;
   public min: number = 1;
   public schedulesArray: Array<any> = [];
-  public schedulesArrayCome = false;
-
+  public tPoints: any;
   constructor(private elRef: ElementRef, private daoService: DaoService,private apiService: ApiService) {
+
+
   }
 
   ngOnInit() {
     this.loadSchedules();
-    this.heatmap();
   }
 
   public loadSchedules = function(){
@@ -32,11 +32,9 @@ export class AnalysisHeatmapComponent implements OnInit {
     this.apiService.getSchedules(eventId,(data)=>{
       console.log(data);
       this.schedulesArray = data;
+      this.programChosen = 0;
       console.log(this.schedulesArray);
-      this.programChosen = 1;
       this.max = data.length;
-      this.schedulesArrayCome = true;
-
     }, (err)=>{
       console.log(err);
       // this.showErrorMessage()
@@ -44,20 +42,17 @@ export class AnalysisHeatmapComponent implements OnInit {
 
   }
 
-  formatLabel(value: number) {
-    console.log(value);
-    if(value == 0){
-      value =1;
-    }else{
-      console.log(this.schedulesArray);
+  public loadTrackingBySchedule = function(){
+    let eventId = this.daoService.getEvent();
+    console.log(this.programChosen);
+    if(this.programChosen != 0){
+      this.apiService.getAnalysisHeat(eventId,this.programChosen,(data)=>{
+        this.tPoints = data;
+        console.log(data);
+        this.heatmap();
+      })
+
     }
-
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-
-    return value;
-
   }
 
 
@@ -70,32 +65,36 @@ export class AnalysisHeatmapComponent implements OnInit {
     });
 
     // now generate some random data
-    var points = [];
-    var max = 0;
+    // var points = [];
+    // var max = 0;
     var width = 120;
     var height = 180;
-    var len = 50;
-
-    while (len--) {
-      var val = Math.floor(Math.random()*100);
-      max = Math.max(max, val);
-      var point = {
-        // x: 60,
-        // y: 90,
-        x: Math.floor(Math.random()*width),
-        y: Math.floor(Math.random()*height),
-        value: val
-      };
-      points.push(point);
+    // var len = 50;
+    for(let point of this.tPoints.data){
+      point.x = point.x *120;
+      point.y = point.y*180;
     }
+
+    // while (len--) {
+    //   var val = Math.floor(Math.random()*100);
+    //   max = Math.max(max, val);
+    //   var point = {
+    //     // x: 60,
+    //     // y: 90,
+    //     x: Math.floor(Math.random()*width),
+    //     y: Math.floor(Math.random()*height),
+    //     value: val
+    //   };
+    //   points.push(point);
+    // }
     // heatmap data format
-    var data = {
-      max: max,
-      data: points
-    };
+    // var data = {
+    //   max: max,
+    //   data: points
+    // };
     // if you have a set of datapoints always use setData instead of addData
     // for data initialization
-    heatmapInstance.setData(data);
+    heatmapInstance.setData(this.tPoints);
 
   }
 }

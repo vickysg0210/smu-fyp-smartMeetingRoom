@@ -44,9 +44,9 @@
 
   <!-- Main Content-->
   <mat-sidenav-content class="sidenav-content">
-    <button mat-button>Close All</button>
+    <!-- <button mat-button>Close All</button> -->
     <mat-accordion [multi]="true">
-      <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel [expanded]="false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Demographics
@@ -81,7 +81,6 @@
           <div class="country" *ngIf="chartData">
             <ngx-charts-tree-map
               class="level"
-              [scheme]="'aqua'"
               [view]="countryView"
               [results]="country"
             ></ngx-charts-tree-map>
@@ -115,13 +114,13 @@
         </div>
 
       </mat-expansion-panel>
-      <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel [expanded]="false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Attendance
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="level">
+        <div class="level" *ngIf="attendanceData">
           <ngx-charts-line-chart
           [view]="levelView"
           [results]="attendances"
@@ -131,12 +130,13 @@
           [legend]="true"
           [showXAxisLabel]="true"
           [showYAxisLabel]="true"
+          [yScaleMax]="80"
           [xAxisLabel]="'Program'"
           [yAxisLabel]="'Number of Participants Present'">
           </ngx-charts-line-chart>
         </div>
       </mat-expansion-panel>
-      <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel [expanded]="false">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Tracking

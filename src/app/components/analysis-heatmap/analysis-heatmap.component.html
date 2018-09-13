@@ -1,12 +1,12 @@
-  <mat-slider *ngIf="schedulesArrayCome"
+  <mat-slider
       class="program-slider"
       [max]="max"
       [min]="min"
       [step]="1"
-      [tickInterval]="auto"
+      [tickInterval]="'auto'"
       thumbLabel
-      [displayWith]="formatLabel"
-      [(ngModel)]="programChosen">
+      [(ngModel)]="programChosen"
+      (input)="loadTrackingBySchedule()">
   </mat-slider>
 
   <div class="heatmap" id="map-canvas">
