@@ -71,7 +71,7 @@ import { D3MapContainerComponent } from './components/d3-map-container/d3-map-co
 import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
-import { AtteAnalysisComponent } from './components/atte-analysis/atte-analysis.component';
+import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -142,8 +142,8 @@ const appRoutes: Routes = [{
     GoLivePageComponent,
     SafeHtmlPipe,
     AnalysisPageComponent,
-    AtteAnalysisComponent,
-    MapDialogComponent
+    MapDialogComponent,
+    AnalysisHeatmapComponent
   ],
   imports: [
     FormsModule,

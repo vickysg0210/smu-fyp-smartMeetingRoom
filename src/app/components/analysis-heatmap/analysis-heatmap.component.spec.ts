@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AtteAnalysisComponent } from './atte-analysis.component';
+import { AnalysisHeatmapComponent } from './analysis-heatmap.component';
 
-describe('AtteAnalysisComponent', () => {
-  let component: AtteAnalysisComponent;
-  let fixture: ComponentFixture<AtteAnalysisComponent>;
+describe('AnalysisHeatmapComponent', () => {
+  let component: AnalysisHeatmapComponent;
+  let fixture: ComponentFixture<AnalysisHeatmapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AtteAnalysisComponent ]
+      declarations: [ AnalysisHeatmapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AtteAnalysisComponent);
+    fixture = TestBed.createComponent(AnalysisHeatmapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
