@@ -1,4 +1,7 @@
 import { Component,ElementRef, OnInit } from '@angular/core';
+import { DaoService } from '../../services/dao.service';
+import { ApiService } from '../../services/api.service';
+
 
 declare let h337: any;
 
@@ -9,12 +12,55 @@ declare let h337: any;
 })
 export class AnalysisHeatmapComponent implements OnInit {
 
+  public programChosen: number;
+  public max: number;
+  public min: number = 1;
+  public schedulesArray: Array<any> = [];
+  public schedulesArrayCome = false;
 
-  constructor(private elRef: ElementRef) { }
+  constructor(private elRef: ElementRef, private daoService: DaoService,private apiService: ApiService) {
+  }
 
   ngOnInit() {
+    this.loadSchedules();
     this.heatmap();
   }
+
+  public loadSchedules = function(){
+    let eventId = this.daoService.getEvent();
+    // console.log(eventId);
+    this.apiService.getSchedules(eventId,(data)=>{
+      console.log(data);
+      this.schedulesArray = data;
+      console.log(this.schedulesArray);
+      this.programChosen = 1;
+      this.max = data.length;
+      this.schedulesArrayCome = true;
+
+    }, (err)=>{
+      console.log(err);
+      // this.showErrorMessage()
+    });
+
+  }
+
+  formatLabel(value: number) {
+    console.log(value);
+    if(value == 0){
+      value =1;
+    }else{
+      console.log(this.schedulesArray);
+    }
+
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return value;
+
+  }
+
+
 
   heatmap(){
     // minimal heatmap instance configuration
