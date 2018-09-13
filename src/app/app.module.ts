@@ -1,3 +1,4 @@
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -72,6 +73,7 @@ import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
 import { AtteAnalysisComponent } from './components/atte-analysis/atte-analysis.component';
+import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -120,6 +122,9 @@ const appRoutes: Routes = [{
 },{
   path:':id/analysis',
   component: AnalysisPageComponent
+},{
+  path:':id/home/add-schedule',
+  component: AddSchedulePageComponent
 }];
 
 export const MY_NATIVE_FORMATS = {
@@ -151,9 +156,11 @@ export const MY_NATIVE_FORMATS = {
     SafeHtmlPipe,
     AnalysisPageComponent,
     AtteAnalysisComponent,
-    MapDialogComponent
+    MapDialogComponent,
+    AddSchedulePageComponent
   ],
   imports: [
+    NgxMaterialTimepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

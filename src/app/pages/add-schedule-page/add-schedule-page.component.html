@@ -1,0 +1,93 @@
+<!-- <app-toolbar [pageName] = "pageName"></app-toolbar> -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="navlogo">
+      <img src="assets/logo.png" width="40" height="30"/>
+      <div class="navlogo-text">
+        Smart Event
+      </div>
+    </div>
+    <div class="sidediv" >
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'home']">Dashboard</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Locations</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'analysis']">Analysis</button>
+    </div>
+
+    <div class="bottom-nav">
+      <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
+        Other Events
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="profile-icon">perm_identity</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+        <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+      </mat-menu>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+      <mat-icon [routerLink]="['/',eventId,'home']">arrow_back</mat-icon>
+      <h3>Add New Schedule</h3>
+      <div class="schedule-div">
+        <!-- <img src="assets/schedule.png"> -->
+        <form>
+          <mat-form-field class="">
+            <mat-label>Activity Name/Description</mat-label>
+            <input matInput name="description" class="" type="text" [(ngModel)] = "schedule.description">
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" name="startDate" class="" type="text" [(ngModel)] = "schedule.startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="">
+            <mat-label>Start Time</mat-label>
+            <input matInput name="startTime" class="" type="text" [(ngModel)] = "schedule.startTime"
+            [ngxTimepicker]="picker2" [format]="24">
+            <ngx-material-timepicker #picker2></ngx-material-timepicker>
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="">
+            <mat-label>End Time</mat-label>
+            <input matInput [matDatepicker]="picker3" name="endTime" class="" type="text" [(ngModel)] = "schedule.endDate">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+            <!-- <input matInput name="endTime" class="" type="text" [(ngModel)] = "schedule.endTime"
+            [ngxTimepicker]="picker"> -->
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="">
+            <mat-label>End Time</mat-label>
+            <input matInput name="endTime" class="" type="text" [(ngModel)] = "schedule.endTime"
+            [ngxTimepicker]="picker4" [format]="24">
+            <ngx-material-timepicker #picker4></ngx-material-timepicker>
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="primary" (click)="addNewActivity()">Add</button><br />
+        </form>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
