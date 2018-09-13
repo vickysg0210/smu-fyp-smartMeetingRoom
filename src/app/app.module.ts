@@ -1,3 +1,4 @@
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -48,7 +49,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgUploaderModule } from 'ngx-uploader';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -72,6 +73,7 @@ import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
 import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
+import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -120,8 +122,19 @@ const appRoutes: Routes = [{
 },{
   path:':id/analysis',
   component: AnalysisPageComponent
+},{
+  path:':id/home/add-schedule',
+  component: AddSchedulePageComponent
 }];
 
+export const MY_NATIVE_FORMATS = {
+    fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'},
+    datePickerInput: {year: 'numeric', month: 'numeric', day: 'numeric'},
+    timePickerInput: {hour: 'numeric', minute: 'numeric'},
+    monthYearLabel: {year: 'numeric', month: 'short'},
+    dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+    monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
 
 @NgModule({
   declarations: [
@@ -144,8 +157,11 @@ const appRoutes: Routes = [{
     AnalysisPageComponent,
     MapDialogComponent,
     AnalysisHeatmapComponent
+    MapDialogComponent,
+    AddSchedulePageComponent
   ],
   imports: [
+    NgxMaterialTimepickerModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -187,6 +203,8 @@ const appRoutes: Routes = [{
     MatTooltipModule,
     MatTreeModule,
     NgUploaderModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     RouterModule.forRoot(appRoutes, {
       enableTracing: true,
       useHash: true

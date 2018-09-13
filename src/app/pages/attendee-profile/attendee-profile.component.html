@@ -1,14 +1,20 @@
-<app-toolbar [pageName] = "pageName"></app-toolbar>
-<br>
+<!-- <app-toolbar [pageName] = "pageName"></app-toolbar>
+<br> -->
 <mat-sidenav-container class="sidenav-container">
   <!-- Navigation Bar-->
   <mat-sidenav mode="side" opened class="sidenav">
-    <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/home']">Home</button>
+    <div class="navlogo">
+      <img src="assets/logo.png" width="40" height="30"/>
+      <div class="navlogo-text">
+        Smart Event
+      </div>
     </div>
     <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/home']">Schedule</button>
+    </div>
+    <!-- <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/speaker']">Speaker</button>
-    </div>
+    </div> -->
     <div class="sidediv" >
       <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/attendees']">Attendees</button>
     </div>
@@ -29,7 +35,7 @@
       <!-- Back Button-->
       <div class="header">
         <mat-icon [routerLink]="['/',eventId,'attendees']">arrow_back</mat-icon>
-        <b>   Edit Attendee's Particular  </b>
+        <h3>   Edit Attendee's Particular  </h3>
       </div>
       <!-- Form Fields-->
       <mat-card>

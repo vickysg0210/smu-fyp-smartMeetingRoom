@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-//import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-home-page',
@@ -53,12 +52,14 @@ export class HomePageComponent implements OnInit {
   }
 
   public addNewActivity = function(){
+    console.log(this.schedule.startTime);
+    console.log(this.schedule.endTime);
     this.apiService.createSchedule(this.eventId, this.schedule.startTime,this.schedule.endTime, this.schedule.description, (data)=>{
       this.ngOnInit();
     }, (err)=>{
       console.log(err);
       //this.showErrorMessage();
-    })
+    });
   }
 
   public deleteSchedule = function(scheduleId: number){
@@ -86,5 +87,6 @@ export class HomePageComponent implements OnInit {
       positionClass: 'toast-bottom-center'
     });
   }
+
 
 }
