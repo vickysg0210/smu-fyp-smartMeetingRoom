@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'home']">Dashboard</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'home']">Schedule</button>
     </div>
-    <div class="sidediv" >
+    <!-- <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
-    </div>
+    </div> -->
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
@@ -42,76 +42,39 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <!-- <div class="page">
-      <h3>Number of People Present</h3>
-      <div class="chart">
-        <circle-progress
-          [title]="84"
-          [percent]="85"
-          [radius]="100"
-          [outerStrokeWidth]="16"
-          [innerStrokeWidth]="8"
-          [outerStrokeColor]="'#78C000'"
-          [innerStrokeColor]="'#C7E596'"
-          [animation]="true"
-          [animationDuration]="300"
-          [subtitle]="'Present'"
-          [showUnits]="false"
-        ></circle-progress>
+      <div class="page-container">
+        <h3>Event Schedule</h3>
+        <div class="schedule-div">
+          <!-- <img src="assets/schedule.png"> -->
+
+          <button mat-raised-button color="primary" [routerLink]="['/',eventId,'home','add-schedule']">Add Schedule</button><br />
+          <br />
+          <!-- load schedule from db -->
+          <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="StartTime">
+              <mat-header-cell *matHeaderCellDef> StartTime </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.startTime}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="EndTime">
+              <mat-header-cell *matHeaderCellDef> EndTime </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.endTime}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Description">
+              <mat-header-cell *matHeaderCellDef> Name/Description </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+              <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button mat-stroked-button class="edit-dele-button" color="warn" (click)="deleteSchedule(element.scheduleId)">
+                         Delete
+                </button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
       </div>
-      <br><br> -->
-      <h3>Event Schedule</h3>
-      <div class="schedule-div">
-        <!-- <img src="assets/schedule.png"> -->
-        <!-- add schedule button -->
-        <form>
-          <mat-form-field class="">
-            <mat-label>Activity Name/Description</mat-label>
-            <input matInput name="description" class="" type="text" [(ngModel)] = "schedule.description">
-          </mat-form-field>
-
-          <br>
-          <mat-form-field class="">
-            <mat-label>Start Time</mat-label>
-            <input matInput name="startTime" class="" type="text" [(ngModel)] = "schedule.startTime" >
-          </mat-form-field>
-
-          <br>
-          <mat-form-field class="">
-            <mat-label>End Time</mat-label>
-            <input matInput name="endTime" class="" type="text" [(ngModel)] = "schedule.endTime" >
-          </mat-form-field>
-
-          <button mat-raised-button color="primary" (click)="addNewActivity()">Add Activity</button><br />
-        </form>
-
-        <!-- load schedule from db -->
-        <mat-table #table [dataSource]="dataSource">
-          <ng-container matColumnDef="StartTime">
-            <mat-header-cell *matHeaderCellDef> StartTime </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.startTime}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="EndTime">
-            <mat-header-cell *matHeaderCellDef> EndTime </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.endTime}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="Description">
-            <mat-header-cell *matHeaderCellDef> Name/Description </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="Actions">
-            <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <button mat-mini-fab class="edit-dele-button" color="warn" (click)="deleteSchedule(element.scheduleId)">
-                       Delete
-              </button>
-            </mat-cell>
-          </ng-container>
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-
-      </div>
-    <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
