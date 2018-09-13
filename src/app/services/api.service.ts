@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private domain: string;
   constructor(private http: HttpClient) {
-    this.domain="http://localhost:8080/smart_meeting_room/service/"
+    this.domain="http://localhost:9999/smart_meeting_room/service/"
     // http://35.240.227.116:8080
   }
 

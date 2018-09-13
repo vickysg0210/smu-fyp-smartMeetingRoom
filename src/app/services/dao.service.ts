@@ -9,7 +9,8 @@ export class DaoService {
 
   private keys ={
     ACCOUNT : "SMR_ACCOUNT",
-    AUTH_SECRET: "SMR_AUTH_SECRET"
+    AUTH_SECRET: "SMR_AUTH_SECRET",
+    EVENTID:"SMR_EVENT"
   }
   constructor() { }
 
@@ -18,13 +19,10 @@ export class DaoService {
     localStorage.setItem(this.keys.ACCOUNT, JSON.stringify(account));
   };
 
-  // private setSecret = function(secret: string) {
-  //   localStorage.setItem(this.keys.AUTH_SECRET, secret);
-  // };
-  //
-  // public getSecret = function() {
-  //   return localStorage.getItem(this.keys.AUTH_SECRET);
-  // };
+  public storeEvent = function(eventId: number){
+    localStorage.setItem(this.keys.EVENTID, eventId.toString());
+  }
+
 
   public getAccount = function(){
     let account: Account = JSON.parse(localStorage.getItem(this.keys.ACCOUNT));
@@ -32,6 +30,16 @@ export class DaoService {
     if(account){
       return account.accountId;
     }else {
+      return -1;
+    }
+  }
+
+  public getEvent = function(){
+    let eventId = localStorage.getItem(this.keys.EVENTID);
+
+    if(eventId){
+      return parseInt(eventId);
+    }else{
       return -1;
     }
   }

@@ -1,0 +1,14 @@
+  <mat-slider *ngIf="schedulesArrayCome"
+      class="program-slider"
+      [max]="max"
+      [min]="min"
+      [step]="1"
+      [tickInterval]="auto"
+      thumbLabel
+      [displayWith]="formatLabel"
+      [(ngModel)]="programChosen">
+  </mat-slider>
+
+  <div class="heatmap" id="map-canvas">
+      haha it's map
+  </div>

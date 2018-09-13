@@ -72,7 +72,7 @@ import { D3MapContainerComponent } from './components/d3-map-container/d3-map-co
 import { GoLivePageComponent } from './pages/go-live-page/go-live-page.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
-import { AtteAnalysisComponent } from './components/atte-analysis/atte-analysis.component';
+import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
 import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
 
 const appRoutes: Routes = [{
@@ -155,7 +155,8 @@ export const MY_NATIVE_FORMATS = {
     GoLivePageComponent,
     SafeHtmlPipe,
     AnalysisPageComponent,
-    AtteAnalysisComponent,
+    MapDialogComponent,
+    AnalysisHeatmapComponent
     MapDialogComponent,
     AddSchedulePageComponent
   ],

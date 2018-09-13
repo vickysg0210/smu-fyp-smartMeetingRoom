@@ -1,42 +1,5 @@
 <app-toolbar (viewChange) = "changeView($event)" [pageName] = "pageName"></app-toolbar>
 <div class="page">
-  <!-- <div class="grid" *ngIf="isGrid; else listView">
-    <mat-card *ngFor="let event of items.events" class="card"  >
-      <i class="material-icons event-icon"
-         (click)="onSelect($event)"
-         id="{{event.id}}">
-         event
-       </i>
-      <div class="event-title">{{event.name}}</div>
-      <table class="content">
-        <tr>
-          <th width="20%">id:</th>
-          <td width="80%">{{event.id}}</td>
-        </tr>
-        <tr>
-          <th>date:</th>
-          <td>{{event.date}}</td>
-        </tr>
-        <tr>
-          <th>venue:</th>
-          <td>{{event.venue}}</td>
-        </tr>
-        <tr>
-          <th>Description:</th>
-          <td>{{event.description}}</td>
-        </tr>
-      </table>
-      <mat-card-actions class="foot">
-         <i class="material-icons">create</i>
-        <i class="material-icons">delete</i>
-      </mat-card-actions>
-    </mat-card>
-    <div class="add-event" [routerLink]="['/add-event']">
-      <div class="plus">+</div>
-    </div>
-  </div> -->
-
-  <!-- <ng-template #listView> -->
     <div class="list">
       <div class="search-btn">
         <div class="new-evnt-btn">

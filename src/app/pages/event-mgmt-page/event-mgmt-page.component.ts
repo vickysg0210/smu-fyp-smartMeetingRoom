@@ -3,6 +3,7 @@ import { DaoService } from '../../services/dao.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
+
 @Component({
   selector: 'app-event-mgmt-page',
   templateUrl: './event-mgmt-page.component.html',
@@ -32,9 +33,6 @@ export class EventMgmtPageComponent implements OnInit {
 
     public loadEvents = function(accountId){
       this.apiService.getEvents(this.accountId,(data)=>{
-        // this.daoService.storeAccount(data.account);
-        // console.log(this.daoService.getAccount();
-        // this.router.navigate(['/event-mgmt'])
         console.log(data);
         this.dataSource = data;
       }, (err)=>{
@@ -54,6 +52,7 @@ export class EventMgmtPageComponent implements OnInit {
     }
 
     select(element) {
+      this.daoService.storeEvent(element.eventId);
       this.router.navigate([element.eventId, 'home']);
     }
 

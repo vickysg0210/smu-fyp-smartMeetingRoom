@@ -121,21 +121,31 @@
             Attendance
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-atte-analysis></app-atte-analysis>
-
+        <div class="level">
+          <ngx-charts-line-chart
+          [view]="levelView"
+          [results]="attendances"
+          [gradient]="false"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          [xAxisLabel]="'Program'"
+          [yAxisLabel]="'Number of Participants Present'">
+          </ngx-charts-line-chart>
+        </div>
       </mat-expansion-panel>
-      <!-- <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Self aware panel
+            Tracking
           </mat-panel-title>
-          <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-      </mat-expansion-panel> -->
+        <div class="level">
+          <app-analysis-heatmap></app-analysis-heatmap>
+        </div>
+      </mat-expansion-panel>
     </mat-accordion>
   </mat-sidenav-content>
 </mat-sidenav-container>
