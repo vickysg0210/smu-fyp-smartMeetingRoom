@@ -119,6 +119,10 @@
     display: flex;
   }
 
+  .heatmap{
+    height: 800px;
+  }
+
   /deep/ ngx-charts-bar-horizontal.level{
     margin: auto;
     margin-top: 40px;
