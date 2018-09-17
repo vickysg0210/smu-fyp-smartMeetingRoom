@@ -14,9 +14,11 @@ export class AnalysisHeatmapComponent implements OnInit {
 
   public programChosen: number;
   public max: number =0;
-  public min: number = 1;
+  public min: number = 0;
   public schedulesArray: Array<any> = [];
   public tPoints: any;
+  public scheduleName: string = "";
+  public heatmapInstance: any;
   constructor(private elRef: ElementRef, private daoService: DaoService,private apiService: ApiService) {
 
 
@@ -47,9 +49,16 @@ export class AnalysisHeatmapComponent implements OnInit {
     console.log(this.programChosen);
     if(this.programChosen != 0){
       this.apiService.getAnalysisHeat(eventId,this.programChosen,(data)=>{
+        if(this.heatmapInstance != undefined){
+          var canvas = this.heatmapInstance._renderer.canvas;
+          console.log(canvas);
+          //remove the canvas from DOM
+          canvas.remove();
+        }
         this.tPoints = data;
         console.log(data);
         this.heatmap();
+        this.scheduleName = this.schedulesArray[this.programChosen-1].description;
       })
 
     }
@@ -58,11 +67,15 @@ export class AnalysisHeatmapComponent implements OnInit {
 
 
   heatmap(){
+
+
     // minimal heatmap instance configuration
-    var heatmapInstance = h337.create({
+    this.heatmapInstance = h337.create({
       // only container is required, the rest will be defaults
       container: document.querySelector('.heatmap')
     });
+
+
 
     // now generate some random data
     // var points = [];
@@ -70,9 +83,10 @@ export class AnalysisHeatmapComponent implements OnInit {
     var width = 120;
     var height = 180;
     // var len = 50;
+    this.tPoints.max = 10;
     for(let point of this.tPoints.data){
-      point.x = point.x *120;
-      point.y = point.y*180;
+      point.x = 900 - point.x *50;
+      point.y = 600 - point.y*50;
     }
 
     // while (len--) {
@@ -94,7 +108,8 @@ export class AnalysisHeatmapComponent implements OnInit {
     // };
     // if you have a set of datapoints always use setData instead of addData
     // for data initialization
-    heatmapInstance.setData(this.tPoints);
 
+    this.heatmapInstance.setData(this.tPoints);
+    console.log(this.heatmapInstance);
   }
 }

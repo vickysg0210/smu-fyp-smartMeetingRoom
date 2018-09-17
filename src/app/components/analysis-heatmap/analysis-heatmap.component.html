@@ -6,9 +6,13 @@
       [tickInterval]="'auto'"
       thumbLabel
       [(ngModel)]="programChosen"
-      (input)="loadTrackingBySchedule()">
+      (change)="loadTrackingBySchedule()">
   </mat-slider>
 
-  <div class="heatmap" id="map-canvas">
+  <div>
+    {{scheduleName}}
+  </div>
+
+  <div class="heatmap" id="map-canvas" style="width:900px;height:600px;border:2px solid;">
       haha it's map
   </div>
