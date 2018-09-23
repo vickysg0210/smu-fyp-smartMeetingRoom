@@ -1,0 +1,8 @@
+<div *ngIf="industry">
+  <ngx-charts-tree-map *ngIf="industry.length != 0"
+    class="level"
+    [view]="industryView"
+    [results]="industry"
+    [customColors]="customColors"
+  ></ngx-charts-tree-map>
+</div>
