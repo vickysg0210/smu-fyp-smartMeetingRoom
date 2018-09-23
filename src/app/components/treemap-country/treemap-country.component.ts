@@ -15,7 +15,7 @@ export class TreemapCountryComponent implements OnInit {
   }
 
   ngOnChanges(k: any)	{
-    console.log(k);
+    // console.log(k);
     // this.colorScale = this.generateColorScale();
 
   }
@@ -24,7 +24,8 @@ export class TreemapCountryComponent implements OnInit {
 
   countryView: any[]=[300,300];
   colorScale: any;
-  public generateColorScale = function(value: any){
+
+  generateColorScale(){
     // console.log(value);
     console.log(this.country);
     const values: number[] = this.country.map(s=>s.value);

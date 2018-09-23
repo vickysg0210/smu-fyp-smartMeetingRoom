@@ -12,16 +12,16 @@ export class TreemapIndustryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.colorScale = this.generateColorScale();
+    this.colorScale = this.generateColorScale();
   }
 
   ngOnChanges(k:any){
-    this.colorScale = this.generateColorScale();
+    // this.colorScale = this.generateColorScale();
   }
 
   industryView : any[] = [300,300];
   colorScale: any;
-  public generateColorScale = function(value: any){
+  generateColorScale(){
     const values : number[] = this.industry.map(s =>s.value);
     return d3Scale.scaleLinear()
                   .domain([Math.min(...values),(Math.max(...values)-Math.min(...values))/3+Math.min(...values),(Math.max(...values)-Math.min(...values))/3*2+Math.min(...values),Math.max(...values)])
