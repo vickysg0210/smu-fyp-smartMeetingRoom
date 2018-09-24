@@ -1,57 +1,19 @@
 <mat-toolbar class="toolbar">
-<div *ngIf = "!navbarIconShow else content">
-  <div class="navmenu-trigger" [matMenuTriggerFor] = "navMenu">
-    <!--
-    <button mat-icon-button [disabled] = "navbarIconShow" ><mat-icon>menu</mat-icon></button>
-    -->
-    Smart Meeting Room
+  <div class="front-text">
+    <h5>Current Event Status:  (Before/In-progress/After)</h5>
   </div>
-  <mat-menu #navMenu = "matMenu" [overlapTrigger]="false">
-    <button mat-menu-item [routerLink] = "['/home']">
-      &nbsp;&nbsp;
-     <mat-icon>dashboard</mat-icon>
-     <span>Dashboard</span>
-      &nbsp;&nbsp;
-    </button>
-    <button mat-menu-item [routerLink] = "['/attendees']">
-       &nbsp;&nbsp;
-      <mat-icon>people</mat-icon>
-      <span>Attendees</span>
-       &nbsp;&nbsp;
-    </button>
-    <button mat-menu-item >
-       &nbsp;&nbsp;
-      <mat-icon>my_location</mat-icon>
-      <span>Map</span>
-       &nbsp;&nbsp;
-    </button>
-  </mat-menu>
-</div>
-<ng-template #content>
-  <div class="navmenu-trigger">
-    <!--
-    <button mat-icon-button disabled ><mat-icon>menu</mat-icon></button>
-    -->
-    Smart Meeting Room
-  </div>
-</ng-template>
 
-  <div class="front-spacer"></div>
-  <!-- <div class="searchBar">
-    <mat-icon class="icon">search</mat-icon>
-      <input matInput class="input" placeholder="Search Event Name" [(ngModel)]= "searchEventText"/>
-  </div> -->
-  <!-- <a class="back-hint" [routerLink] = "['/event-mgmt']" *ngIf="!navbarIconShow">
-    Manage Other Events?
-  </a> -->
-  <!-- <button mat-icon-button (click) = "changeView()" *ngIf = "navbarIconShow">
-    <mat-icon>{{viewIcon}}</mat-icon>
-  </button> -->
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon class="profile-icon">perm_identity</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
-    <button mat-menu-item [routerLink] = "['/login']">Log out</button>
-  </mat-menu>
+  <div class="end-buttons">
+    <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
+      Other Events
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="profile-icon">perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+      <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+    </mat-menu>
+  </div>
+
 </mat-toolbar>

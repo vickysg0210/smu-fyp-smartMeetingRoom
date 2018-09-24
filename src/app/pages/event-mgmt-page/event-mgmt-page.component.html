@@ -1,4 +1,22 @@
-<app-toolbar (viewChange) = "changeView($event)" [pageName] = "pageName"></app-toolbar>
+<mat-toolbar class="toolbar">
+  <div class="navlogo">
+    <img src="assets/logo.png" width="40" height="30"/>
+    <div class="navlogo-text">
+      Smart Event
+    </div>
+  </div>
+
+  <div class="end-buttons">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="profile-icon">perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+      <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
 <div class="page">
     <div class="list">
       <div class="search-btn">
@@ -22,14 +40,13 @@
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <button mat-flat-button class="dele-button" color="warn" (click)="deleteEvent(element.eventId)">
+            <button mat-stroked-button class="dele-button" color="warn" (click)="deleteEvent(element.eventId)">
                    Delete
             </button>
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;">
-        </mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
   <!-- </ng-template> -->

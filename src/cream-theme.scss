@@ -2,7 +2,7 @@
 @include mat-core();
 
 $cream-app-primary: mat-palette($mat-orange,500);
-$cream-app-accent:  mat-palette($mat-light-blue, 800, 500, 900);
+$cream-app-accent:  mat-palette($mat-blue, 600);
 $cream-app-warn:    mat-palette($mat-red, 500);
 
 $cream-app-theme: mat-light-theme($cream-app-primary, $cream-app-accent, $cream-app-warn);

@@ -2,24 +2,24 @@
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
-    <div class="navlogo">
+    <div class="navlogo" [routerLink]="['/event-mgmt']">
       <img src="assets/logo.png" width="40" height="30"/>
       <div class="navlogo-text">
         Smart Event
       </div>
     </div>
     <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Schedule</button>
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
     </div>
-    <!-- <div class="sidediv" >
-      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'speaker']">Speaker</button>
-    </div> -->
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'schedule']">Schedule</button>
+    </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
 
-      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'map']">Locations</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'map']">Map Settings</button>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
@@ -27,25 +27,13 @@
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'analysis']">Analysis</button>
     </div>
-
-    <div class="bottom-nav">
-      <button mat-button class="back-hint" [routerLink] = "['/event-mgmt']">
-        Other Events
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon class="profile-icon">perm_identity</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
-        <button mat-menu-item [routerLink] = "['/login']">Log out</button>
-      </mat-menu>
-    </div>
-
   </mat-sidenav>
-  <mat-sidenav-content class="sidenav-content">
-    <!-- <div *ng>
 
-    </div> -->
+
+  <mat-sidenav-content class="sidenav-content">
+    <app-toolbar></app-toolbar>
+    <div class="page-content">
+      <h3>Map Settings</h3>
       <div>
         <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
           <mat-form-field>
@@ -77,10 +65,10 @@
           </button>
         </div>
       </div>
-    <div>
-      <button mat-button (click)="addTable()">Add Table</button>
-      <button mat-button (click)="saveMap()">Save The Map</button>
+      <div>
+        <button mat-button (click)="addTable()">Add Table</button>
+        <button mat-button (click)="saveMap()">Save The Map</button>
+      </div>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>
