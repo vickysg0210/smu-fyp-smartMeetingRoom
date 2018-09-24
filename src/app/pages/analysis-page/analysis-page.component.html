@@ -66,22 +66,28 @@
         </div> -->
         <div class="line">
           <div class="country" *ngIf="chartData">
-            <ngx-charts-tree-map
+            <!-- <ngx-charts-tree-map
               class="level"
+              [scheme]="colorScheme"
               [view]="countryView"
               [results]="country"
-            ></ngx-charts-tree-map>
+              [customColors]="customColors"
+            ></ngx-charts-tree-map> -->
+            <app-treemap-country [country]="country"></app-treemap-country>
+
           </div>
 
           <div class="industry" *ngIf="chartData">
-            <ngx-charts-tree-map
+            <app-treemap-industry [industry]="industry"></app-treemap-industry>
+            <!-- <ngx-charts-tree-map
               class="industry"
               [scheme]="'fire'"
               [view]="industryView"
               [results]="industry"
-            ></ngx-charts-tree-map>
+            ></ngx-charts-tree-map> -->
           </div>
         </div>
+
 
         <div class="level" *ngIf="chartData">
           <ngx-charts-bar-horizontal

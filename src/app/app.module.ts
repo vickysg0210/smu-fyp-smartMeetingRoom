@@ -75,6 +75,8 @@ import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.compo
 import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
 import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
 import { SchedulePageComponent } from './pages/schedule-page/schedule-page.component';
+import { TreemapCountryComponent } from './components/treemap-country/treemap-country.component';
+import { TreemapIndustryComponent } from './components/treemap-industry/treemap-industry.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -164,6 +166,8 @@ export const MY_NATIVE_FORMATS = {
     MapDialogComponent,
     AddSchedulePageComponent,
     SchedulePageComponent
+    TreemapCountryComponent,
+    TreemapIndustryComponent
   ],
   imports: [
     NgxMaterialTimepickerModule.forRoot(),

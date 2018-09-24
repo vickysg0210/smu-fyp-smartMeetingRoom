@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import * as d3Scale from 'd3-scale';
 
 @Component({
   selector: 'app-analysis-page',
@@ -22,7 +23,16 @@ export class AnalysisPageComponent implements OnInit {
   public levelView : any[]=[700,300];
 
   public attendances : Array<any>;
-
+  public colorScale : any;
+  public colorScheme : any = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+  generateColorScale(){
+    const values: number[] = this.country.map(s => s.value);
+    return d3Scale.scaleLinear()
+          .domain([Math.min(...values),Math.max(...values)])
+          .range(['green','red']);
+  }
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,6 +44,7 @@ export class AnalysisPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.colorScale = this.generateColorScale();
     this.loadDemographics();
     this.loadAttendances();
 
@@ -80,5 +91,9 @@ export class AnalysisPageComponent implements OnInit {
     return value.value.toString()+"%";
   }
 
+  customColors = (name) =>{
+    const value = this.country.find(s=> s.name == name).value;
+    return this.colorScale(value);
+  }
 
 }

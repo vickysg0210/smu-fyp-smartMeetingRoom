@@ -1,0 +1,8 @@
+<div *ngIf="country">
+  <ngx-charts-tree-map *ngIf="country.length != 0"
+    class="level"
+    [view]="countryView"
+    [results]="country"
+    [customColors]="customColors"
+  ></ngx-charts-tree-map>
+</div>
