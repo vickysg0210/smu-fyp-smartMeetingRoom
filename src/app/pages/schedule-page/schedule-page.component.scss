@@ -7,7 +7,7 @@
 }
 
 .sidenav-container{
-  height: 100%;
+  height:100%;
 }
 .sidenav{
   width: 11em;
@@ -52,39 +52,16 @@
 }
 .sidenav-content{
   margin-top:3em;
+  .page-container{
+    margin: 1em;
+    width: 100%;
+  }
 }
-// .mat-column-avatar{
-//   flex: 0 0 100px;
-// }
-// .mat-column-uuid{
-//   flex: 0 0 80px;
-// }
-// .mat-column-name{
-//   flex: 0 0 100px;
-//   padding-right: 15px;
-// }
-// .mat-column-position{
-//   flex: 0 0 200px;
-//   padding-right: 15px;
-// }
-// .mat-column-organization{
-//   flex: 0 0 200px;
-//   padding-right: 15px;
-// }
-.img{
-  width: 40%;
-}
-.edit-dele-button{
-  margin: 2px;
-}
-.page-container{
-  margin: 1em;
 
-  // .Add-and-Search{
-  //   width:inherit;
-  //   .search{
-  //     position:absolute;
-  //     right: 0;
-  //   }
-  // }
+:host{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

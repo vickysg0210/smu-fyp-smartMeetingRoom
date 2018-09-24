@@ -52,9 +52,12 @@
     flex-direction: column;
     }
   }
-// .sidenav-content{
-//   margin-top:3em;
-// }
+.sidenav-content{
+  margin-top:3em;
+  .page-content{
+    margin: 1em;
+  }
+}
 
 :host{
   position: absolute;

@@ -74,6 +74,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
 import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
 import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
+import { SchedulePageComponent } from './pages/schedule-page/schedule-page.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -104,6 +105,9 @@ const appRoutes: Routes = [{
 }, {
   path: ':id/home',
   component : HomePageComponent
+}, {
+  path: ':id/schedule',
+  component : SchedulePageComponent
 }, {
   path: 'change-pwd',
   component : ChangePwdPageComponent
@@ -158,7 +162,8 @@ export const MY_NATIVE_FORMATS = {
     MapDialogComponent,
     AnalysisHeatmapComponent,
     MapDialogComponent,
-    AddSchedulePageComponent
+    AddSchedulePageComponent,
+    SchedulePageComponent
   ],
   imports: [
     NgxMaterialTimepickerModule.forRoot(),
