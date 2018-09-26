@@ -92,6 +92,14 @@ export class D3MapContainerComponent implements OnInit {
       "translate("+margin.left +
       ","+margin.top+")");
 
+    // container.append("svg:image")
+    // .attr(
+    //   "xlink: href": "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiJrZ632dLdAhULqY8KHR1KAeUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.birdlife.org%2Fworldwide%2Fnews%2Feven-familiar-birds-risk-extinction-new-study-finds&psig=AOvVaw0pXcG9J_atyWgNdU3CC6JJ&ust=1537846135989497"
+    // )
+    // .attr("height",1000)
+    // .attr("width",1000)
+
+
     container.append("g")
       .attr("class","xgrid")
       .attr("transform", "translate(0," + this.map.height*50 + ")")

@@ -13,6 +13,7 @@ declare let h337: any;
 export class AnalysisHeatmapComponent implements OnInit {
 
   public programChosen: number;
+  public scheduleId:number;
   public max: number =0;
   public min: number = 0;
   public schedulesArray: Array<any> = [];
@@ -32,7 +33,6 @@ export class AnalysisHeatmapComponent implements OnInit {
     let eventId = this.daoService.getEvent();
     // console.log(eventId);
     this.apiService.getSchedules(eventId,(data)=>{
-      console.log(data);
       this.schedulesArray = data;
       this.programChosen = 0;
       console.log(this.schedulesArray);
@@ -61,6 +61,30 @@ export class AnalysisHeatmapComponent implements OnInit {
         this.scheduleName = this.schedulesArray[this.programChosen-1].description;
       })
 
+    }
+  }
+
+  public playAnalysis = function(){
+    let eventId = this.daoService.getEvent();
+    this.scheduleId = 0;
+    let index = 0;
+    if(this.schedulesArray.length != 0){
+      var interval = setInterval(()=>{
+        this.scheduleId = this.schedulesArray[index++].scheduleId;
+        this.apiService.getAnalysisHeat(eventId, this.scheduleId,(data)=>{
+          if(this.heatmapInstance != undefined){
+            var canvas = this.heatmapInstance._renderer.canvas;
+            console.log(canvas);
+            //remove the canvas from DOM
+            canvas.remove();
+          }
+          this.tPoints = data;
+          this.heatmap();
+        });
+        if(this.scheduleId== this.schedulesArray[this.schedulesArray.length-1].scheduleId){
+          clearInterval(interval);
+        }
+      },2000);
     }
   }
 

@@ -91,6 +91,9 @@ export class AnalysisPageComponent implements OnInit {
     return value.value.toString()+"%";
   }
 
+  formatJobLevel(value):string{
+    return value+"%";
+  }
   customColors = (name) =>{
     const value = this.country.find(s=> s.name == name).value;
     return this.colorScale(value);

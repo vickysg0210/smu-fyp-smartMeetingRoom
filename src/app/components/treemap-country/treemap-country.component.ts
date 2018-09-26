@@ -40,6 +40,13 @@ export class TreemapCountryComponent implements OnInit {
     return this.colorScale(value);
   }
 
+  formatCountry(value): string {
+    // value.value = value.value * 100;
+    // return value.value.toString()+"%";
+    console.log(value.toFixed(1));
+    return value.toFixed(2)*100 + "%";
+  }
+
   ngOnInit() {
     this.colorScale = this.generateColorScale();
   }
