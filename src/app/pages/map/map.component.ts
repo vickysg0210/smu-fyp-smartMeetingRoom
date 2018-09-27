@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import * as d3 from "d3";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 import { ToastrService } from 'ngx-toastr';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 // import {MapDialogComponent} from '../components/map-dialog'
@@ -15,8 +16,8 @@ import { ToastrService } from 'ngx-toastr';
 export class MapComponent implements OnInit {
   public pageName: string = 'map';
   public eventId: number;
+  public accountId: number;
   public mapId: number;
-
   public mapName : string;
   // public mapExistence: boolean = false;
   public map: any;
@@ -36,10 +37,12 @@ export class MapComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apiService : ApiService,
+              private daoService: DaoService,
               private toastr: ToastrService) {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
+    this.accountId = this.daoService.getAccount();
     this.scaleOptions=[1,2,5]
     this.participants=[];
     this.map = {
@@ -53,7 +56,18 @@ export class MapComponent implements OnInit {
 
   ngOnInit(){
     this.loadMap();
+    this.getEventStatus();
   }
+
+  public getEventStatus = function() {
+    this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+      console.log(data);
+      this.eventStatus = data.status;
+      console.log("Get status successful: current=" + this.eventStatus);
+    }, (err) => {
+      console.log(err);
+    });
+  };
 
   public loadMap = function(){
     this.apiService.getMapByEventId(this.eventId,(data)=>{

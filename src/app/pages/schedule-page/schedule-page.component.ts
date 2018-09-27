@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 
 @Component({
   selector: 'app-schedule-page',
@@ -11,6 +12,7 @@ export class SchedulePageComponent implements OnInit {
 
     public pageName: String = 'home';
     public eventId: number;
+    public accountId: number;
     public dataSource: Array<any>;
     public schedule: {
       startTime: string,
@@ -20,14 +22,16 @@ export class SchedulePageComponent implements OnInit {
     public displayedColumns = ['Date', 'StartTime', 'EndTime', 'Description', 'Actions'];
 
     constructor(private route: ActivatedRoute,
-                private apiService: ApiService) {
+                private apiService: ApiService,
+                private daoService: DaoService) {
         this.route.params.subscribe((param)=>{
             this.eventId = +param.id;
         });
-
+        this.accountId = this.daoService.getAccount();
     }
 
     ngOnInit() {
+      this.getEventStatus();
       this.loadSchedules(this.eventId);
       this.schedule = {
         startTime: '',
@@ -36,9 +40,6 @@ export class SchedulePageComponent implements OnInit {
       };
     }
 
-    public showSubContent = function(item: string){
-
-    }
 
     public loadSchedules = function(eventId: number){
       this.apiService.getSchedules(eventId,(data)=>{
@@ -56,7 +57,6 @@ export class SchedulePageComponent implements OnInit {
         }
       }, (err)=>{
         console.log(err);
-        // this.showErrorMessage()
       })
     }
 
@@ -67,7 +67,6 @@ export class SchedulePageComponent implements OnInit {
         this.ngOnInit();
       }, (err)=>{
         console.log(err);
-        //this.showErrorMessage();
       });
     }
 
@@ -77,24 +76,17 @@ export class SchedulePageComponent implements OnInit {
         this.ngOnInit();
       },(err)=>{
         console.log(err);
-        //this.showErrorMessage();
       })
     }
 
-    public showSuccessMessage = function(text : string){
-      this.toastr.success(text, 'Successfully Added!',{
-        timeOut: 4000,
-        progressBar: true,
-        positionClass: 'toast-bottom-center'
-      })
-    }
-
-    public showErrorMessage = function(){
-      this.toastr.warning('There is something wrong.', 'Oops!',{
-        timeOut: 3000,
-        progressBar: true,
-        positionClass: 'toast-bottom-center'
+    public getEventStatus = function() {
+      this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+        console.log(data);
+        this.eventStatus = data.status;
+        console.log("Get status successful: current=" + this.eventStatus);
+      }, (err) => {
+        console.log(err);
       });
-    }
+    };
 
 }

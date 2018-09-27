@@ -43,7 +43,7 @@
       right: 0;
       .profile-icon{
         color: white;
-        height: 2em;
+        //height: 2em;
       }
     }
 }
@@ -61,14 +61,6 @@
         font-weight: 400;
     }
 }
-.material-icons{
-    font-size: 1.4em;
-    color: gray;
-    position: relative;
-    top: 0.3em;
-}
-
-
 
 .list {
   display: flex;
