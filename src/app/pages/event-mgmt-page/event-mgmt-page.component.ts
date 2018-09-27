@@ -17,7 +17,7 @@ export class EventMgmtPageComponent implements OnInit {
     public dataSource: Array<any>;
     public accountId: number;
 
-    displayedColumns = ['name', 'date', 'venue', 'actions'];
+    displayedColumns = ['name', 'date', 'venue', 'status', 'actions'];
 
     constructor(private daoService : DaoService, private router: Router,
       private apiService : ApiService) {
@@ -35,6 +35,11 @@ export class EventMgmtPageComponent implements OnInit {
       this.apiService.getEvents(this.accountId,(data)=>{
         console.log(data);
         this.dataSource = data;
+        for (let single of this.dataSource) {
+          console.log("Date="+single.date);
+          single.date = single.date.substring(0, 10);
+          console.log("Date="+single.date);
+        }
       }, (err)=>{
         console.log(err);
         // this.showErrorMessage()

@@ -39,6 +39,30 @@ export class ApiService {
               )
   }
 
+  private getSingleEvent = function(accountId: number, eventId: number, success: any, error: any){
+    this.http.get(this.domain+"events/"+ accountId + "/" + eventId).subscribe(
+                data=>{
+                  success(data);
+                },
+                err =>{
+                  error(err);
+                }
+              )
+  }
+
+  private updateSingleEvent = function(eventId: number, status: string, success: any, error: any){
+    this.http.put(this.domain+"events/"+ eventId, {
+      status: status
+    }).subscribe(
+                data=>{
+                  success(data);
+                },
+                err =>{
+                  error(err);
+                }
+              )
+  }
+
   private getSchedules = function(eventId: number, success: any, error: any){
     this.http.get(this.domain+"schedules/"+ eventId).subscribe(
                 data=>{

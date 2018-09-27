@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material';
 import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -20,21 +21,34 @@ export class AttendeesComponent implements OnInit {
   displayedColumns = ['avatar', 'uuid', 'name', 'position', 'organization', 'actions'];
   // dataSource = new MatTableDataSource<PeriodicElement>(attendeeList);
   public eventId: number;
+  public accountId: number;
   public attendeeList: Array<any>;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apiService : ApiService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private daoService: DaoService) {
       this.route.params.subscribe((param)=>{
           this.eventId = param.id;
       });
+      this.accountId = this.daoService.getAccount();
   }
 
   ngOnInit() {
     this.loadAttendees();
+    this.getEventStatus();
     }
 
+  public getEventStatus = function() {
+    this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+      console.log(data);
+      this.eventStatus = data.status;
+      console.log("Get status successful: current=" + this.eventStatus);
+    }, (err) => {
+      console.log(err);
+    });
+  };
 
   public loadAttendees = function(){
     this.apiService.getAttendees(this.eventId,(data)=>{
@@ -75,45 +89,3 @@ export class AttendeesComponent implements OnInit {
   }
 
 }
-//
-//
-// export interface PeriodicElement {
-//   avatar: string;
-//   uuid: number;
-//   name: string;
-//   position: string;
-//   organization: string;
-//   isPresent: boolean;
-// }
-//
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
-//     uuid: 123,
-//     name: 'MICHELE ACUTO',
-//     position: 'Professor of Urban Politics',
-//     organization: 'Melbourne School of Design',
-//     isPresent: true
-//   },{
-//     avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
-//     uuid: 123,
-//     name: 'Bernise Ang',
-//     position: 'Principal and Methodology Lead',
-//     organization: 'Zeroth Labs',
-//     isPresent: false
-//   },{
-//     avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
-//     uuid: 123,
-//     name: 'MICHELE ACUTO',
-//     position: 'Professor of Urban Politics',
-//     organization: 'Melbourne School of Design',
-//     isPresent: true
-//   },{
-//     avatar: 'http://www.worldcitiessummit.com.sg/sites/default/files/styles/people_listing_c_145_x_145_/public/gwb_peoples/michele.jpg?itok=SxgIGXvz',
-//     uuid: 123,
-//     name: 'MICHELE ACUTO',
-//     position: 'Professor of Urban Politics',
-//     organization: 'Melbourne School of Design',
-//     isPresent: true
-//   }
-// ];
