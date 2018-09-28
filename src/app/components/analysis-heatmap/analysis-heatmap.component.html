@@ -1,4 +1,4 @@
-  <mat-slider
+  <!-- <mat-slider
       class="program-slider"
       [max]="max"
       [min]="min"
@@ -7,11 +7,11 @@
       thumbLabel
       [(ngModel)]="programChosen"
       (change)="loadTrackingBySchedule()">
-  </mat-slider>
+  </mat-slider> -->
 
-  <div>
+  <!-- <div>
     {{scheduleName}}
-  </div>
+  </div> -->
   <button (click)="playAnalysis()">Play</button>
   <!-- <div class="time-line">
     <div class="time-point" *ngFor="let timePoint of schedulesArray">
@@ -23,4 +23,5 @@
 
 
   <div class="heatmap" id="map-canvas" style="width:900px;height:600px;border:2px solid;">
+    <img src="assets/map.png"  width="900" height="600">
   </div>

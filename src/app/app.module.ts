@@ -74,6 +74,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AnalysisPageComponent } from './pages/analysis-page/analysis-page.component';
 import { AnalysisHeatmapComponent } from './components/analysis-heatmap/analysis-heatmap.component';
 import { AddSchedulePageComponent } from './pages/add-schedule-page/add-schedule-page.component';
+import { SchedulePageComponent } from './pages/schedule-page/schedule-page.component';
 import { TreemapCountryComponent } from './components/treemap-country/treemap-country.component';
 import { TreemapIndustryComponent } from './components/treemap-industry/treemap-industry.component';
 
@@ -106,6 +107,9 @@ const appRoutes: Routes = [{
 }, {
   path: ':id/home',
   component : HomePageComponent
+}, {
+  path: ':id/schedule',
+  component : SchedulePageComponent
 }, {
   path: 'change-pwd',
   component : ChangePwdPageComponent
@@ -161,6 +165,7 @@ export const MY_NATIVE_FORMATS = {
     AnalysisHeatmapComponent,
     MapDialogComponent,
     AddSchedulePageComponent,
+    SchedulePageComponent,
     TreemapCountryComponent,
     TreemapIndustryComponent
   ],

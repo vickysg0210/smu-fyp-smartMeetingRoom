@@ -48,9 +48,9 @@ export class AddSchedulePageComponent implements OnInit {
                     + this.schedule.startDate.getDate() + '/'
                     + this.schedule.startDate.getFullYear() + ' '
                     + this.schedule.startTime+":00";
-      this.endTime = this.schedule.endDate.getMonth() + 1 + '/'
-                    + this.schedule.endDate.getDate() + '/'
-                    + this.schedule.endDate.getFullYear() + ' '
+      this.endTime = this.schedule.startDate.getMonth() + 1 + '/'
+                    + this.schedule.startDate.getDate() + '/'
+                    + this.schedule.startDate.getFullYear() + ' '
                     + this.schedule.endTime+":00";
       console.log('starttime='+ this.startTime);
       console.log('endtime='+ this.endTime);
@@ -65,7 +65,7 @@ export class AddSchedulePageComponent implements OnInit {
 
 
     public backToHome = function(){
-      this.router.navigate(['/', this.eventId, 'home']);
+      this.router.navigate(['/', this.eventId, 'schedule']);
     }
 
     public parseDate = function(ddate){

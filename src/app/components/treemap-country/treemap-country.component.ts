@@ -44,7 +44,7 @@ export class TreemapCountryComponent implements OnInit {
     // value.value = value.value * 100;
     // return value.value.toString()+"%";
     console.log(value.toFixed(1));
-    return value.toFixed(2)*100 + "%";
+    return value.toFixed(2) + "%";
   }
 
   ngOnInit() {

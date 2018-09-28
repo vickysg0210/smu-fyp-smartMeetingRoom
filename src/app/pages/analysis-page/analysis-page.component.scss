@@ -121,6 +121,8 @@
 
   .heatmap{
     width: 900px;
+    height: 800px;
+    display:flex;
   }
 
   /deep/ ngx-charts-bar-horizontal.level{

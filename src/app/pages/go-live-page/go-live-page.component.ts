@@ -97,6 +97,8 @@ export class GoLivePageComponent implements OnInit {
       console.log(this.participants);
     },(err)=>{
       console.log("failed to load participants");
+      this.participants = {};
+      this.absentParticipants = {};
     });
   }
 

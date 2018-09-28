@@ -28,6 +28,13 @@ export class TreemapIndustryComponent implements OnInit {
                   .range(["#FFBF00","#FF7733","#C75146","#81171B"]);
   }
 
+  formatIndustry(value): string {
+    // value.value = value.value * 100;
+    // return value.value.toString()+"%";
+    console.log(value.toFixed(1));
+    return value.toFixed(2) + "%";
+  }
+
   customColors = (name) =>{
     const value = this.industry.find(s=>s.name === name).value;
     return this.colorScale(value);
