@@ -165,7 +165,11 @@ export const MY_NATIVE_FORMATS = {
     AnalysisHeatmapComponent,
     MapDialogComponent,
     AddSchedulePageComponent,
+<<<<<<< HEAD
     SchedulePageComponent,
+=======
+    SchedulePageComponent
+>>>>>>> b878e4697ffd11e12603e8d5624af43e1aae3742
     TreemapCountryComponent,
     TreemapIndustryComponent
   ],

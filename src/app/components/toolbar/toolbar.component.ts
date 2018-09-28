@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 
 
 @Component({
@@ -10,36 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-    @Output() viewChange = new EventEmitter<string>();
-    @Output() navbarToggle = new EventEmitter<string>();
-    @Input() pageName: string;
+  //  @Output() viewChange = new EventEmitter<string>();
+  //  @Output() navbarToggle = new EventEmitter<string>();
+    @Input() eventStatus: string;
 
-    public viewIcon: string = "view_module";
-    public searchEventText: string = "";
-    public navbarIconShow : boolean = false;
 
-    constructor(private user: AuthService, private router: Router) {}
-
-    ngOnInit() {
-      this.checkPageName()
-    }
-    public changeView = function(){
-      if(this.viewIcon == "view_list"){
-        this.viewIcon = "view_module";
-      }else {
-        this.viewIcon = "view_list"
-      }
-      this.viewChange.emit(this.viewIcon);
+    constructor(private user: AuthService,
+                private route: ActivatedRoute,
+                private router: Router,
+                private apiService: ApiService
+                private daoService: DaoService) {
+      this.route.params.subscribe((param) => {
+          this.eventId = +param.id;
+      });
     }
 
-    public checkPageName = function(){
-      if (this.pageName == "eventMgmt"){
-        this.navbarIconShow = true;
-      }
-    }
+    ngOnInit() {}
 
-    public toggleNavbar = function(){
-      this.navbarToggle.emit("");
-    }
 
 }

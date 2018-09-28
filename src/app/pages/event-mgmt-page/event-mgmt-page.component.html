@@ -37,6 +37,10 @@
           <mat-header-cell *matHeaderCellDef> Venue </mat-header-cell>
           <mat-cell *matCellDef="let element" (click)='select(element)'> {{element.venue}} </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)='select(element)'> {{element.status}} </mat-cell>
+        </ng-container>
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
           <mat-cell *matCellDef="let element">

@@ -1,8 +1,9 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { DaoService } from '../../services/dao.service';
 
 
 @Component({
@@ -23,10 +24,16 @@ export class AttendeeProfileComponent {
   public eventId: number;
   public pageName:String="";
 
-  constructor(private route: ActivatedRoute,private router: Router,private apiService: ApiService,private toastr: ToastrService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private apiService: ApiService,
+              private daoService: DaoService,
+              private toastr: ToastrService)
+  {
     this.route.params.subscribe((param)=>{
         this.eventId = Number(param.id);
     });
+    this.accountId = this.daoService.getAccount();
     this.participant = {
       participantName: "",
       position: "",
@@ -37,6 +44,20 @@ export class AttendeeProfileComponent {
       remark: ""
     }
   }
+
+  ngOnInit() {
+    this.getEventStatus();
+  }
+
+  public getEventStatus = function() {
+    this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+      console.log(data);
+      this.eventStatus = data.status;
+      console.log("Get status successful: current=" + this.eventStatus);
+    }, (err) => {
+      console.log(err);
+    });
+  };
 
   public createNewAttendee = function(){
     this.apiService.createParticipant(this.participant.participantName,

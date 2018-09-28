@@ -30,7 +30,7 @@
 
 
   <mat-sidenav-content class="sidenav-content">
-    <app-toolbar></app-toolbar>
+    <app-toolbar  [eventStatus]=eventStatus></app-toolbar>
     <div class="page-container">
       <mat-icon [routerLink]="['/',eventId,'schedule']">arrow_back</mat-icon>
       <h3>Add New Schedule</h3>

@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import * as d3Scale from 'd3-scale';
@@ -11,6 +12,7 @@ import * as d3Scale from 'd3-scale';
 })
 export class AnalysisPageComponent implements OnInit {
   public eventId : number;
+  public accountId: number;
   public chartData : boolean;
   public attendanceData: boolean = false;
   public gender = [];
@@ -36,20 +38,31 @@ export class AnalysisPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private apiService : ApiService) {
+              private apiService : ApiService,
+              private daoService: DaoService) {
     this.route.params.subscribe((param)=>{
         this.eventId = param.id;
         console.log(this.eventId);
     });
+    this.accountId = this.daoService.getAccount();
   }
 
   ngOnInit() {
     this.colorScale = this.generateColorScale();
     this.loadDemographics();
     this.loadAttendances();
-
+    this.getEventStatus();
   }
 
+  public getEventStatus = function() {
+    this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+      console.log(data);
+      this.eventStatus = data.status;
+      console.log("Get status successful: current=" + this.eventStatus);
+    }, (err) => {
+      console.log(err);
+    });
+  };
 
   public loadDemographics = function(){
     this.apiService.getAnalysisDemogra(this.eventId,(data)=>{

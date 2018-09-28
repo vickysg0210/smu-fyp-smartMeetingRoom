@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
+
 
 @Component({
   selector: 'app-add-schedule-page',
@@ -21,15 +23,19 @@ export class AddSchedulePageComponent implements OnInit {
       description: string
     };
     public eventId: number;
+    public accountId: number;
+
 
     constructor(public router: Router,
                 private route: ActivatedRoute,
                 private apiService: ApiService,
+                private daoService: DaoService
       ) {
       this.pageName = 'add-event-page';
       this.route.params.subscribe((param)=>{
           this.eventId = +param.id;
       });
+      this.accountId = this.daoService.getAccount();
     }
 
     ngOnInit() {
@@ -41,6 +47,7 @@ export class AddSchedulePageComponent implements OnInit {
         endTime: '',
         description: ''
       };
+      this.getEventStatus();
     }
 
     public addNewActivity = function(){
@@ -74,4 +81,13 @@ export class AddSchedulePageComponent implements OnInit {
             +ddate.getFullYear() + ' ';
     }
 
+    public getEventStatus = function() {
+      this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
+        console.log(data);
+        this.eventStatus = data.status;
+        console.log("Get status successful: current=" + this.eventStatus);
+      }, (err) => {
+        console.log(err);
+      });
+    };
 }

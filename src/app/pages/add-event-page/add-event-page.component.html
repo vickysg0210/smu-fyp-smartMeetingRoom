@@ -1,4 +1,21 @@
-<app-toolbar [pageName] = "pageName"></app-toolbar>
+<mat-toolbar class="toolbar">
+  <div class="navlogo" [routerLink]="['/event-mgmt']">
+    <img src="assets/logo.png" width="40" height="30"/>
+    <div class="navlogo-text">
+      Smart Event
+    </div>
+  </div>
+
+  <div class="end-buttons">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="profile-icon">perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item [routerLink] = "['/change-pwd']">Change Password</button>
+      <button mat-menu-item [routerLink] = "['/login']">Log out</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
 <br>
 <div class="page">
   <mat-card class="card">

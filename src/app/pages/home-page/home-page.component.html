@@ -40,11 +40,15 @@
 
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <app-toolbar></app-toolbar>
+    <app-toolbar [eventStatus]=eventStatus></app-toolbar>
       <div class="page-container">
         <h3>Home</h3>
-        <button mat-raised-button color="accent">Start Event</button>
-        <button mat-raised-button color="accent">End Event</button>
+        <button mat-raised-button color="accent"  (click)='updateEventStatus("In-progress")'>Start Event</button>
+        <br><br>
+        <button mat-raised-button color="accent"  (click)='updateEventStatus("Ended")'>End Event</button>
+        <br><br>
+        <button mat-raised-button color="accent"  (click)='updateEventStatus("Not Started")'>Reset</button>
+
       </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

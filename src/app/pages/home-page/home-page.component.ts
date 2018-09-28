@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { DaoService } from '../../services/dao.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,80 +14,61 @@ export class HomePageComponent implements OnInit {
   public pageName: String = 'home';
   public eventId: number;
   public dataSource: Array<any>;
-  public schedule: {
-    startTime: string,
-    endTime: string,
-    description: string
-  };
-  public displayedColumns = ['StartTime', 'EndTime', 'Description', 'Actions'];
+  public eventStatus: string;
+  public accountId: number;
+  // ifIsBefore: boolean;
+  // ifIsDuring: boolean;
+  // ifIsAfter: boolean;
 
   constructor(private route: ActivatedRoute,
+              private daoService: DaoService,
               private apiService: ApiService) {
-      this.route.params.subscribe((param)=>{
-          this.eventId = +param.id;
-      });
-
+    this.route.params.subscribe((param) => {
+        this.eventId = +param.id;
+    });
   }
 
   ngOnInit() {
-    this.loadSchedules(this.eventId);
-    this.schedule = {
-      startTime: '',
-      endTime: '',
-      description: ''
-    };
+    this.accountId = this.daoService.getAccount();
+    this.getEventStatus();
+    // this.disableDecision();
   }
 
-  public showSubContent = function(item: string){
 
-  }
+  public updateEventStatus = function(status: string) {
+    this.apiService.updateSingleEvent(this.eventId, status, (data) => {
+      //console.log(data);
+      console.log("Update status successful: new = " + status);
+      this.ngOnInit();
+    }, (err) => {
+      console.log(err);
+    });
+  };
 
-  public loadSchedules = function(eventId: number){
-    this.apiService.getSchedules(eventId,(data)=>{
+  public getEventStatus = function() {
+    this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
       console.log(data);
-      this.dataSource = data;
-    }, (err)=>{
+      this.eventStatus = data.status;
+      console.log("Get status successful: current=" + this.eventStatus);
+    }, (err) => {
       console.log(err);
-      // this.showErrorMessage()
-    })
-  }
-
-  public addNewActivity = function(){
-    console.log(this.schedule.startTime);
-    console.log(this.schedule.endTime);
-    this.apiService.createSchedule(this.eventId, this.schedule.startTime,this.schedule.endTime, this.schedule.description, (data)=>{
-      this.ngOnInit();
-    }, (err)=>{
-      console.log(err);
-      //this.showErrorMessage();
     });
-  }
+  };
 
-  public deleteSchedule = function(scheduleId: number){
-    console.log(scheduleId);
-    this.apiService.deleteSchedule(scheduleId, (data)=>{
-      this.ngOnInit();
-    },(err)=>{
-      console.log(err);
-      //this.showErrorMessage();
-    })
-  }
-
-  public showSuccessMessage = function(text : string){
-    this.toastr.success(text, 'Successfully Added!',{
-      timeOut: 4000,
-      progressBar: true,
-      positionClass: 'toast-bottom-center'
-    })
-  }
-
-  public showErrorMessage = function(){
-    this.toastr.warning('There is something wrong.', 'Oops!',{
-      timeOut: 3000,
-      progressBar: true,
-      positionClass: 'toast-bottom-center'
-    });
-  }
+  // public disableDecision = function() {
+  //   if (this.eventStatus === 'Not Started') {
+  //     this.ifIsBefore = true;
+  //     console.log("ifIsBefore = true");
+  //   } else if (this.eventStatus === 'In-progress'){
+  //     this.ifIsDuring = true;
+  //     console.log("ifIsDuring = true");
+  //   } else if (this.eventStatus === 'Ended'){
+  //     this.ifIsAfter = true;
+  //     console.log("ifIsAfter = true");
+  //   } else {
+  //     console.log("eventStatus=" + this.eventStatus);
+  //   }
+  // };
 
 
 }

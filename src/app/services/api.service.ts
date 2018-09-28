@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private domain: string;
   constructor(private http: HttpClient) {
-    this.domain="http://localhost:9999/smart_meeting_room/service/"
+    this.domain="http://localhost:8080/smart_meeting_room/service/"
     // http://35.240.227.116:8080
   }
 
@@ -34,6 +34,30 @@ export class ApiService {
                 },
                 err =>{
                   console.log(err);
+                  error(err);
+                }
+              )
+  }
+
+  private getSingleEvent = function(accountId: number, eventId: number, success: any, error: any){
+    this.http.get(this.domain+"events/"+ accountId + "/" + eventId).subscribe(
+                data=>{
+                  success(data);
+                },
+                err =>{
+                  error(err);
+                }
+              )
+  }
+
+  private updateSingleEvent = function(eventId: number, status: string, success: any, error: any){
+    this.http.put(this.domain+"events/"+ eventId, {
+      status: status
+    }).subscribe(
+                data=>{
+                  success(data);
+                },
+                err =>{
                   error(err);
                 }
               )
