@@ -15,12 +15,12 @@ export class ToolbarComponent implements OnInit {
   //  @Output() viewChange = new EventEmitter<string>();
   //  @Output() navbarToggle = new EventEmitter<string>();
     @Input() eventStatus: string;
-
+    public eventId: number;
 
     constructor(private user: AuthService,
                 private route: ActivatedRoute,
                 private router: Router,
-                private apiService: ApiService
+                private apiService: ApiService,
                 private daoService: DaoService) {
       this.route.params.subscribe((param) => {
           this.eventId = +param.id;

@@ -23,6 +23,7 @@ export class AttendeeProfileComponent {
     }
   public eventId: number;
   public pageName:String="";
+  public accountId: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DaoService } from '../../services/dao.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-mgmt-page',
@@ -16,6 +16,8 @@ export class EventMgmtPageComponent implements OnInit {
     public page: string;
     public dataSource: Array<any>;
     public accountId: number;
+    public moment: any;
+
 
     displayedColumns = ['name', 'date', 'venue', 'status', 'actions'];
 
@@ -37,7 +39,9 @@ export class EventMgmtPageComponent implements OnInit {
         this.dataSource = data;
         for (let single of this.dataSource) {
           console.log("Date="+single.date);
-          single.date = single.date.substring(0, 10);
+          // single.date = single.date.substring(0, 10);
+          var test = moment(single.date);
+          console.log(test);
           console.log("Date="+single.date);
         }
       }, (err)=>{

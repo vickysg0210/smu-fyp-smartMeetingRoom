@@ -43,11 +43,6 @@
       right: 0;
       .profile-icon{
         color: white;
-<<<<<<< HEAD
-        height: 2em;
-=======
-        //height: 2em;
->>>>>>> b878e4697ffd11e12603e8d5624af43e1aae3742
       }
     }
 }
@@ -91,6 +86,9 @@
       font-weight: 200;
       font-size: 0.9em;
       padding: 15px 24px 0;
+      .add-event{
+        background-color: #70C1B3;
+      }
   }
 
   .mat-table {

@@ -40,6 +40,8 @@ export class GoLivePageComponent implements OnInit {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
     this.windowWidth = window.innerWidth/5*4;
     this.windowHeight = window.innerHeight/4*3;
     // this.absentParticipants = null;
@@ -50,11 +52,11 @@ export class GoLivePageComponent implements OnInit {
     this.getContainerMatrix();
     this.loadMap();
     this.loadParticipants();
-    setInterval(()=> {
-       this.loadParticipants();
-       console.log(this.participants);
-     },8000);
-    this.loadParticipants();
+    // setInterval(()=> {
+    //    this.loadParticipants();
+    //    console.log(this.participants);
+    //  },8000);
+    // this.loadParticipants();
   };
     // this.loadParticipants();
 
@@ -76,7 +78,7 @@ export class GoLivePageComponent implements OnInit {
   public loadTable = function(){
     this.apiService.getTablesByMapId(this.mapId,(data)=>{
       this.tables = data;
-      console.log(this.tables)
+      // console.log(this.tables)
     },(err)=>{
       this.showErrorMessage("error");
     });
@@ -86,20 +88,30 @@ export class GoLivePageComponent implements OnInit {
     var now  = new Date();
     var day = moment(now).format("YYYY-MM-DD");
     var time = moment(now).subtract(5,'seconds').format("HH:mm:ss");
-    var nowApiString = day+"T"+time+"+08:00";
-    console.log("now"+nowApiString);
-    // var nowApiString = "2018-07-08T10:00:25+08:00"
-    this.apiService.getTrackings(nowApiString,(data)=>{
-      this.participants = data.present;
-      this.absentParticipants = data.absent;
-      console.log(data.present);
-      console.log(data.absent);
-      console.log(this.participants);
-    },(err)=>{
-      console.log("failed to load participants");
-      this.participants = {};
-      this.absentParticipants = {};
-    });
+    // var nowApiString = day+"T"+time+"+08:00";
+    // console.log("now"+nowApiString);
+    // var nowApiString = "2018-07-08T08:00:25+08:00"
+    // this.apiService.getTrackings(nowApiString,(data)=>{
+    //   this.participants = data.present;
+    //   this.absentParticipants = data.absent;
+    //   console.log(data.present);
+    //   console.log(data.absent);
+    //   console.log(this.participants);
+    // },(err)=>{
+    //   console.log("failed to load participants");
+    // });
+    this.participants=[{
+      name: "p1",
+      url:"https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530794905583michele.jpg",
+      x: 1.45,
+      y: 5.73
+    },{
+        name: "p2",
+        url:"https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530794905583michele.jpg",
+        x: 5.73,
+        y: 1.45
+      }
+    ];
   }
 
   public getContainerMatrix = function(){

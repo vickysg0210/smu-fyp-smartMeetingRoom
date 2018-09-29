@@ -13,6 +13,7 @@ export class SchedulePageComponent implements OnInit {
     public pageName: String = 'home';
     public eventId: number;
     public dataSource: Array<any>;
+    public accountId: number;
     public schedule: {
       startTime: string,
       endTime: string,

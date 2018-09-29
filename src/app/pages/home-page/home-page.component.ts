@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { DaoService } from '../../services/dao.service';
 
@@ -20,7 +21,8 @@ export class HomePageComponent implements OnInit {
   // ifIsDuring: boolean;
   // ifIsAfter: boolean;
 
-  constructor(private route: ActivatedRoute,
+  constructor( public router: Router,
+              private route: ActivatedRoute,
               private daoService: DaoService,
               private apiService: ApiService) {
     this.route.params.subscribe((param) => {
@@ -54,6 +56,12 @@ export class HomePageComponent implements OnInit {
       console.log(err);
     });
   };
+
+  public navigateHistoryPage = function(){
+    console.log(this.router);
+    this.router.navigate([this.eventId,'history']);
+
+  }
 
   // public disableDecision = function() {
   //   if (this.eventStatus === 'Not Started') {
