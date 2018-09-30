@@ -259,4 +259,13 @@ export class ApiService {
     })
   }
 
+
+  private getHistoryTrackings = function(trackingTime,success :any, error: any){
+    this.http.get(this.domain+"trackings/history/"+trackingTime).subscribe(data=>{
+      success(data);
+    }, err=>{
+      error(err);
+    })
+  }
+
 }

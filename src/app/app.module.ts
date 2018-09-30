@@ -78,7 +78,7 @@ import { SchedulePageComponent } from './pages/schedule-page/schedule-page.compo
 import { TreemapCountryComponent } from './components/treemap-country/treemap-country.component';
 import { TreemapIndustryComponent } from './components/treemap-industry/treemap-industry.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
-import { HistoryComponent } from './pages/history/history.component';
+import {HistoryComponent } from './pages/history/history.component'
 
 const appRoutes: Routes = [{
   path: '',
@@ -133,6 +133,9 @@ const appRoutes: Routes = [{
 },{
   path:':id/home/add-schedule',
   component: AddSchedulePageComponent
+},{
+  path:':id/history',
+  component: HistoryComponent
 }];
 
 export const MY_NATIVE_FORMATS = {

@@ -1,6 +1,15 @@
 <div class="image-container">
-  <img src="assets/map.jpeg" class="image-layout"/>
-  <div *ngFor="let participant of participants">
+  <div class="image-layout">
+    <!-- <img src="assets/map.jpeg" class="image"/> -->
+    <div *ngFor="let participant of participants" class="participant-container"
+    >
+    <div *ngIf="participant.coordinateX>0 && participant.coordinateY">
+      <img [src]="sanitizer.bypassSecurityTrustUrl(participant.participant.remark)" width="20" height="20"
+      [style.marginLeft.px]="participant.coordinateX*100/3"
+      [style.marginTop.px]="400 - participant.coordinateY*100/3">
+    </div>
 
+    </div>
   </div>
+
 </div>

@@ -5,5 +5,13 @@
   .image-layout{
     height: 100%;
     width: 100%;
+    background-image: url("assets/map.jpeg");
+    background-size: cover;
+    .participant-container{
+      position: absolute;
+      img{
+        border-radius: 100%;
+      }
+    }
   }
 }
