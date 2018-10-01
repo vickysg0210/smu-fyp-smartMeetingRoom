@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { DaoService } from '../../services/dao.service';
-
+import { UploadFileService } from '../../services/upload-file.service';
 
 @Component({
   selector: 'app-attendee-profile',
@@ -24,12 +24,14 @@ export class AttendeeProfileComponent {
   public eventId: number;
   public pageName:String="";
   public accountId: number;
+  public selectedFiles: FileList;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apiService: ApiService,
               private daoService: DaoService,
-              private toastr: ToastrService)
+              private toastr: ToastrService,
+              private uploadService: UploadFileService)
   {
     this.route.params.subscribe((param)=>{
         this.eventId = Number(param.id);
@@ -61,21 +63,37 @@ export class AttendeeProfileComponent {
   };
 
   public createNewAttendee = function(){
-    this.apiService.createParticipant(this.participant.participantName,
+    const file = this.selectedFiles.item(0);
+    let url;
+    this.uploadService.uploadfile(file)
+    .then((data) => {
+      console.log("success! data: ", data);
+      url = data.Location;
+      console.log("url!!!!", url);
+      this.apiService.createParticipant(this.participant.participantName,
       this.eventId,
       this.participant.position,
       this.participant.organization,
       this.participant.uuid,
       this.participant.major,
       this.participant.minor,
-      this.participant.remark,
+      url,
+
       (data)=>{
-      console.log(data);
+      console.log("data!!!!!!!",data);
       this.router.navigate(['/',this.eventId,"attendees"]);
       this.showSuccessMessage("Created a new attendee");
-    }, (err)=>{
-      this.showErrorMessage()
-    })
+      }, (err)=>{
+        this.showErrorMessage()
+      })
+    },
+    (err) => {
+      console.log('There was an error uploading your file: ', err);
+      url = "false";
+    });
+
+  public selectFile = function(event: any) {
+    this.selectedFiles = event.target.files;
   }
 
   public showSuccessMessage = function(text : string){

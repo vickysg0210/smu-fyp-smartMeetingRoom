@@ -86,8 +86,8 @@ export class HistoryComponent implements OnInit {
     // var nowApiString = day+"T"+time+"+08:00";
     // console.log("now"+nowApiString);
     var nowApiString = "2018-07-08T08:00:00";
-    var time  = moment(nowApiString);
-    console.log(time);
+    var momentTime  = moment(nowApiString);
+    // console.log(timomentTimeme);
     this.apiService.getHistoryTrackings(nowApiString,(data)=>{
       this.participants = data.present;
       this.absentParticipants = data.absent;
@@ -99,8 +99,8 @@ export class HistoryComponent implements OnInit {
     });
 
     setInterval(()=> {
-      time = time.add('seconds',8)
-      nowApiString = time.format("YYYY-MM-DDTHH:mm:ss");
+      momentTime = momentTime.add('seconds',8)
+      nowApiString = momentTime.format("YYYY-MM-DDTHH:mm:ss");
       console.log(nowApiString);
       this.apiService.getHistoryTrackings(nowApiString,(data)=>{
         this.participants = data.present;

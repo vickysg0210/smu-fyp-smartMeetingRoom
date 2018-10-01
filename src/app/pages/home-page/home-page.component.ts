@@ -50,6 +50,9 @@ export class HomePageComponent implements OnInit {
   public getEventStatus = function() {
     this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
       console.log(data);
+      if(data.status == undefined){
+        data.status = "Not Started";
+      }
       this.eventStatus = data.status;
       console.log("Get status successful: current=" + this.eventStatus);
     }, (err) => {
