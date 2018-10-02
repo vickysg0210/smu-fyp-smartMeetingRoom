@@ -17,6 +17,9 @@ export class HomePageComponent implements OnInit {
   public dataSource: Array<any>;
   public eventStatus: string;
   public accountId: number;
+  public started: boolean;
+  public inprogress: boolean;
+  public ended: boolean;
   // ifIsBefore: boolean;
   // ifIsDuring: boolean;
   // ifIsAfter: boolean;
@@ -54,6 +57,7 @@ export class HomePageComponent implements OnInit {
         data.status = "Not Started";
       }
       this.eventStatus = data.status;
+      this.processEventStatus();
       console.log("Get status successful: current=" + this.eventStatus);
     }, (err) => {
       console.log(err);
@@ -64,6 +68,19 @@ export class HomePageComponent implements OnInit {
     console.log(this.router);
     this.router.navigate([this.eventId,'history']);
 
+  }
+
+  public processEventStatus = function(){
+    if(this.eventStatus == "Not Started"){
+      this.inprogress = false;
+      this.ended = false;
+    } else if(this.eventStatus == "Completed"){
+      this.inprogress = false;
+      this.ended = true;
+    }else if(this.eventStatus == "In-progress"){
+      this.inprogress = true;
+      this.ended = false;
+    }
   }
 
   // public disableDecision = function() {

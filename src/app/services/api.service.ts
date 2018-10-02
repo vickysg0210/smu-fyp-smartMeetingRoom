@@ -5,8 +5,9 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   private domain: string;
   constructor(private http: HttpClient) {
-    this.domain="http://localhost:9999/smart_meeting_room/service/"
+    // this.domain="http://35.198.253.204/fyp-MRS/service/"
     // http://35.240.227.116:8080
+    this.domain="http://localhost:9999/smart_meeting_room/service/"
   }
 
   private login = function(email, password, success: any, error: any){
