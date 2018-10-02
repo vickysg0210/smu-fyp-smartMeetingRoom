@@ -86,7 +86,7 @@ export class ApiService {
     )
   }
 
-  private createEvent = function(eventName,venue,eventaddress,city,country,postalCode,eventDate,accountId,success: any,error: any){
+  private createEvent = function(eventName,venue,eventaddress,city,country,postalCode,eventDate,accountId,status,success: any,error: any){
     this.http.post(this.domain+"events",{
       eventName: eventName,
       venue: venue,
@@ -95,7 +95,8 @@ export class ApiService {
       country: country,
       postalCode: postalCode,
       eventDate: eventDate,
-      accountId: accountId
+      accountId: accountId,
+      status: status
     }).subscribe(data=>{success(data);},err =>{return err;});
   }
 

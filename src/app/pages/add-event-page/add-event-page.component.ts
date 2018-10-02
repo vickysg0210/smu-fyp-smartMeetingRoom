@@ -45,7 +45,7 @@ export class AddEventPageComponent implements OnInit {
   }
 
   public addNewEvent = function(){
-    this.apiService.createEvent(this.event.eventName, this.event.venue,this.event.eventaddress,this.event.city,this.event.country,this.event.postalCode,this.event.eventDate, this.accountId, (data)=>{
+    this.apiService.createEvent(this.event.eventName, this.event.venue,"address","city","country","000000",this.event.eventDate, this.accountId,"Not Started", (data)=>{
       console.log(data);
       this.router.navigate(['/event-mgmt']);
     }, (err)=>{
