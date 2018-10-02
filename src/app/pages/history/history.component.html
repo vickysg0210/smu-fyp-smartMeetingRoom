@@ -2,7 +2,7 @@
     <mat-grid-tile [colspan]="4" [rowspan]="3">
       <div *ngIf="map && participants && absentParticipants">
         <!-- <app-d3-map-container [map]="map" [participants]="participants" [windowWidth]="windowWidth" [windowHeight]="windowHeight" ></app-d3-map-container> -->
-        <app-map-image [windowWidth]="windowWidth" [windowHeight]="windowHeight" [participants]="participants"></app-map-image>
+        <app-map-image [windowWidth]="windowWidth" [windowHeight]="windowHeight" [map]="map" [participants]="participants"></app-map-image>
       </div>
       </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="4" class="attendance-list">

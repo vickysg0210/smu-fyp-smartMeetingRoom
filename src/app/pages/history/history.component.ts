@@ -4,12 +4,15 @@ import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Tracking } from'../../interfaces/tracking';
 import * as moment from 'moment';
+import { HostListener } from '@angular/core'
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
+
+
 export class HistoryComponent implements OnInit {
   public map: any;
   public mapId : number;
@@ -30,6 +33,13 @@ export class HistoryComponent implements OnInit {
     mac: string
   }>;
 
+  @HostListener('window:resize', ['$event']) onResize(event) {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
+      console.log(this.windowWidth);
+      console.log(this.windowHeight);
+    }
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apiService : ApiService,
@@ -37,13 +47,13 @@ export class HistoryComponent implements OnInit {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    this.windowWidth = window.innerWidth/5*4;
-    this.windowHeight = window.innerHeight/4*3;
+    this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
     // this.absentParticipants = null;
     // this.participants=null;
   }
+
+
 
   ngOnInit() {
     this.getContainerMatrix();
@@ -112,26 +122,6 @@ export class HistoryComponent implements OnInit {
         console.log("failed to load participants");
       });
      },8000);
-
-
-    // this.participants=[{
-    //   name: "p1",
-    //   url:"https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530794905583michele.jpg",
-    //   x: 1.45,
-    //   y: 5.73
-    // },{
-    //     name: "p2",
-    //     url:"https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530794905583michele.jpg",
-    //     x: 5.73,
-    //     y: 1.45
-    //   }
-    // ];
-    // this.absentParticipants = [{
-    //   name: "p3",
-    //   url:"https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530794905583michele.jpg",
-    //   x: 0,
-    //   y: 0
-    // }]
 
   }
 

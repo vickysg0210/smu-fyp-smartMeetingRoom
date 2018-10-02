@@ -192,8 +192,8 @@ export class ApiService {
   }
 
 
-  private deleteAttendee = function(participantName, success: any,error: any){
-    this.http.delete(this.domain+"participants/"+participantName)
+  private deleteAttendee = function(participantId, success: any,error: any){
+    this.http.delete(this.domain+"participants/"+participantId)
             .subscribe(data=>{
               success(data);
             },err =>{
@@ -225,8 +225,8 @@ export class ApiService {
     })
   }
 
-  private getTrackings = function(trackingTime,success :any, error: any){
-    this.http.get(this.domain+"trackings/"+trackingTime).subscribe(data=>{
+  private getTrackings = function(mapId,trackingTime,success :any, error: any){
+    this.http.get(this.domain+"trackings/"+mapId+"/"+trackingTime).subscribe(data=>{
       // console.log("####",data);
       success(data);
     },err=>{

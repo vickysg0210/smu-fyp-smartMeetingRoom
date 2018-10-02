@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Tracking } from'../../interfaces/tracking';
 import * as moment from 'moment';
+import { HostListener } from '@angular/core'
 
 @Component({
   selector: 'app-go-live-page',
@@ -30,6 +31,13 @@ export class GoLivePageComponent implements OnInit {
     tableX: number,
     mac: string
   }>;
+
+  @HostListener('window:resize', ['$event']) onResize(event) {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
+      console.log(this.windowWidth);
+      console.log(this.windowHeight);
+    }
   // public trackings: Array<Tracking>;
 
 
@@ -40,10 +48,8 @@ export class GoLivePageComponent implements OnInit {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    this.windowWidth = window.innerWidth/5*4;
-    this.windowHeight = window.innerHeight/4*3;
+    this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
     // this.absentParticipants = null;
     // this.participants=null;
   }
@@ -91,7 +97,7 @@ export class GoLivePageComponent implements OnInit {
     var nowApiString = day+"T"+time+"+08:00";
     console.log("now"+nowApiString);
     // var nowApiString = "2018-07-08T08:00:25+08:00"
-    this.apiService.getTrackings(nowApiString,(data)=>{
+    this.apiService.getTrackings(this.mapId,nowApiString,(data)=>{
       this.participants = data.present;
       this.absentParticipants = data.absent;
       console.log(data.present);

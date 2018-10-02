@@ -91,6 +91,7 @@ export class AttendeeProfileComponent {
       console.log('There was an error uploading your file: ', err);
       url = "false";
     });
+  }
 
   public selectFile = function(event: any) {
     this.selectedFiles = event.target.files;

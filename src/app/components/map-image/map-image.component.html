@@ -1,15 +1,11 @@
-<div class="image-container">
+<div class="image-container" [style.width.px]="map.width * ratio" [style.height.px]="map.height *ratio">
   <div class="image-layout">
     <!-- <img src="assets/map.jpeg" class="image"/> -->
-    <div *ngFor="let participant of participants" class="participant-container"
-    >
+    <div *ngFor="let participant of participants" class="participant-container">
     <div *ngIf="participant.coordinateX>=0 && participant.coordinateY>=0">
-      <!-- <img [src]="sanitizer.bypassSecurityTrustUrl(participant.participant.remark)" width="20" height="20"
-      [style.marginLeft.px]="participant.coordinateX*100/3"
-      [style.marginTop.px]="400 - participant.coordinateY*100/3"> -->
-      <div class="test" [style.marginLeft.px]="participant.coordinateX*200" [style.marginTop.px]="400-participant.coordinateY*200">
-        {{participant.participant.minor}}
-      </div>
+      <img [src]="sanitizer.bypassSecurityTrustUrl(participant.participant.remark)" width="20" height="20"
+      [style.marginLeft.px]="participant.coordinateX*ratio"
+      [style.marginTop.px]="map.height*ratio - participant.coordinateY*ratio">
     </div>
 
     </div>

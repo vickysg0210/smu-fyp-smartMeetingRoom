@@ -64,9 +64,9 @@ export class AttendeesComponent implements OnInit {
     this.sidenav.toggle();
   }
 
-  public deleteAttendee = function(participantName: string){
-    console.log(participantName);
-    this.apiService.deleteAttendee(participantName, (data)=>{
+  public deleteAttendee = function(participantId: number){
+    console.log(participantId);
+    this.apiService.deleteAttendee(participantId, (data)=>{
       this.showSuccessMessage("");
       this.ngOnInit();
     },(err)=>{
