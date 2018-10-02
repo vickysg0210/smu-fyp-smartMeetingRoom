@@ -87,6 +87,7 @@ export class MapComponent implements OnInit {
   public loadTable = function(){
     this.apiService.getTablesByMapId(this.mapId,(data)=>{
       this.tables = data;
+      console.log(this.tables);
     }),(err)=>{
       // this.showErrorMessage("Failed to load tables")
       this.tables=[];
@@ -118,7 +119,7 @@ export class MapComponent implements OnInit {
   }
 
   public saveMap = function(){
-    this.apiService.updateMap(this.mapId,this.map.width.toString(),this.map.height.toString(),this.map.scale.toString(),(data)=>{
+    this.apiService.updateMap(this.mapId,this.map.width.toString(),this.map.height.toString(),"1",(data)=>{
       this.showSuccessMessage("Updated Map");
     }),(err)=>{
       this.showErrorMessage("failed to update map");
@@ -127,7 +128,7 @@ export class MapComponent implements OnInit {
       console.log(table);
       if(table.tableId === 0){
         this.apiService.createTable(this.mapId,table.mac,Number(table.tableX),Number(table.tableY),(data)=>{
-          this.showErrorMessage("Created Table" +table.tableId);
+          this.showSuccessMessage("Created Table " +table.tableId);
         }),(err)=>{
           this.showErrorMessage("Failed to create table")
         }
@@ -137,6 +138,8 @@ export class MapComponent implements OnInit {
         })
       }
     }
+
+    this.loadTable();
 
   }
 

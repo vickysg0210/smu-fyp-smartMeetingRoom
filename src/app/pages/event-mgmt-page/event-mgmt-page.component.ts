@@ -54,7 +54,7 @@ export class EventMgmtPageComponent implements OnInit {
       console.log(eventId);
       this.apiService.deleteEvent(eventId, (data)=>{
         console.log(data);
-        this.ngOnInit();
+        this.loadEvents();
       },(err)=>{
         console.log(err);
       })
