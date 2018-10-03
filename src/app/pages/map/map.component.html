@@ -37,7 +37,6 @@
 
 
       <div>
-        <!-- <button mat-button (click)="createAMap()">Draw A Map</button> -->
           <mat-form-field class="align-map">
             <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
@@ -69,7 +68,7 @@
           <!-- <app-d3-map-container [map]="map" [tables]="tables" [windowWidth]="windowWidth" [windowHeight]="windowHeight" [participants]="participants"></app-d3-map-container> -->
         <div class="customization">
           <button mat-raised-button color="accent" (click)="addTable()">Add Reader</button>
-
+          <button mat-raised-button color="accent" (click)="saveReader()">Save All Readers</button>
           <div *ngFor="let table of tables ; index as i " class="tables">
             <div class="reader-label">
               Reader {{i+1}}

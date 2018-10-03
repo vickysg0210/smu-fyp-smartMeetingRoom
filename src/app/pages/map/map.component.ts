@@ -163,7 +163,10 @@ export class MapComponent implements OnInit {
       console.log("There was an error uploading your file", err);
       url="false";
     });
+    // this.loadMap();
+  }
 
+  public saveReader = function(){
     for(let table of this.tables){
       console.log(table);
       if(table.tableId === 0){
@@ -178,10 +181,7 @@ export class MapComponent implements OnInit {
         })
       }
     }
-    this.loadMap();
     this.loadTable();
-
-
   }
 
   public selectFile = function(event: any){
