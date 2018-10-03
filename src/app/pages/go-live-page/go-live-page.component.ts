@@ -22,6 +22,7 @@ export class GoLivePageComponent implements OnInit {
   public absentList: Array<any>;
   public windowWidth: number;
   public windowHeight: number;
+  public recordedParticipants:number;
   public tables: Array<{
     date: string,
     shape: string,
@@ -57,12 +58,11 @@ export class GoLivePageComponent implements OnInit {
   ngOnInit() {
     this.getContainerMatrix();
     this.loadMap();
-    this.loadParticipants();
+    this.getRecordPar();
     setInterval(()=> {
        this.loadParticipants();
        console.log(this.participants);
      },8000);
-    this.loadParticipants();
   };
     // this.loadParticipants();
 
@@ -86,8 +86,17 @@ export class GoLivePageComponent implements OnInit {
       this.tables = data;
       // console.log(this.tables)
     },(err)=>{
-      this.showErrorMessage("error");
+      this.showErrorMessage("Failed to Load Table");
     });
+  }
+
+  public getRecordPar = function(){
+    this.apiService.getAllParticipants(this.eventId,(data)=>{
+      this.recordedParticipants = data.length;
+      console.log(this.recordedParticipants);
+    },(err)=>{
+      this.showErrorMessage("Failed to get all recorded participants");
+    })
   }
 
   public loadParticipants = function(){

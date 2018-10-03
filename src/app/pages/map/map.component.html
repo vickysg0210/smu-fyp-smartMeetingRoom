@@ -54,7 +54,7 @@
         <div class="map-image" *ngIf="map.width != 0 && map.height !=0">
           <div class="image-container" [style.width.px]="map.width * ratio"
                                         [style.height.px]="map.height * ratio" class="image-contiainer">
-              <div *ngIf="map.scale.length >2" class="image-url-contain">
+              <div *ngIf="map.scale != null" class="image-url-contain">
                 <img [src]="sanitizer.bypassSecurityTrustUrl(map.scale)" class="image" />
               </div>
               <!-- <div *ngIf="tables.length>0">

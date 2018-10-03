@@ -36,7 +36,7 @@
           </div>
           <circle-progress
             [title]="'Present '"
-            [percent]="participants.length / (participants.length+absentParticipants.length)*100"
+            [percent]="participants.length / recordedParticipants*100"
             [radius]="60"
             [space]="-10"
             [outerStrokeWidth]="10"

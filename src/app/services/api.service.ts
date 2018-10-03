@@ -228,6 +228,14 @@ export class ApiService {
     })
   }
 
+  private getAllParticipants = function(eventId,success: any, error: any){
+    this.http.get(this.domain+"participants/"+eventId).subscribe(data=>{
+      success(data);
+    },err=>{
+      error(err);
+    })
+  }
+
   private getTrackings = function(mapId,trackingTime,success :any, error: any){
     this.http.get(this.domain+"trackings/"+mapId+"/"+trackingTime).subscribe(data=>{
       // console.log("####",data);
