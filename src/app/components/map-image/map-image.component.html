@@ -1,5 +1,5 @@
 <div class="image-container" [style.width.px]="map.width * ratio" [style.height.px]="map.height *ratio">
-  <div class="image-layout">
+  <div class="image-layout" [style.backgroundImage]="'url(' + map.scale + ')'">
     <!-- <img src="assets/map.jpeg" class="image"/> -->
     <div *ngFor="let participant of participants" class="participant-container">
     <div *ngIf="participant.coordinateX>=0 && participant.coordinateY>=0">

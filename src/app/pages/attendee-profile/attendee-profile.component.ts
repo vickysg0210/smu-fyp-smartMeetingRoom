@@ -25,6 +25,7 @@ export class AttendeeProfileComponent {
   public pageName:String="";
   public accountId: number;
   public selectedFiles: FileList;
+  public eventStatus: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

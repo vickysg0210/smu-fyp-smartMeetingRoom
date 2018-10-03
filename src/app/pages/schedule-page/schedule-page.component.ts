@@ -20,7 +20,7 @@ export class SchedulePageComponent implements OnInit {
       description: string
     };
     public displayedColumns = ['Date', 'StartTime', 'EndTime', 'Description', 'Actions'];
-
+    public eventStatus: any;
     constructor(private route: ActivatedRoute,
                 private apiService: ApiService,
                 private daoService: DaoService) {

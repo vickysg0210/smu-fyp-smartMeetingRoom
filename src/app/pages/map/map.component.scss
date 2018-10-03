@@ -7,6 +7,45 @@
 
 }
 
+.bottom{
+  display: flex;
+  .customization{
+    padding: 1.5em;
+
+    .tables{
+      padding-top: 1em;
+      display: flex;
+    }
+  }
+}
+
+.reader-image{
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 100%;
+  text-align: center;
+  position: absolute;
+}
+
+.reader-label{
+  font-weight: bold;
+  padding: 1em;
+}
+.image-contiainer{
+  border: 1px solid black;
+  .image-url-contain{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    .image{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+
 .sidenav-container{
   height:100%;
 }

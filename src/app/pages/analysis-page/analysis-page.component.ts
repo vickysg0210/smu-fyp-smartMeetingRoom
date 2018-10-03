@@ -29,6 +29,7 @@ export class AnalysisPageComponent implements OnInit {
   public colorScheme : any = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
+  public eventStatus: any;
   generateColorScale(){
     const values: number[] = this.country.map(s => s.value);
     return d3Scale.scaleLinear()

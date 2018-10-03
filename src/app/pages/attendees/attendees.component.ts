@@ -23,6 +23,7 @@ export class AttendeesComponent implements OnInit {
   public eventId: number;
   public accountId: number;
   public attendeeList: Array<any>;
+  public eventStatus: any;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

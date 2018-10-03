@@ -4,6 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { DaoService } from '../../services/dao.service';
 import { ToastrService } from 'ngx-toastr';
+import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
+import { UploadFileService } from '../../services/upload-file.service';
+import { HostListener } from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser';
+
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 // import {MapDialogComponent} from '../components/map-dialog'
 
@@ -20,11 +25,12 @@ export class MapComponent implements OnInit {
   public mapId: number;
   public mapName : string;
   // public mapExistence: boolean = false;
+  public ratio: number;
   public map: any;
-  public scaleOptions: Array<number>;
   public windowWidth: number;
   public windowHeight: number;
   public participants: Array<any>;
+  public selectedFiles: FileList;
   public tables: Array<{
     date: string,
     shape: string,
@@ -34,16 +40,26 @@ export class MapComponent implements OnInit {
     tableX: number,
     mac: string
   }>
+  public eventStatus: any;
+
+  @HostListener('window:resize', ['$event']) onResize(event) {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight+100;
+      console.log(this.windowWidth);
+      console.log(this.windowHeight);
+    }
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private apiService : ApiService,
               private daoService: DaoService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private uploadService: UploadFileService,
+              private sanitizer: DomSanitizer) {
     this.route.params.subscribe((param) => {
         this.eventId = param.id;
     });
     this.accountId = this.daoService.getAccount();
-    this.scaleOptions=[1,2,5]
     this.participants=[];
     this.map = {
       width :0,
@@ -75,21 +91,29 @@ export class MapComponent implements OnInit {
       this.mapId = data.mapId;
       this.map.width=data.width;
       this.map.height=data.height;
-      this.map.scale=Number(data.scale);
+      this.map.scale=data.scale;
       this.mapName = data.mapName;
+      console.log(this.map);
+      this.processRatio();
       this.loadTable();
     },(err)=>{
       console.log(err);
-      // this.showErrorMessage("There is something wrong to load the map.");
+      this.showErrorMessage("There is something wrong to load the map.");
     })
   }
 
+  public processRatio = function(){
+    this.ratio = Math.min(this.windowWidth/5*4 / this.map.width, this.windowHeight/3*2 /this.map.height)/5*2;
+    console.log(this.ratio);
+  }
+
   public loadTable = function(){
+    //the back end handles the new map
     this.apiService.getTablesByMapId(this.mapId,(data)=>{
       this.tables = data;
       console.log(this.tables);
     }),(err)=>{
-      // this.showErrorMessage("Failed to load tables")
+      this.showErrorMessage("Failed to load tables")
       this.tables=[];
     }
   }
@@ -119,11 +143,27 @@ export class MapComponent implements OnInit {
   }
 
   public saveMap = function(){
-    this.apiService.updateMap(this.mapId,this.map.width.toString(),this.map.height.toString(),"1",(data)=>{
-      this.showSuccessMessage("Updated Map");
-    }),(err)=>{
-      this.showErrorMessage("failed to update map");
-    }
+    const file  = this.selectedFiles.item(0);
+    let url;
+    this.uploadService.uploadfile(file)
+    .then((data)=>{
+      console.log("upload data", data);
+      url = data.Location;
+      this.apiService.updateMap(this.mapId,this.map.width.toString(),this.map.height.toString(),url,(data)=>{
+        console.log("map",data);
+        this.showSuccessMessage("Updated Map");
+        this.loadMap();
+
+      }),(err)=>{
+        this.showErrorMessage("failed to update map");
+      };
+      // console.log("url",this.url);
+      // this.loadMap();
+    },(err)=>{
+      console.log("There was an error uploading your file", err);
+      url="false";
+    });
+
     for(let table of this.tables){
       console.log(table);
       if(table.tableId === 0){
@@ -138,9 +178,14 @@ export class MapComponent implements OnInit {
         })
       }
     }
-
+    this.loadMap();
     this.loadTable();
 
+
+  }
+
+  public selectFile = function(event: any){
+    this.selectedFiles = event.target.files;
   }
 
   public showSuccessMessage = function(text : string){

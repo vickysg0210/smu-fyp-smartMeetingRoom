@@ -1,3 +1,4 @@
+<button mat-raised-button color="accent" [routerLink]="['/',eventId,'home']">Back</button>
 <mat-grid-list cols="7" rowHeight="fit" class="go-live-container">
     <mat-grid-tile [colspan]="5" [rowspan]="3">
       <div *ngIf="map && participants && absentParticipants">
@@ -48,7 +49,7 @@
             [clockwise]="false"
           ></circle-progress>
         </div>
-        <div class="circle-progress-individual">
+        <!-- <div class="circle-progress-individual">
           <div class="title">
             Total Tables
           </div>
@@ -62,7 +63,7 @@
           [showUnits]="false"
           [subtitle]="'Tables'"
           ></circle-progress>
-        </div>
+        </div> -->
 
       </div>
     </mat-grid-tile>

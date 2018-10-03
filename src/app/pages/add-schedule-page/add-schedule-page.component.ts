@@ -24,6 +24,7 @@ export class AddSchedulePageComponent implements OnInit {
     };
     public eventId: number;
     public accountId: number;
+    public eventStatus: any;
 
 
     constructor(public router: Router,
