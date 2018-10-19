@@ -6,6 +6,20 @@
   bottom: 0;
 }
 
+.file-input{
+  display: none;
+}
+
+.file-text{
+    width: 3em;
+    border-radius: 6%;
+    display: inline;
+    padding: 0.4em;
+    margin: 1.2em;
+    color: white;
+    background-color: #ff9800c2;
+}
+
 .sidenav-container{
   //margin-top:3em;
   height:100%;

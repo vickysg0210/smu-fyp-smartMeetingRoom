@@ -1,6 +1,8 @@
-import { Component,ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild,ElementRef } from '@angular/core';
 import { DaoService } from '../../services/dao.service';
 import { ApiService } from '../../services/api.service';
+import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 declare let h337: any;
@@ -8,10 +10,11 @@ declare let h337: any;
 @Component({
   selector: 'app-analysis-heatmap',
   templateUrl: './analysis-heatmap.component.html',
-  styleUrls: ['./analysis-heatmap.component.css']
+  styleUrls: ['./analysis-heatmap.component.scss']
 })
 export class AnalysisHeatmapComponent implements OnInit {
 
+  @Input() eventId :number;
   public programChosen: number;
   public scheduleId:number;
   public max: number =0;
@@ -20,13 +23,36 @@ export class AnalysisHeatmapComponent implements OnInit {
   public tPoints: any;
   public scheduleName: string = "";
   public heatmapInstance: any;
-  constructor(private elRef: ElementRef, private daoService: DaoService,private apiService: ApiService) {
+  public map: any;
+  public ratio: number;
+  constructor(private elRef: ElementRef,
+              private daoService: DaoService,
+              private apiService: ApiService,
+              private toastr: ToastrService,
+            private sanitizer: DomSanitizer) {
 
 
   }
 
   ngOnInit() {
+    this.loadMap();
     this.loadSchedules();
+  }
+
+  public loadMap = function(){
+    this.apiService.getMapByEventId(this.eventId,(data)=>{
+      this.map = data;
+      console.log(this.map);
+      this.processRatio();
+    },(err)=>{
+      console.log(err);
+      this.showErrorMessage("There is something wrong to load the map.");
+    })
+  };
+
+  public processRatio = function(){
+    this.ratio = Math.min(1000 / this.map.width, 500 /this.map.height)/5*4;
+    console.log(this.ratio);
   }
 
   public loadSchedules = function(){
@@ -109,8 +135,8 @@ export class AnalysisHeatmapComponent implements OnInit {
     // var len = 50;
     this.tPoints.max = 10;
     for(let point of this.tPoints.data){
-      point.x = 900 - point.x *50;
-      point.y = 600 - point.y*50;
+      point.x = point.x *this.ratio;
+      point.y = this.map.height*this.ratio - point.y*this.ratio+36;
     }
 
     // while (len--) {

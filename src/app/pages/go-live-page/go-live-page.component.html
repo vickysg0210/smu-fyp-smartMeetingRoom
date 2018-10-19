@@ -11,17 +11,16 @@
         <!-- <mat-list class="attendance-list-container"> -->
         <div class="attendance-list-container">
           <div class="attenance-list-grid">
-          <!-- <div *ngFor="let present of participants">
-            <div class="content">
-              <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
-              <div class="overlay-present">
-                <div class="participant-image" [style.backgroundImage]="present.participant?.remark | safeHtml" >
-                </div>
-                <h2 class="participant-font">{{present.participant.participantName}}</h2>
-                </div>
+            <div *ngFor="let present of participants">
+              <div class="content">
+                <mat-icon mat-list-icon class="participant-icon">bubble_chart</mat-icon>
+                <div class="overlay-present">
+                  <div class="participant-image" [style.backgroundImage]="present.participant?.remark | safeHtml" >
+                  </div>
+                  <h2 class="participant-font">{{present.participant.participantName}}</h2>
+                  </div>
+              </div>
             </div>
-
-            </div> -->
           </div>
 
         </div>
@@ -67,20 +66,5 @@
 
       </div>
     </mat-grid-tile>
-
-<!--
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card>
-        <mat-card-header class="closer-look-title">
-          Get A Closer Look
-        </mat-card-header>
-        <div class="image-container">
-          <img class="closer-look-image" src="https://s3-ap-southeast-1.amazonaws.com/com.viatick/bms/medias/1530005406059micheleAcuto.jpeg" width="50" height="50">
-        </div>
-        <mat-card-content class="closer-look-content">
-          <h2 class="closer-look-name">Name</h2>
-          <p class="closer-look-position">Professor of Mexican University Finance</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile> -->
+ 
   </mat-grid-list>

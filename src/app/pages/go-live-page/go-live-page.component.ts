@@ -17,12 +17,12 @@ export class GoLivePageComponent implements OnInit {
   public mapId : number;
   public participants: Array<any>;
   public absentParticipants: Array<any>
-  private eventId: number;
   public presentList: Array<any>;
   public absentList: Array<any>;
   public windowWidth: number;
   public windowHeight: number;
   public recordedParticipants:number;
+  public eventId: number;
   public tables: Array<{
     date: string,
     shape: string,
@@ -62,7 +62,7 @@ export class GoLivePageComponent implements OnInit {
     setInterval(()=> {
        this.loadParticipants();
        console.log(this.participants);
-     },8000);
+     },4000);
   };
     // this.loadParticipants();
 

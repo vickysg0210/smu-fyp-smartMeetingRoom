@@ -18,10 +18,11 @@
 
   .attendance-list-container{
     width: 100%;
+    overflow : scroll;
     .attenance-list-grid{
       display: inline-grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      width: 39em;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      width: 33em;
       .content{
         display: flex;    padding-top: 8px;
         .overlay-present{

@@ -1,8 +1,11 @@
+
 .heatmap{
   width: 1000px;
   height: 500px;
+  margin-top: -2em;
   cursor:pointer;
   position:relative;
+  border: 2px solid black;
   /* background-color:black; */
 }
 .animated-point{
@@ -10,4 +13,10 @@
   height: 10px;
   border: 1px solid black;
   border-radius: 100%;
+}
+
+.play-button{
+  background-color: #4fe51e;
+  margin: 10px;
+  margin-bottom: 2em;
 }

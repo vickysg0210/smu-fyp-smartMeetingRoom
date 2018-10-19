@@ -34,8 +34,6 @@
     <app-toolbar [eventStatus]=eventStatus></app-toolbar>
     <div class="page-content">
       <h3>Map Settings</h3>
-
-
       <div>
           <mat-form-field class="align-map">
             <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">
@@ -44,7 +42,8 @@
             <input matInput placeholder="Width" [(ngModel)]="map.width" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <label class="align-map">
-            <input type="file" (change)="selectFile($event)">
+            <input type="file" (change)="selectFile($event)" class="file-input">
+            <div class="file-text">Upload Photo</div>
           </label>
           <button class="align-map" mat-raised-button color="accent" (click)="saveMap()">Save The Map</button>
 
@@ -88,8 +87,6 @@
             </button>
           </div>
         </div>
-      </div>
-      <div>
       </div>
     </div>
   </mat-sidenav-content>

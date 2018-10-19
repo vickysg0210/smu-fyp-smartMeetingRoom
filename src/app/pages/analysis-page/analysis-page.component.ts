@@ -57,9 +57,9 @@ export class AnalysisPageComponent implements OnInit {
 
   public getEventStatus = function() {
     this.apiService.getSingleEvent(this.accountId, this.eventId, (data) => {
-      console.log(data);
+      // console.log(data);
       this.eventStatus = data.status;
-      console.log("Get status successful: current=" + this.eventStatus);
+      // console.log("Get status successful: current=" + this.eventStatus);
     }, (err) => {
       console.log(err);
     });

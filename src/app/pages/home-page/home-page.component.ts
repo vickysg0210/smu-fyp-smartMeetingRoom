@@ -16,10 +16,12 @@ export class HomePageComponent implements OnInit {
   public eventId: number;
   public dataSource: Array<any>;
   public eventStatus: string;
+  public eventType: string;
   public accountId: number;
   public started: boolean;
   public inprogress: boolean;
   public ended: boolean;
+  public booth: boolean = false;
   // ifIsBefore: boolean;
   // ifIsDuring: boolean;
   // ifIsAfter: boolean;
@@ -57,6 +59,7 @@ export class HomePageComponent implements OnInit {
         data.status = "Not Started";
       }
       this.eventStatus = data.status;
+      this.eventType = data.description;
       this.processEventStatus();
       console.log("Get status successful: current=" + this.eventStatus);
     }, (err) => {
@@ -80,6 +83,12 @@ export class HomePageComponent implements OnInit {
     }else if(this.eventStatus == "In-progress"){
       this.inprogress = true;
       this.ended = false;
+    }
+
+    if(this.eventType == "booth"){
+      this.booth = true;
+    }else{
+      this.booth = false;
     }
   }
 

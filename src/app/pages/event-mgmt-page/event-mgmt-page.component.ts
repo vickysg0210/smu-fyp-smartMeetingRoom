@@ -19,7 +19,7 @@ export class EventMgmtPageComponent implements OnInit {
     public moment: any;
 
 
-    displayedColumns = ['name', 'date', 'venue', 'status', 'actions'];
+    displayedColumns = ['name', 'date', 'venue', 'status', 'type','actions'];
 
     constructor(private daoService : DaoService, private router: Router,
       private apiService : ApiService) {

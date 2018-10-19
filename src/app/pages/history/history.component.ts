@@ -18,7 +18,7 @@ export class HistoryComponent implements OnInit {
   public mapId : number;
   public participants: Array<any>;
   public absentParticipants: Array<any>
-  private eventId: number;
+  public eventId: number;
   public presentList: Array<any>;
   public absentList: Array<any>;
   public windowWidth: number;
