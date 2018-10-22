@@ -152,7 +152,7 @@ export class ApiService {
   }
 
   private createTable = function(mapId,mac,tableX,tableY,success: any,error: any){
-    this.http.post(this.domain+"readers",{
+    this.http.post(this.domain+"readers/",{
       mapId: mapId,
       mac: mac,
       tableX: tableX,

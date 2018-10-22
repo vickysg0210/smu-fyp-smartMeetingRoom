@@ -1,0 +1,13 @@
+<div *ngIf="participants">
+  <div *ngFor="let booth of participants" class="booth-container">
+    <div [style.color] ="booth.ranking == 1? 'red': 'black'">
+      {{booth.reader.mac}}
+    </div>
+    <div class="break">
+
+    </div>
+    <div *ngFor="let participant of booth.participants" class="participant">
+      {{participant.participantName}}
+    </div>
+  </div>
+</div>

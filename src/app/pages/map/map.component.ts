@@ -171,8 +171,10 @@ export class MapComponent implements OnInit {
       console.log(table);
       if(table.tableId === 0){
         this.apiService.createTable(this.mapId,table.mac,Number(table.tableX),Number(table.tableY),(data)=>{
+          console.log(table);
           this.showSuccessMessage("Created Table " +table.tableId);
         }),(err)=>{
+          console.log(table);
           this.showErrorMessage("Failed to create table")
         }
       }else {

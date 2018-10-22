@@ -78,7 +78,8 @@ import { SchedulePageComponent } from './pages/schedule-page/schedule-page.compo
 import { TreemapCountryComponent } from './components/treemap-country/treemap-country.component';
 import { TreemapIndustryComponent } from './components/treemap-industry/treemap-industry.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
-import {HistoryComponent } from './pages/history/history.component'
+import {HistoryComponent } from './pages/history/history.component';
+import { BoothLivePageComponent } from './pages/booth-live-page/booth-live-page.component'
 
 const appRoutes: Routes = [{
   path: '',
@@ -136,6 +137,9 @@ const appRoutes: Routes = [{
 },{
   path:':id/history',
   component: HistoryComponent
+},{
+  path:':id/booth-live',
+  component: BoothLivePageComponent
 }];
 
 export const MY_NATIVE_FORMATS = {
@@ -174,7 +178,8 @@ export const MY_NATIVE_FORMATS = {
     TreemapCountryComponent,
     TreemapIndustryComponent,
     MapImageComponent,
-    HistoryComponent
+    HistoryComponent,
+    BoothLivePageComponent
   ],
   imports: [
     NgxMaterialTimepickerModule.forRoot(),

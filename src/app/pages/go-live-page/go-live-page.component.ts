@@ -21,8 +21,11 @@ export class GoLivePageComponent implements OnInit {
   public absentList: Array<any>;
   public windowWidth: number;
   public windowHeight: number;
-  public recordedParticipants:number;
   public eventId: number;
+
+  public recordedParticipants:number;
+
+
   public tables: Array<{
     date: string,
     shape: string,
