@@ -25,10 +25,9 @@ export class MapImageComponent implements OnInit {
   }
 
   ngOnChanges(){
-
     console.log("width"+ this.windowWidth);
     console.log("height" +this.windowHeight);
-    this.processRatio()
+    this.processRatio();
   }
 
   public processRatio = function(){

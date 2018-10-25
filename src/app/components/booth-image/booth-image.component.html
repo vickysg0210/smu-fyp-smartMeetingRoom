@@ -1,0 +1,46 @@
+<div class="image-container" [style.width.px]="map.width * ratio" [style.height.px]="map.height *ratio">
+  <div class="image-layout" [style.backgroundImage]="'url(' + map.scale + ')'">
+    <!-- <img src="assets/map.jpeg" class="image"/> -->
+    <!-- <div *ngFor="let participant of participants" class="participant-container">
+    <div *ngIf="participant.coordinateX>=0 && participant.coordinateY>=0">
+      <img [src]="sanitizer.bypassSecurityTrustUrl(participant.participant.remark)" width="20" height="20"
+      [style.marginLeft.px]="participant.coordinateX*ratio"
+      [style.marginTop.px]="map.height*ratio - participant.coordinateY*ratio">
+    </div> -->
+
+    <!-- </div> -->
+    <div class="readers-container" [style.width.px]="map.width * ratio" [style.height.px]="map.height *ratio">
+      <div class="reader-container" *ngFor="let booth of participants; index as i"
+              [style.width.px]="map.width * ratio"
+              [style.height.px]="map.height *ratio">
+        <div class="reader-position" [style.marginLeft.px]="booth.reader.tableX * ratio"
+              [style.marginTop.px]="map.height*ratio - booth.reader.tableY*ratio">
+        </div>
+        <div class="reader-center" [style.marginLeft.px]="booth.reader.tableX*ratio -42.5"
+              [style.marginTop.px]="-57.5" [style.width.px]="6*ratio"
+              [style.height.px]="6*ratio" ><br/> Region {{i}}
+
+              <!-- <div *ngFor="let participant of booth.participants">
+                 {{participant.participantName}}
+                </div> -->
+        </div>
+        </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="participants">
+  <div *ngFor="let booth of participants; index as i" class="booth-container">
+    <div class="region-name">
+      Region {{i}}
+    </div>
+    <div class="break">
+
+    </div>
+    <div *ngFor="let participant of booth.participants" class="participant">
+      {{participant.participantName}}
+    </div>
+  </div>
+</div>

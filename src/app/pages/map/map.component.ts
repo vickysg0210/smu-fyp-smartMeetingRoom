@@ -170,7 +170,7 @@ export class MapComponent implements OnInit {
     for(let table of this.tables){
       console.log(table);
       if(table.tableId === 0){
-        this.apiService.createTable(this.mapId,table.mac,Number(table.tableX),Number(table.tableY),(data)=>{
+        this.apiService.createTable(this.mapId,table.mac,table.tableX,table.tableY,(data)=>{
           console.log(table);
           this.showSuccessMessage("Created Table " +table.tableId);
         }),(err)=>{
@@ -178,7 +178,7 @@ export class MapComponent implements OnInit {
           this.showErrorMessage("Failed to create table")
         }
       }else {
-        this.apiService.updateTable(table.tableId,table.mac,Number(table.tableX),Number(table.tableY),(data)=>{
+        this.apiService.updateTable(table.tableId,table.mac,table.tableX,table.tableY,(data)=>{
           this.showSuccessMessage("Updated Table");
         })
       }

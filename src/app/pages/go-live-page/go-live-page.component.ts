@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Tracking } from'../../interfaces/tracking';
 import * as moment from 'moment';
-import { HostListener } from '@angular/core'
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-go-live-page',
