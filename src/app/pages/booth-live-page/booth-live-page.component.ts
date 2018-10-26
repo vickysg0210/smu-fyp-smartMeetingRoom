@@ -9,7 +9,7 @@ import { HostListener } from '@angular/core';
 @Component({
   selector: 'app-booth-live-page',
   templateUrl: './booth-live-page.component.html',
-  styleUrls: ['./booth-live-page.component.css']
+  styleUrls: ['./booth-live-page.component.scss']
 })
 export class BoothLivePageComponent implements OnInit {
 
