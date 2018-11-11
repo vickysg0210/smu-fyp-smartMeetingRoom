@@ -24,7 +24,10 @@
     <div class="sidediv" *ngIf="booth">
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'booth-live']" [disabled]="!inprogress">Go Live</button>
     </div>
-    <div class="sidediv" >
+    <div class="sidediv" *ngIf="booth">
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'booth-analysis']" [disabled]="!ended">Analysis</button>
+    </div>
+    <div class="sidediv" *ngIf="!booth">
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'analysis']" [disabled]="!ended">Analysis</button>
     </div>
 

@@ -91,21 +91,4 @@ export class HomePageComponent implements OnInit {
       this.booth = false;
     }
   }
-
-  // public disableDecision = function() {
-  //   if (this.eventStatus === 'Not Started') {
-  //     this.ifIsBefore = true;
-  //     console.log("ifIsBefore = true");
-  //   } else if (this.eventStatus === 'In-progress'){
-  //     this.ifIsDuring = true;
-  //     console.log("ifIsDuring = true");
-  //   } else if (this.eventStatus === 'Ended'){
-  //     this.ifIsAfter = true;
-  //     console.log("ifIsAfter = true");
-  //   } else {
-  //     console.log("eventStatus=" + this.eventStatus);
-  //   }
-  // };
-
-
 }

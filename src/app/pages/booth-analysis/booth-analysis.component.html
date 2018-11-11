@@ -1,0 +1,134 @@
+<!-- <app-toolbar [pageName] = "pageName"></app-toolbar> -->
+<mat-sidenav-container class="sidenav-container">
+  <!-- Navigation Bar-->
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="navlogo" [routerLink]="['/event-mgmt']">
+      <img src="assets/logo.png" width="40" height="30"/>
+      <div class="navlogo-text">
+        Smart Event
+      </div>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'schedule']">Schedule</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Map Settings</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
+    </div>
+    <div class="sidediv" >
+      <button mat-raised-button class="sidebutton" color="primary">Analysis</button>
+    </div>
+  </mat-sidenav>
+
+  <!-- Main Content-->
+  <mat-sidenav-content class="sidenav-content">
+    <!-- <app-toolbar [eventStatus]=eventStatus></app-toolbar> -->
+    <!-- <button mat-button>Close All</button> -->
+    <mat-accordion [multi]="true">
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Demographics
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="gender">
+          <img src="assets/bizwoman.png" width="80" height="80" class="bizwoman"/>
+          <!-- <div class="gender-chart" *ngIf="chartData"> -->
+            <ngx-charts-number-card
+              [view]="genderView"
+              [results]="gender"
+              [innerPadding]="100"
+              [animations]="true">
+            </ngx-charts-number-card>
+          <!-- </div> -->
+          <img src="assets/bizman.png" width="80" height="80"/>
+        </div>
+
+
+        <div class="level" *ngIf="chartData">
+          <ngx-charts-bar-horizontal
+            class="level"
+            [scheme]="'natural'"
+            [view]="levelView"
+            [results]="position"
+            [legend]="true"
+            [legendTitle]="'Legend'"
+            [xAxis]="true"
+            [yAxis]="true"
+            [showXAxisLabel]  = "true"
+            [showYAxisLabel]= "true"
+            [xAxisLabel] = "'Number of participants'"
+            [yAxisLabel]="'Job Level'"
+            [xAxisTickFormatting]="formatJobLevel">
+          </ngx-charts-bar-horizontal>
+        </div>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Report
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!--  analysis 1: total number of visitors per booth -->
+        <!-- <div class="level" *ngIf="attendanceData"> -->
+          <div class="level">
+            <ngx-charts-number-card
+              [view]="genderView"
+              [results]="averageDuration"
+              [innerPadding]="100"
+              [animations]="true">
+            </ngx-charts-number-card>
+            <ngx-charts-line-chart
+            [view]="levelView"
+            [results]="averageDurationPerBooth"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Year'"
+            [yAxisLabel]="'Total Visitors'">
+            </ngx-charts-line-chart>
+          </div>
+
+        <!-- </div> -->
+
+        <!-- analysis 2:
+        average duration per individual
+        average duration per Position per booth
+      -->
+      <div class="level">
+        <ngx-charts-number-card
+          [view]="genderView"
+          [results]="totalVisitors"
+          [innerPadding]="100"
+          [animations]="true">
+        </ngx-charts-number-card>
+        <ngx-charts-line-chart
+        [view]="levelView"
+        [results]="averageDurationPerBooth"
+        [gradient]="false"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Year'"
+        [yAxisLabel]="'Average Staying Duration'">
+        </ngx-charts-line-chart>
+        </div>
+
+
+      </mat-expansion-panel>
