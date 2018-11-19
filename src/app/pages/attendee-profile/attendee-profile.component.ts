@@ -22,7 +22,7 @@ export class AttendeeProfileComponent {
       remark: string
     }
   public eventId: number;
-  public pageName:String="";
+  public pageName:String="Attendee Profile";
   public accountId: number;
   public selectedFiles: FileList;
   public eventStatus: any;

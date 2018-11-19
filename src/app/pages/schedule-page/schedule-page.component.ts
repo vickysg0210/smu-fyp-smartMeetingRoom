@@ -10,7 +10,7 @@ import { DaoService } from '../../services/dao.service';
 })
 export class SchedulePageComponent implements OnInit {
 
-    public pageName: String = 'home';
+    public pageName: String = 'Schedule';
     public eventId: number;
     public dataSource: Array<any>;
     public accountId: number;

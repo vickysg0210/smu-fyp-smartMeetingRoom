@@ -42,14 +42,15 @@
 
         <div class="gender">
           <img src="assets/bizwoman.png" width="80" height="80" class="bizwoman"/>
-          <!-- <div class="gender-chart" *ngIf="chartData"> -->
+          <div class="gender-chart" *ngIf="chartData">
             <ngx-charts-number-card
               [view]="genderView"
               [results]="gender"
+              [valueFormatting]="formatGender"
               [innerPadding]="100"
               [animations]="true">
             </ngx-charts-number-card>
-          <!-- </div> -->
+          </div>
           <img src="assets/bizman.png" width="80" height="80"/>
         </div>
 
@@ -83,24 +84,32 @@
         <!--  analysis 1: total number of visitors per booth -->
         <!-- <div class="level" *ngIf="attendanceData"> -->
           <div class="level">
-            <ngx-charts-number-card
-              [view]="genderView"
-              [results]="averageDuration"
-              [innerPadding]="100"
-              [animations]="true">
-            </ngx-charts-number-card>
-            <ngx-charts-line-chart
-            [view]="levelView"
-            [results]="averageDurationPerBooth"
-            [gradient]="false"
-            [xAxis]="true"
-            [yAxis]="true"
-            [legend]="true"
-            [showXAxisLabel]="true"
-            [showYAxisLabel]="true"
-            [xAxisLabel]="'Year'"
-            [yAxisLabel]="'Total Visitors'">
-            </ngx-charts-line-chart>
+            <div *ngIf="summaryData" class="numbercard">
+              <ngx-charts-number-card
+                [view]="genderView"
+                [results]="averageDuration"
+                [innerPadding]="100"
+                [animations]="true"
+                [cardColor]="'rgba(153,153,255)'"
+                [emptyColor]="'rgba(153,153,255)'"
+                [bandColor]="'rgba(153,153,255)'">
+              </ngx-charts-number-card>
+            </div>
+
+            <div *ngIf="averageDurationData">
+              <ngx-charts-bar-vertical-stacked
+              [view]="levelView"
+              [results]="averageDurationPerBooth"
+              [gradient]="false"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Year'"
+              [yAxisLabel]="'Average Staying Duration (min)'">
+              </ngx-charts-bar-vertical-stacked>
+              </div>
           </div>
 
         <!-- </div> -->
@@ -110,24 +119,49 @@
         average duration per Position per booth
       -->
       <div class="level">
-        <ngx-charts-number-card
-          [view]="genderView"
-          [results]="totalVisitors"
-          [innerPadding]="100"
-          [animations]="true">
-        </ngx-charts-number-card>
-        <ngx-charts-line-chart
-        [view]="levelView"
-        [results]="averageDurationPerBooth"
-        [gradient]="false"
-        [xAxis]="true"
-        [yAxis]="true"
-        [legend]="true"
-        [showXAxisLabel]="true"
-        [showYAxisLabel]="true"
-        [xAxisLabel]="'Year'"
-        [yAxisLabel]="'Average Staying Duration'">
-        </ngx-charts-line-chart>
+        <div *ngIf="summaryData" class="numbercard">
+          <ngx-charts-number-card
+            [view]="genderView"
+            [results]="totalVisitors"
+            [innerPadding]="100"
+            [animations]="true">
+          </ngx-charts-number-card>
+        </div>
+
+        <div *ngIf="totalVisitorsData">
+          <ngx-charts-bar-vertical-stacked
+          [view]="levelView"
+          [results]="totalVisitorsPerBooth"
+          [gradient]="false"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          [xAxisLabel]="'Year'"
+          [yAxisLabel]="'Total Visitors'">
+          </ngx-charts-bar-vertical-stacked>
+        </div>
+      </div>
+
+        <!-- </div> -->
+
+        <div class="level">
+          <div *ngIf="scheduleData">
+            <ngx-charts-bar-vertical-stacked
+            [view]="levelView"
+            [results]="scheduleAna"
+            [gradient]="false"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Schedule'"
+            [yAxisLabel]="'Total Visitors'">
+            </ngx-charts-bar-vertical-stacked>
+          </div>
+
         </div>
 
 

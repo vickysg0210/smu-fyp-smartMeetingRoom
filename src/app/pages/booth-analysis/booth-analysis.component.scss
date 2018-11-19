@@ -85,6 +85,7 @@
 
   .level{
     display: flex;
+    padding-bottom: 3em;
   }
 
   .heatmap{
@@ -97,6 +98,10 @@
     margin: auto;
     margin-top: 40px;
   }
+}
+
+.numbercard{
+  margin: auto;
 }
 
 :host{

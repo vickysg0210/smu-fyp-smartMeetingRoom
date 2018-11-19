@@ -32,7 +32,7 @@ export class AddSchedulePageComponent implements OnInit {
                 private apiService: ApiService,
                 private daoService: DaoService
       ) {
-      this.pageName = 'add-event-page';
+      this.pageName = 'Add Schedule';
       this.route.params.subscribe((param)=>{
           this.eventId = +param.id;
       });

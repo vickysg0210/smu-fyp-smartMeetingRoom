@@ -14,7 +14,7 @@ import { DaoService } from '../../services/dao.service';
 export class ToolbarComponent implements OnInit {
   //  @Output() viewChange = new EventEmitter<string>();
   //  @Output() navbarToggle = new EventEmitter<string>();
-    @Input() eventStatus: string;
+    @Input() pageName: string;
     public eventId: number;
 
     constructor(private user: AuthService,

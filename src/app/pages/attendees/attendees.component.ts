@@ -17,7 +17,7 @@ export class AttendeesComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   //present: boolean;
-  public pageName: string = 'attendees';
+  public pageName: string = 'Attendees';
   displayedColumns = ['avatar', 'uuid', 'name', 'position', 'organization', 'actions'];
   // dataSource = new MatTableDataSource<PeriodicElement>(attendeeList);
   public eventId: number;

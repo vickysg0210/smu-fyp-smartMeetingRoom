@@ -19,7 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  public pageName: string = 'map';
+  public pageName: string = 'Map';
   public eventId: number;
   public accountId: number;
   public mapId: number;

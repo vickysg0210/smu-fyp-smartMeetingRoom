@@ -23,6 +23,7 @@ export class AnalysisPageComponent implements OnInit {
   public countryView: any[]=[300,300];
   public industryView: any[]=[300,300];
   public levelView : any[]=[700,300];
+  public pageName: String="Analysis";
 
   public attendances : Array<any>;
   public colorScale : any;

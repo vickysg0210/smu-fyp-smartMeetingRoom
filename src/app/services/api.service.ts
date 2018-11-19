@@ -270,6 +270,38 @@ export class ApiService {
     })
   }
 
+  private getAnalysisSummary = function(eventId: number, success: any, error: any){
+    this.http.get(this.domain+"analysis/summ/"+eventId).subscribe(data=>{
+      success(data);
+    }, err => {
+      error(err);
+    })
+  }
+
+  private getAnalysisAverageDuration = function(eventId: number, success: any, error: any){
+    this.http.get(this.domain +"analysis/b_dur/"+eventId).subscribe(data=>{
+      success(data);
+    },err => {
+      error(err);
+    })
+  }
+
+  private getAnalysisTotalVisitors = function(eventId: number, success: any, error: any){
+    this.http.get(this.domain +"analysis/b_num/"+eventId).subscribe(data=>{
+      success(data);
+    },err => {
+      error(err);
+    })
+  }
+
+  private getAnalysisSchedule = function(eventId: number, success: any, error: any){
+    this.http.get(this.domain +"analysis/b_sch/"+eventId).subscribe(data=>{
+      success(data);
+    },err => {
+      error(err);
+    })
+  }
+
 
   private getHistoryTrackings = function(trackingTime,success :any, error: any){
     this.http.get(this.domain+"trackings/history/"+trackingTime).subscribe(data=>{

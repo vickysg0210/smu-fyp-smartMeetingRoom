@@ -12,7 +12,7 @@ import { DaoService } from '../../services/dao.service';
 export class HomePageComponent implements OnInit {
 
 
-  public pageName: String = 'home';
+  public pageName: String = 'Home';
   public eventId: number;
   public dataSource: Array<any>;
   public eventStatus: string;
