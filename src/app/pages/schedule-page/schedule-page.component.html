@@ -1,10 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <div class="navlogo" [routerLink]="['/event-mgmt']">
-      <img src="assets/logo.png" width="40" height="30"/>
-      <div class="navlogo-text">
-        Smart Event
-      </div>
+      <img src="assets/logo2.png" width="40" height="30"/>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
@@ -30,7 +27,7 @@
   <mat-sidenav-content class="sidenav-content">
     <app-toolbar [pageName]=pageName></app-toolbar>
       <div class="page-container">
-        <h3>Event Schedule</h3>
+
         <div class="scroll-content">
           <!-- <img src="assets/schedule.png"> -->
           <button mat-raised-button class="add-button" color="accent" [routerLink]="['/',eventId,'home','add-schedule']">Add Schedule</button><br />

@@ -3,10 +3,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <div class="navlogo" [routerLink]="['/event-mgmt']">
-      <img src="assets/logo.png" width="40" height="30"/>
-      <div class="navlogo-text">
-        Smart Event
-      </div>
+      <img src="assets/logo2.png" width="40" height="30"/>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
@@ -33,7 +30,6 @@
   <mat-sidenav-content class="sidenav-content">
     <app-toolbar [pageName]=pageName></app-toolbar>
     <div class="page-content">
-      <h3>Map Settings</h3>
       <div>
           <mat-form-field class="align-map">
             <input matInput placeholder="Height" [(ngModel)]="map.height" [ngModelOptions]="{standalone: true}">

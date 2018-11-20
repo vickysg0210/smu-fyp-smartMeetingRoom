@@ -13,20 +13,10 @@
   width: 11em;
   background-color: rgba(20,46,68,0.95);
   .navlogo{
-    color: #335C67;
     display: flex;
     height: 3em;
-    // background-color: white;
     img{
       margin: auto;
-    }
-    .navlogo-text{
-      line-height: 3em;
-      height: 3em;
-      color: #335C67;
-      text-align: center;
-      margin: auto;
-      font-weight: 700;
     }
   }
   .sidediv{
@@ -52,6 +42,33 @@
 }
 .sidenav-content{
   margin-top:3em;
+  .event-card{
+    background-image: url(assets/event.jpg);
+    margin-top: 4em;
+    margin-left: 8em;
+    margin-right: 8em;
+    // height: 16em;
+    background-size: cover;
+    .event-card-title{
+      font-size: 30px;
+      color: white;
+      font-weight: bold;
+    }
+    .card-icon{
+      color: white;
+    }
+    .card-info{
+      color: white;
+    }
+
+    .edit-icon{
+      color:rgb(169,153,242);
+      font-size: 1em;
+    }
+    .card-button{
+      color: #946fae;
+    }
+  }
   .page-container{
     margin: 1em;
     width: 100%;
@@ -64,4 +81,35 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+::ng-deep .mat-card-header-text{
+  margin: auto !important;
+}
+
+.mat-card-header{
+  display: flex;
+}
+
+.cards{
+  display: flex;
+}
+
+.list-event-status{
+  margin-top: 4em;
+  .event-status-header{
+    color: #3d4750;
+    font-size: 1.2em;
+  }
+}
+
+.list-button{
+  background-color: #946fae;
+  color:white;
+  width: 8em;
+}
+
+.list-action{
+  margin-left: 2em;
+  margin-top: 1.5em;
 }

@@ -2,10 +2,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <div class="navlogo" [routerLink]="['/event-mgmt']">
-      <img src="assets/logo.png" width="40" height="30"/>
-      <div class="navlogo-text">
-        Smart Event
-      </div>
+      <img src="assets/logo2.png" width="40" height="30"/>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
@@ -14,7 +11,7 @@
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'schedule']">Schedule</button>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button color="primary" class="sidebutton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
+      <button mat-raised-button class="chosenButton" [routerLink]="['/',eventId,'attendees']">Attendees</button>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'map']">Map Settings</button>
@@ -31,7 +28,6 @@
   <mat-sidenav-content class="sidenav-content">
     <app-toolbar [pageName]=pageName></app-toolbar>
     <div class="page-container">
-      <h3>Attendee List</h3>
       <!-- Add New Attendee Button-->
       <div class="Add-and-Search">
         <button mat-raised-button color="accent" [routerLink]="['/',eventId,'attendee-profile']"> + New Attendee </button>

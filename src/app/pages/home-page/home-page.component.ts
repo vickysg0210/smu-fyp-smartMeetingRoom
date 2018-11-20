@@ -22,6 +22,7 @@ export class HomePageComponent implements OnInit {
   public inprogress: boolean;
   public ended: boolean;
   public booth: boolean = false;
+  public event: any;
   // ifIsBefore: boolean;
   // ifIsDuring: boolean;
   // ifIsAfter: boolean;
@@ -58,10 +59,27 @@ export class HomePageComponent implements OnInit {
       if(data.status == undefined){
         data.status = "Not Started";
       }
-      this.eventStatus = data.status;
-      this.eventType = data.description;
-      this.processEventStatus();
-      console.log("Get status successful: current=" + this.eventStatus);
+      if(data.description == "booth"){
+        data.description = "Booth Event";
+        this.booth = true;
+      } else{
+        data.description = "Space Event";
+        this.booth= false;
+      }
+
+      if(data.status == "Not Started"){
+        this.inprogress = false;
+        this.ended = false;
+      } else if(data.status == "Completed"){
+        this.inprogress = false;
+        this.ended = true;
+      }else if(data.status == "In-progress"){
+        this.inprogress = true;
+        this.ended = false;
+      }
+
+      data.eventDate = data.eventDate.substring(0,10);
+      this.event = data;
     }, (err) => {
       console.log(err);
     });
@@ -73,22 +91,9 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  public processEventStatus = function(){
-    if(this.eventStatus == "Not Started"){
-      this.inprogress = false;
-      this.ended = false;
-    } else if(this.eventStatus == "Completed"){
-      this.inprogress = false;
-      this.ended = true;
-    }else if(this.eventStatus == "In-progress"){
-      this.inprogress = true;
-      this.ended = false;
-    }
-
-    if(this.eventType == "booth"){
-      this.booth = true;
-    }else{
-      this.booth = false;
-    }
+  public navigateEventStatusPage = function(){
+    this.router.navigate([this.eventId,'eventStatus']);
   }
+
+
 }

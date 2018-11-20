@@ -3,10 +3,7 @@
   <!-- Navigation Bar-->
   <mat-sidenav mode="side" opened class="sidenav">
     <div class="navlogo" [routerLink]="['/event-mgmt']">
-      <img src="assets/logo.png" width="40" height="30"/>
-      <div class="navlogo-text">
-        Smart Event
-      </div>
+      <img src="assets/logo2.png" width="40" height="30"/>
     </div>
     <div class="sidediv" >
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'home']">Home</button>
@@ -24,7 +21,7 @@
       <button mat-button class="sidebutton" [routerLink]="['/',eventId,'go-live']">Go Live</button>
     </div>
     <div class="sidediv" >
-      <button mat-raised-button class="sidebutton" color="primary">Analysis</button>
+      <button mat-raised-button class="chosenButton" >Analysis</button>
     </div>
   </mat-sidenav>
 
@@ -44,7 +41,7 @@
           <img src="assets/bizwoman.png" width="80" height="80" class="bizwoman"/>
           <div class="gender-chart" *ngIf="chartData">
             <ngx-charts-number-card
-              [view]="genderView"
+              [view]="genderTrueView"
               [results]="gender"
               [valueFormatting]="formatGender"
               [innerPadding]="100"

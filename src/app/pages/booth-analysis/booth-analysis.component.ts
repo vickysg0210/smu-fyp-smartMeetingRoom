@@ -22,6 +22,7 @@ export class BoothAnalysisComponent implements OnInit {
   public position: any[];
   public gender: any[] = [];
   public chartData : boolean = false;
+  public genderTrueView: any[]=[400,200];
 
 
   //report analysis

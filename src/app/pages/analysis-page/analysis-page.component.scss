@@ -44,22 +44,12 @@
 }
 .sidenav{
   width: 11em;
-  background-color: #335C67;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+  background-color: rgba(20,46,68,0.95);
   .navlogo{
-    color: #335C67;
     display: flex;
-    background-color: white;
+    height: 3em;
     img{
       margin: auto;
-    }
-    .navlogo-text{
-      line-height: 3em;
-      height: 3em;
-      color: #335C67;
-      text-align: center;
-      margin: auto;
-      font-weight: 700;
     }
   }
   .sidediv{
@@ -70,10 +60,10 @@
       width: 100%;
     }
     .chosenButton{
-      color: white;
+      color: rgb(169,153,242);
       line-height: 4em;
       width: 100%;
-      background-color: #E69317;
+      background-color: rgba(20,32,48,1);
       }
   }
   .bottom-nav{
