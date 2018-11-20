@@ -11,7 +11,7 @@
     </div>
   </div>
 </div> -->
-<button mat-raised-button color="accent" [routerLink]="['/',eventId,'home']">Back</button>
+<!-- <button mat-raised-button color="accent" [routerLink]="['/',eventId,'home']">Back</button> -->
 <div *ngIf="map && participants">
   <!-- <app-d3-map-container [map]="map" [participants]="participants" [windowWidth]="windowWidth" [windowHeight]="windowHeight" ></app-d3-map-container> -->
   <app-booth-image [map]="map" [windowWidth]="windowWidth" [windowHeight]="windowHeight" [participants]="participants"></app-booth-image>

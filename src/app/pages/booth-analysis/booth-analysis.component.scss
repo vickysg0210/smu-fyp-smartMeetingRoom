@@ -76,6 +76,7 @@
   .level{
     display: flex;
     padding-bottom: 3em;
+    padding-top: 3em;
   }
 
   .heatmap{
@@ -100,4 +101,12 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.fake-left{
+  width: 350px;
+}
+
+.title{
+  text-align: center;
 }

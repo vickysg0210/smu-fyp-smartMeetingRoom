@@ -80,6 +80,9 @@
 
         <!--  analysis 1: total number of visitors per booth -->
         <!-- <div class="level" *ngIf="attendanceData"> -->
+        <h3 class="title">
+          Average Staying Duration per Booth per Year (min)
+        </h3>
           <div class="level">
             <div *ngIf="summaryData" class="numbercard">
               <ngx-charts-number-card
@@ -115,19 +118,26 @@
         average duration per individual
         average duration per Position per booth
       -->
+      <h3 class="title">
+        Total Number of Visitors per Booth
+      </h3>
       <div class="level">
         <div *ngIf="summaryData" class="numbercard">
           <ngx-charts-number-card
             [view]="genderView"
             [results]="totalVisitors"
             [innerPadding]="100"
-            [animations]="true">
+            [animations]="true"
+            [cardColor]="'rgba(175, 223, 10)'"
+            [emptyColor]="'rgba(175, 223, 10)'"
+            [bandColor]="'rgba(175, 223, 10)'">
           </ngx-charts-number-card>
         </div>
 
         <div *ngIf="totalVisitorsData">
           <ngx-charts-bar-vertical-stacked
           [view]="levelView"
+          [scheme]="'vivid'"
           [results]="totalVisitorsPerBooth"
           [gradient]="false"
           [xAxis]="true"
@@ -142,11 +152,20 @@
       </div>
 
         <!-- </div> -->
+        <h3 class="title">
+          Total Number of Visitors From 7pm To 10pm
+        </h3>
 
         <div class="level">
+          <div *ngIf="summaryData" class="numbercard">
+            <div class="fake-left">
+
+              </div>
+          </div>
           <div *ngIf="scheduleData">
             <ngx-charts-bar-vertical-stacked
             [view]="levelView"
+            [scheme]="'vivid'"
             [results]="scheduleAna"
             [gradient]="false"
             [xAxis]="true"
